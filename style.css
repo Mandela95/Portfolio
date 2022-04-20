@@ -1,0 +1,235 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700;800;900&display=swap");
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+}
+i {
+  color: black;
+}
+li {
+  list-style: none;
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 0;
+  }
+  section {
+    flex-direction: column;
+  }
+}
+
+/* @media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+} */
+
+header {
+  background-color: #ddd;
+  width: 100%;
+  position: fixed;
+  z-index: 99;
+  padding: 10px 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+header::after {
+  content: "";
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  background-image: linear-gradient(to right, #0f0, #d35, #369, #d35, #0f0);
+}
+
+.logo {
+  font-size: 2em;
+  font-weight: bold;
+  color: #3a6cf4;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* nav ul li:hover {
+  border-bottom: 3px solid #fff;
+  width: calc(100% - 20px);
+} */
+
+nav ul li a {
+  color: #3a6cf4;
+  font-weight: 500;
+  padding-right: 30px;
+  margin: 20px;
+}
+
+nav ul li a:hover {
+  color: #296;
+  color: #601cfc;
+}
+
+section {
+  padding: 100px 200px;
+}
+
+.main {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  /* background: url(Images/Mandela.jpg) no-repeat; */
+  background-image: url(Images/Mandela.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.main h2 {
+  color: #fff;
+  font-size: 1.3em;
+}
+
+.main h2 span {
+  display: inline-block;
+  margin-top: 10px;
+  color: #4e9eff;
+  font-size: 2em;
+}
+
+.main h3 {
+  color: #fff;
+  font-size: 1.5em;
+  letter-spacing: 2px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.main .button {
+  color: white;
+  background-color: #3a6cf4;
+  display: inline-block;
+  padding: 10px 20px;
+  margin-bottom: 30px;
+  border-radius: 15px;
+  transition: 0.3s;
+}
+
+.main .button:hover {
+  background-color: #601cfc;
+  transform: scale(1.1);
+}
+
+.main .social-icons {
+  width: 250px;
+}
+
+.main .social-icons i {
+  padding: 25px 35px 15px 0px;
+  font-size: 40px;
+  transition: 0.2s ease-in-out;
+}
+
+.main .social-icons i:hover {
+  transform: translate(-10px) rotate(-10deg);
+}
+
+.social-icons .fa-facebook {
+  color: #385898;
+}
+.social-icons .fa-facebook:hover {
+  color: #241dbd;
+}
+
+.social-icons .fa-twitter {
+  color: #1da1f2;
+}
+.social-icons .fa-twitter:hover {
+  color: #3b88f1;
+}
+
+.social-icons .fa-instagram {
+  color: #9c0557;
+}
+.social-icons .fa-instagram:hover {
+  color: deeppink;
+}
+
+.social-icons .fa-github {
+  color: black;
+}
+.social-icons .fa-github:hover {
+  color: white;
+}
+
+.social-icons .fa-linkedin {
+  color: #0077b5;
+}
+.social-icons .fa-linkedin:hover {
+  color: #122eca;
+}
+
+.cards {
+  height: 100vh;
+}
+
+.cards .title {
+  color: #3a6cf4;
+  font-size: 2em;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.cards .content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.content .card {
+  border: 1px solid #eee;
+  padding: 20px 10px;
+  box-shadow: 0px 0px 5px 0px;
+  background-color: #fff;
+  width: 250px;
+}
+
+.content .card i {
+  color: #3a6cf4;
+  font-size: 4em;
+  margin-bottom: 30px;
+}
+.content .card h3 {
+  color: #3a6cf4;
+  margin-bottom: 20px;
+}
+.content .card p {
+  color: #777;
+}
