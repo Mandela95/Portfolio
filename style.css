@@ -20,37 +20,17 @@ li {
   list-style: none;
 }
 
-@media (max-width: 768px) {
-  header {
-    padding: 0;
-  }
-  section {
-    flex-direction: column;
-  }
-}
-
-/* @media (min-width: 992px) {
-  .container {
-    width: 970px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .container {
-    width: 1170px;
-  }
-} */
-
 header {
   background-color: #ddd;
   width: 100%;
   position: fixed;
   z-index: 99;
-  padding: 10px 200px;
+  padding: 10px 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  height: 80px;
 }
 
 header::after {
@@ -73,12 +53,8 @@ nav ul {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 1.5em;
 }
-
-/* nav ul li:hover {
-  border-bottom: 3px solid #fff;
-  width: calc(100% - 20px);
-} */
 
 nav ul li a {
   color: #3a6cf4;
@@ -92,20 +68,19 @@ nav ul li a:hover {
   color: #601cfc;
 }
 
-section {
-  padding: 100px 200px;
-}
-
 .main {
   width: 100%;
   min-height: 100vh;
   display: flex;
   align-items: center;
-  /* background: url(Images/Mandela.jpg) no-repeat; */
   background-image: url(Images/Mandela.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+}
+
+.personal {
+  margin: 100px;
 }
 
 .main h2 {
@@ -154,7 +129,7 @@ section {
 }
 
 .main .social-icons i:hover {
-  transform: translate(-10px) rotate(-10deg);
+  transform: rotate(-10deg) translate(-10px);
 }
 
 .social-icons .fa-facebook {
@@ -192,44 +167,156 @@ section {
   color: #122eca;
 }
 
-.cards {
-  height: 100vh;
-}
-
-.cards .title {
+.title {
   color: #3a6cf4;
   font-size: 2em;
   text-align: center;
-  margin-bottom: 30px;
+  margin: 30px;
+  padding: 40px 0 0;
 }
 
-.cards .content {
+.content {
   display: flex;
   justify-content: center;
-  align-items: center;
+  flex-direction: row;
   flex-wrap: wrap;
-  gap: 30px;
   text-align: center;
-  margin: 20px 0;
 }
 
-.content .card {
-  border: 1px solid #eee;
-  padding: 20px 10px;
-  box-shadow: 0px 0px 5px 0px;
+.card {
   background-color: #fff;
-  width: 250px;
+  width: 270px;
+  box-shadow: 0px 0px 5px rgba(1 1 1 / 20%);
+  border-radius: 10px;
+  margin: 15px 20px 30px;
+  padding: 25px;
+  transition: 0.3s ease;
 }
 
-.content .card i {
+.card:hover {
+  transform: scale(1.1);
+}
+
+.card i {
   color: #3a6cf4;
-  font-size: 4em;
+  font-size: 5em;
   margin-bottom: 30px;
 }
-.content .card h3 {
+.card h3 {
   color: #3a6cf4;
   margin-bottom: 20px;
 }
-.content .card p {
+.card p {
   color: #777;
+}
+
+.projects {
+  background-color: #000;
+}
+
+.projects .content {
+  margin-top: 30px;
+}
+.projects .project-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  width: 18em;
+  overflow: hidden;
+  margin: 50px;
+  transition: 0.3s ease;
+}
+
+.projects .project-card:hover {
+  transform: scale(1.1);
+  opacity: 0.7;
+}
+
+.projects .project-card .project-image {
+  width: 100%;
+}
+.projects .project-card .project-image img {
+  width: 300px;
+  height: 240px;
+}
+
+.project-info {
+  padding: 10px;
+  margin: 10px;
+}
+
+.project-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.project-category {
+  color: #3a6cf4;
+  font-size: 1.4em;
+  margin-bottom: 10px;
+}
+
+.fa-angle-double-right {
+  color: #3a6cf4;
+  padding-left: 10px;
+}
+
+.contact {
+  margin-bottom: 50px;
+}
+
+.mail {
+  text-align: center;
+}
+
+footer {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+}
+
+.footer-content {
+  padding: 30px;
+  font-size: 1.5em;
+}
+
+footer a {
+  color: #3a6cf4;
+}
+
+@media (max-width: 1200px) {
+  header {
+    padding: 5px 5px 10px;
+  }
+  .logo {
+    margin: 15px;
+  }
+  nav ul li a {
+    padding-right: 0;
+  }
+  .projects .project-card {
+    margin: 35px;
+  }
+  .personal {
+    margin: 10px;
+  }
+}
+
+@media (max-width: 767px) {
+  header {
+    flex-direction: column;
+  }
+  .logo {
+    margin: 0 auto;
+  }
+  nav {
+    margin: auto;
+  }
+  nav ul li a {
+    margin: 10px;
+    font-size: 0.8em;
+  }
+  .personal {
+    margin: 50px;
+  }
 }
