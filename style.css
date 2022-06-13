@@ -129,7 +129,7 @@ nav ul li a:hover {
 }
 
 .main .social-icons i:hover {
-  transform: rotate(-10deg) translate(-10px);
+  transform: rotate(-5deg) translateY(-5px);
 }
 
 .social-icons .fa-facebook {
