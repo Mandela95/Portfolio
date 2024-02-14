@@ -6,17 +6,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfolio</title>
-  <!-- font-awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-  <!-- Render All Elements Normally -->
   <link rel="stylesheet" href="normalize.css" />
-  <!-- main css file -->
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
   <header>
-    <a href="#" class="logo">Mandela.</a>
+    <a href="#" class="logo">El-Seady.</a>
     <nav>
       <ul>
         <li><a href="#services">Services</a></li>
@@ -26,19 +23,21 @@
     </nav>
   </header>
   <section class="main">
-    <div>
-      <h2>Hello, I'm Mandela<br><span>Web Developer</span></h2>
+    <div class="personal">
+      <h2>Hello, I'm Mahamed El-Seady<br><span>Front-End Developer</span></h2>
       <h3>Empire In Progress...</h3>
-      <a href="#" class="button">View My Work</a>
+      <a href="https://drive.google.com/file/d/1S9a7DsgdOT60Hi3ecZPZcZ1VSFh80qWw/view?usp=sharing" class="button"
+        target="_blank" download>Download CV</a>
+      <a href="#projects" class="button">View My Work</a>
       <div class="social-icons">
-        <a href="https://www.facebook.com/hamoelseady/" target="_blank"><i class="fab fa-facebook"
-            title="Facebook"></i></a>
-        <a href="https://twitter.com/MohElseady" target="_blank"><i class="fab fa-twitter" title="Twitter"></i></a>
-        <a href="https://www.instagram.com/els3eedy/" target="_blank"><i class="fab fa-instagram"
-            title="Instagram"></i></a>
         <a href="https://github.com/Mandela95" target="_blank"><i class="fab fa-github" title="Github"></i></a>
         <a href="https://www.linkedin.com/in/mo-seady/" target="_blank"><i class="fab fa-linkedin"
             title="Linked In"></i></a>
+        <a href="https://twitter.com/MohElseady" target="_blank"><i class="fab fa-twitter" title="Twitter"></i></a>
+        <a href="https://www.instagram.com/els3eedy/" target="_blank"><i class="fab fa-instagram"
+            title="Instagram"></i></a>
+        <a href="https://www.facebook.com/hamoelseady/" target="_blank"><i class="fab fa-facebook"
+            title="Facebook"></i></a>
       </div>
     </div>
   </section>
@@ -46,22 +45,133 @@
     <h2 class="title">Services</h2>
     <div class="content">
       <div class="card">
-        <i class="fas fa-edit"></i>
-        <h3>Script Writing</h3>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi, vitae.</p>
+        <i class="fas fa-laptop-code"></i>
+        <h3>Freelancing</h3>
+        <p>Developing interactive user interfaces with React.js, HTML5, CSS3, Bootstrap and JavaScript.</p>
       </div>
       <div class="card">
         <i class="fas fa-video"></i>
         <h3>Web Development</h3>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi, vitae.</p>
+        <p>Motivated frontend developer with +1 year of experience.</p>
       </div>
       <div class="card">
-        <i class="fas fa-graduation-cap"></i>
-        <h3>Advices</h3>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi, vitae.</p>
+        <i class="fas fa-edit"></i>
+        <h3>Responsive Design</h3>
+        <p>Translating design concepts (Figma) into code while ensuring consistency across different browsers and
+          devices.</p>
       </div>
     </div>
   </section>
+  <section class="projects" id="projects">
+    <h2 class="title">Projects</h2>
+    <div class="content">
+      <div class="project-card">
+        <div class="project-image">
+          <img src="Images/Store.jpg" alt="">
+        </div>
+        <div class="project-info">
+          <p class="project-category">React Shopping Cart</p>
+          <strong class="project-title">
+            <span>React, Bootstrap</span>
+            <a href="https://musical-praline-88a901.netlify.app" target="_blank" class="more-details">Live-Demo<i
+                class="fas fa-angle-double-right" title="Go To Project"></i></a>
+          </strong>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-image">
+          <img src="Images/Social-App.jpg" alt="">
+        </div>
+        <div class="project-info">
+          <p class="project-category">Social Media App</p>
+          <strong class="project-title">
+            <span>JS, REST APIs, Axios</span>
+            <a href="https://social-media-mandela-app.netlify.app/" target="_blank" class="more-details">Live-Demo<i
+                class="fas fa-angle-double-right" title="Go To Project"></i></a>
+          </strong>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-image">
+          <img src="Images/Blog.png" alt="">
+        </div>
+        <div class="project-info">
+          <p class="project-category">Blog Next.js</p>
+          <strong class="project-title">
+            <span>Next.js</span>
+            <a href="https://blog-next-js-theta.vercel.app/" target="_blank" class="more-details">Live-Demo<i
+                class="fas fa-angle-double-right" title="Go To Project"></i></a>
+          </strong>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-image">
+          <img src="Images/Cruds.png" alt="">
+        </div>
+        <div class="project-info">
+          <p class="project-category">Cruds</p>
+          <strong class="project-title">
+            <span>JS, Css, Html</span>
+            <a href="https://mandela95.github.io/CRUDS/" target="_blank" class="more-details">Live-Demo<i
+                class="fas fa-angle-double-right" title="Go To Project"></i></a>
+          </strong>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-image">
+          <img src="Images/Api json placeholder.png" alt="">
+        </div>
+        <div class="project-info">
+          <p class="project-category">API Json Placeholder</p>
+          <strong class="project-title">
+            <span>JS, Css, Html</span>
+            <a href="https://mandela95.github.io/Api-with-Json-Placeholder/" target="_blank"
+              class="more-details">Live-Demo<i class="fas fa-angle-double-right" title="Go To Project"></i></a>
+          </strong>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-image">
+          <img src="Images/Twitter.png" alt="">
+        </div>
+        <div class="project-info">
+          <p class="project-category">Twitter Clone</p>
+          <strong class="project-title">
+            <span>Html, Css</span>
+            <a href="https://mandela95.github.io/Twitter-Clone/" target="_blank" class="more-details">Live-Demo<i
+                class="fas fa-angle-double-right" title="Go To Project"></i></a>
+          </strong>
+        </div>
+      </div>
+    </div>
+    <div class="moreProject">And More <a href="https://github.com/Mandela95?tab=repositories" target="_blank">Here on
+        github<i class="fas fa-angle-double-right" title="Go To Repos"></i></a>
+    </div>
+  </section>
+  <section class="contact" id="contact">
+    <h2 class="title">Contact Us</h2>
+    <div class="content">
+      <div class="card">
+        <i class="fas fa-phone"></i>
+        <h3>Phone</h3>
+        <a href="tel:+01146817834">(+20)1146817834</a>
+      </div>
+      <div class="card">
+        <i class="fas fa-envelope"></i>
+        <h3>Mail</h3>
+        <a href="mailto:mohamedelseady247@gmail.com" class="mail">mohamedelseady247@gmail.com</a>
+      </div>
+    </div>
+  </section>
+  <span class="up">
+    <i class="fa-solid fa-arrow-up"></i>
+  </span>
+  <footer>
+    <div class="footer-content">
+      Made With <span>♥</span> by <a href="#projects">Mandela</a> 2022 &copy; All Rights Reserved.
+    </div>
+  </footer>
+  <script src="main.js"></script>
 </body>
 
 </html>
