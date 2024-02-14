@@ -1,7 +1,7 @@
 let span = document.querySelector(".up");
 
 window.onscroll = function () {
-  if (this.scrollY >= 1000) {
+  if (this.scrollY >= 600) {
     span.classList.add("show");
   } else {
     span.classList.remove("show");
