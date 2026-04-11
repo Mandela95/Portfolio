@@ -7,6 +7,52 @@ window.addEventListener("load", () => {
 // ===== Dynamic Year =====
 document.getElementById("currentYear").textContent = new Date().getFullYear();
 
+// ===== i18n System =====
+const translations = { en, ar };
+let currentLang = localStorage.getItem("lang") || "en";
+
+function setLanguage(lang) {
+  currentLang = lang;
+  localStorage.setItem("lang", lang);
+  const t = translations[lang];
+
+  // Set dir and lang on <html>
+  document.documentElement.setAttribute("dir", t.dir);
+  document.documentElement.setAttribute("lang", t.lang);
+
+  // Update all data-i18n text content
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
+    const key = el.getAttribute("data-i18n");
+    const value = getNestedValue(t, key);
+    if (value) el.innerHTML = value;
+  });
+
+  // Update all data-i18n-placeholder
+  document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+    const key = el.getAttribute("data-i18n-placeholder");
+    const value = getNestedValue(t, key);
+    if (value) el.placeholder = value;
+  });
+
+  // Update lang toggle button text
+  document.getElementById("langToggle").textContent =
+    lang === "en" ? "AR" : "EN";
+
+  // Re-set dynamic year (footer.copy innerHTML replaces the span)
+  const yearEl = document.getElementById("currentYear");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // Restart typing effect with new roles
+  roles = t.hero.roles;
+  roleIndex = 0;
+  charIndex = 0;
+  isDeleting = false;
+}
+
+function getNestedValue(obj, path) {
+  return path.split(".").reduce((acc, part) => acc && acc[part], obj);
+}
+
 // ===== Theme Toggle =====
 const themeToggle = document.getElementById("themeToggle");
 const savedTheme = localStorage.getItem("theme") || "dark";
@@ -27,6 +73,22 @@ function updateThemeIcon(theme) {
       ? '<i class="fas fa-sun"></i>'
       : '<i class="fas fa-moon"></i>';
 }
+
+// ===== Typing Variables (declared early so setLanguage can access them) =====
+const typedTextEl = document.getElementById("typedText");
+let roles = translations[currentLang].hero.roles;
+let roleIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+
+// ===== Language Toggle =====
+document.getElementById("langToggle").addEventListener("click", () => {
+  const next = currentLang === "en" ? "ar" : "en";
+  setLanguage(next);
+});
+
+// Initialize language
+setLanguage(currentLang);
 
 // ===== Hamburger Menu =====
 const hamburger = document.getElementById("hamburger");
@@ -104,7 +166,7 @@ const revealObserver = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.15 }
+  { threshold: 0.05, rootMargin: "0px 0px -30px 0px" }
 );
 
 reveals.forEach((el) => revealObserver.observe(el));
@@ -143,17 +205,6 @@ function animateCounter(el, target) {
 }
 
 // ===== Typing Effect =====
-const typedTextEl = document.getElementById("typedText");
-const roles = [
-  "Front-End Developer",
-  "Mobile Developer",
-  "UI/UX Enthusiast",
-  "Open Source Contributor",
-];
-let roleIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-
 function typeEffect() {
   const currentRole = roles[roleIndex];
 
@@ -213,3 +264,73 @@ styleSheet.textContent = `
   }
 `;
 document.head.appendChild(styleSheet);
+
+// ===== Contact Form with EmailJS =====
+// EmailJS Setup — replace these with your actual EmailJS credentials:
+// 1. Go to https://www.emailjs.com/ and create a free account
+// 2. Add an Email Service (Gmail, Outlook, etc.) — copy the Service ID
+// 3. Create an Email Template with variables: {{from_name}}, {{from_email}}, {{subject}}, {{message}}
+// 4. Copy the Template ID and your Public Key from Account > API Keys
+const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY"; // Replace with your EmailJS public key
+const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID"; // Replace with your EmailJS service ID
+const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID"; // Replace with your EmailJS template ID
+
+let emailjsReady = false;
+try {
+  if (typeof emailjs !== "undefined" && EMAILJS_PUBLIC_KEY !== "YOUR_PUBLIC_KEY") {
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+    emailjsReady = true;
+  }
+} catch (e) {
+  console.warn("EmailJS not loaded:", e);
+}
+
+const contactForm = document.getElementById("contactForm");
+const formStatus = document.getElementById("formStatus");
+const submitBtn = document.getElementById("submitBtn");
+
+contactForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const t = translations[currentLang].contact;
+
+  const name = document.getElementById("formName").value.trim();
+  const email = document.getElementById("formEmail").value.trim();
+  const subject = document.getElementById("formSubject").value.trim();
+  const message = document.getElementById("formMessage").value.trim();
+
+  if (!name || !email || !message) return;
+
+  if (!emailjsReady) {
+    // Fallback: open mailto link
+    const mailtoLink = `mailto:mohamedelseady247@gmail.com?subject=${encodeURIComponent(subject || "Portfolio Contact")}&body=${encodeURIComponent(`From: ${name} (${email})\n\n${message}`)}`;
+    window.open(mailtoLink);
+    return;
+  }
+
+  // Disable button and show sending state
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> ${t.sending}`;
+  formStatus.textContent = "";
+  formStatus.className = "form-status";
+
+  emailjs
+    .send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+      from_name: name,
+      from_email: email,
+      subject: subject || "Portfolio Contact",
+      message: message,
+    })
+    .then(() => {
+      formStatus.textContent = t.success;
+      formStatus.classList.add("success");
+      contactForm.reset();
+    })
+    .catch(() => {
+      formStatus.textContent = t.error;
+      formStatus.classList.add("error");
+    })
+    .finally(() => {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = `<i class="fas fa-paper-plane"></i> <span data-i18n="contact.send">${t.send}</span>`;
+    });
+});

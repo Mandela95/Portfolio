@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link rel="stylesheet" href="normalize.css" />
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
 </head>
 
 <body>
@@ -20,17 +21,20 @@
 
   <!-- Header -->
   <header id="header">
-    <a href="#" class="logo">El-Seady<span>.</span></a>
+    <a href="#" class="logo">El-Seady</a>
     <nav id="nav">
       <ul>
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#services" class="nav-link">Services</a></li>
-        <li><a href="#skills" class="nav-link">Skills</a></li>
-        <li><a href="#projects" class="nav-link">Projects</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
+        <li><a href="#about" class="nav-link" data-i18n="nav.about">About</a></li>
+        <li><a href="#services" class="nav-link" data-i18n="nav.services">Services</a></li>
+        <li><a href="#skills" class="nav-link" data-i18n="nav.skills">Skills</a></li>
+        <li><a href="#projects" class="nav-link" data-i18n="nav.projects">Projects</a></li>
+        <li><a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a></li>
       </ul>
     </nav>
     <div class="header-actions">
+      <button class="lang-toggle" id="langToggle" aria-label="Switch language">
+        AR
+      </button>
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
         <i class="fas fa-moon"></i>
       </button>
@@ -46,19 +50,19 @@
   <section class="hero" id="hero">
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <p class="hero-greeting reveal">Hello, I'm</p>
-      <h1 class="hero-name reveal">Mohamed El-Seady</h1>
+      <p class="hero-greeting reveal" data-i18n="hero.greeting">Hello, I'm</p>
+      <h1 class="hero-name reveal" data-i18n="hero.name">Mohamed El-Seady</h1>
       <h2 class="hero-role reveal">
         <span class="typed-text" id="typedText"></span><span class="cursor">|</span>
       </h2>
-      <p class="hero-description reveal">Building modern, responsive, and performant web experiences.</p>
+      <p class="hero-description reveal" data-i18n="hero.description">Building modern, responsive, and performant web experiences.</p>
       <div class="hero-buttons reveal">
         <a href="https://drive.google.com/file/d/1EI5MWLlUoqhkiFQU5EWJICNacov604sr/view" class="btn btn-primary"
           target="_blank" rel="noopener noreferrer">
-          <i class="fas fa-download"></i> Download CV
+          <i class="fas fa-download"></i> <span data-i18n="hero.downloadCV">Download CV</span>
         </a>
         <a href="#projects" class="btn btn-outline">
-          <i class="fas fa-eye"></i> View My Work
+          <i class="fas fa-eye"></i> <span data-i18n="hero.viewWork">View My Work</span>
         </a>
       </div>
       <div class="hero-social reveal">
@@ -76,32 +80,32 @@
 
   <!-- About Section -->
   <section class="about" id="about">
-    <h2 class="section-title reveal">About Me</h2>
+    <h2 class="section-title reveal" data-i18n="about.title">About Me</h2>
     <div class="about-content">
       <div class="about-image reveal">
         <img src="Images/chat gpt .png" alt="Mohamed El-Seady" loading="lazy" />
       </div>
       <div class="about-text reveal">
-        <h3>Frontend and Cross-platform mobile developer</h3>
-        <p>
+        <h3 data-i18n="about.subtitle">Frontend and Cross-platform mobile developer</h3>
+        <p data-i18n="about.p1">
           With <strong>+3 years</strong> of hands-on experience crafting modern web applications. I build interactive, responsive, and accessible user interfaces using <strong>TypeScript</strong> and <strong>React.js</strong>, and mobile apps using <strong>React Native</strong>.
         </p>
-        <p>
+        <p data-i18n="about.p2">
           I love turning complex problems into simple, beautiful, and intuitive designs.
           When I'm not coding, you'll find me exploring new technologies and contributing to open-source projects.
         </p>
         <div class="about-stats">
           <div class="stat">
-            <span class="stat-number" data-count="3">0</span><span class="stat-plus">+</span>
-            <span class="stat-label">Years Experience</span>
+            <span class="stat-number" data-count="3">3</span><span class="stat-plus">+</span>
+            <span class="stat-label" data-i18n="about.yearsExp">Years Experience</span>
           </div>
           <div class="stat">
-            <span class="stat-number" data-count="20">0</span><span class="stat-plus">+</span>
-            <span class="stat-label">Projects Completed</span>
+            <span class="stat-number" data-count="20">20</span><span class="stat-plus">+</span>
+            <span class="stat-label" data-i18n="about.projectsDone">Projects Completed</span>
           </div>
           <div class="stat">
-            <span class="stat-number" data-count="15">0</span><span class="stat-plus">+</span>
-            <span class="stat-label">Technologies</span>
+            <span class="stat-number" data-count="15">15</span><span class="stat-plus">+</span>
+            <span class="stat-label" data-i18n="about.technologies">Technologies</span>
           </div>
         </div>
       </div>
@@ -110,42 +114,42 @@
 
   <!-- Services Section -->
   <section class="services" id="services">
-    <h2 class="section-title reveal">What I Do</h2>
+    <h2 class="section-title reveal" data-i18n="services.title">What I Do</h2>
     <div class="services-grid">
       <div class="service-card reveal">
         <div class="service-icon">
           <i class="fas fa-laptop-code"></i>
         </div>
-        <h3>Web Development</h3>
-        <p>Building robust, scalable web applications with React.js.</p>
+        <h3 data-i18n="services.webDev">Web Development</h3>
+        <p data-i18n="services.webDevDesc">Building robust, scalable web applications with React.js.</p>
       </div>
       <div class="service-card reveal">
         <div class="service-icon">
           <i class="fas fa-mobile"></i>
         </div>
-        <h3>Mobile App Development</h3>
-        <p>Creating mobile apps for iOS and Android using React Native.</p>
+        <h3 data-i18n="services.mobileDev">Mobile App Development</h3>
+        <p data-i18n="services.mobileDevDesc">Creating mobile apps for iOS and Android using React Native.</p>
       </div>
       <div class="service-card reveal">
         <div class="service-icon">
           <i class="fas fa-mobile-alt"></i>
         </div>
-        <h3>Responsive Design</h3>
-        <p>Translating Figma designs into pixel-perfect, responsive layouts that work flawlessly across all devices.</p>
+        <h3 data-i18n="services.responsive">Responsive Design</h3>
+        <p data-i18n="services.responsiveDesc">Translating Figma designs into pixel-perfect, responsive layouts that work flawlessly across all devices.</p>
       </div>
       <div class="service-card reveal">
         <div class="service-icon">
           <i class="fas fa-bolt"></i>
         </div>
-        <h3>Performance Optimization</h3>
-        <p>Optimizing web apps for speed with lazy loading, code splitting, and best practices for Core Web Vitals.</p>
+        <h3 data-i18n="services.performance">Performance Optimization</h3>
+        <p data-i18n="services.performanceDesc">Optimizing web apps for speed with lazy loading, code splitting, and best practices for Core Web Vitals.</p>
       </div>
     </div>
   </section>
 
   <!-- Skills Section -->
   <section class="skills" id="skills">
-    <h2 class="section-title reveal">Tech Stack</h2>
+    <h2 class="section-title reveal" data-i18n="skills.title">Tech Stack</h2>
     <div class="skills-grid reveal">
       <div class="skill-item" data-tooltip="HTML5">
         <i class="fab fa-html5"></i>
@@ -216,12 +220,12 @@
 
   <!-- Projects Section -->
   <section class="projects" id="projects">
-    <h2 class="section-title reveal">Featured Projects</h2>
+    <h2 class="section-title reveal" data-i18n="projects.title">Featured Projects</h2>
     <div class="projects-filter reveal">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="javascript">JavaScript</button>
-      <button class="filter-btn" data-filter="react">React</button>
-      <button class="filter-btn" data-filter="nextjs">Next.js</button>
+      <button class="filter-btn active" data-filter="all" data-i18n="projects.all">All</button>
+      <button class="filter-btn" data-filter="javascript" data-i18n="projects.javascript">JavaScript</button>
+      <button class="filter-btn" data-filter="react" data-i18n="projects.react">React</button>
+      <button class="filter-btn" data-filter="nextjs" data-i18n="projects.nextjs">Next.js</button>
     </div>
     <div class="projects-grid">
       <!-- Hotel Management System -->
@@ -234,8 +238,8 @@
           </div>
         </div>
         <div class="project-info">
-          <h3>Hotel Management System</h3>
-          <p>Full-featured hotel booking and management dashboard with room availability, reservations, and guest management.</p>
+          <h3 data-i18n="projects.hotel.title">Hotel Management System</h3>
+          <p data-i18n="projects.hotel.desc">Full-featured hotel booking and management dashboard with room availability, reservations, and guest management.</p>
           <div class="project-tags">
             <span>React</span>
             <span>Node.js</span>
@@ -253,8 +257,8 @@
           </div>
         </div>
         <div class="project-info">
-          <h3>Quiz App</h3>
-          <p>Interactive quiz application with multiple categories, timer, score tracking, and dynamic question generation.</p>
+          <h3 data-i18n="projects.quiz.title">Quiz App</h3>
+          <p data-i18n="projects.quiz.desc">Interactive quiz application with multiple categories, timer, score tracking, and dynamic question generation.</p>
           <div class="project-tags">
             <span>React</span>
             <span>Redux</span>
@@ -272,8 +276,8 @@
           </div>
         </div>
         <div class="project-info">
-          <h3>Food Management App</h3>
-          <p>Restaurant food ordering and management platform with menu management, order tracking, and admin dashboard.</p>
+          <h3 data-i18n="projects.food.title">Food Management App</h3>
+          <p data-i18n="projects.food.desc">Restaurant food ordering and management platform with menu management, order tracking, and admin dashboard.</p>
           <div class="project-tags">
             <span>React</span>
             <span>Axios</span>
@@ -291,8 +295,8 @@
           </div>
         </div>
         <div class="project-info">
-          <h3>React Shopping Cart</h3>
-          <p>E-commerce shopping cart with product listing, add-to-cart functionality, and dynamic price calculation.</p>
+          <h3 data-i18n="projects.cart.title">React Shopping Cart</h3>
+          <p data-i18n="projects.cart.desc">E-commerce shopping cart with product listing, add-to-cart functionality, and dynamic price calculation.</p>
           <div class="project-tags">
             <span>React</span>
             <span>Bootstrap</span>
@@ -309,8 +313,8 @@
           </div>
         </div>
         <div class="project-info">
-          <h3>Social Media App</h3>
-          <p>Social platform with user posts, comments, and real-time data fetched from REST APIs using Axios.</p>
+          <h3 data-i18n="projects.social.title">Social Media App</h3>
+          <p data-i18n="projects.social.desc">Social platform with user posts, comments, and real-time data fetched from REST APIs using Axios.</p>
           <div class="project-tags">
             <span>JavaScript</span>
             <span>REST APIs</span>
@@ -328,8 +332,8 @@
           </div>
         </div>
         <div class="project-info">
-          <h3>Blog Next.js</h3>
-          <p>Server-side rendered blog with dynamic routing, markdown support, and optimized performance using Next.js.</p>
+          <h3 data-i18n="projects.blog.title">Blog Next.js</h3>
+          <p data-i18n="projects.blog.desc">Server-side rendered blog with dynamic routing, markdown support, and optimized performance using Next.js.</p>
           <div class="project-tags">
             <span>Next.js</span>
             <span>React</span>
@@ -346,8 +350,8 @@
           </div>
         </div>
         <div class="project-info">
-          <h3>CRUDS System</h3>
-          <p>Product management system with full CRUD operations, search/filter functionality, and local storage persistence.</p>
+          <h3 data-i18n="projects.cruds.title">CRUDS System</h3>
+          <p data-i18n="projects.cruds.desc">Product management system with full CRUD operations, search/filter functionality, and local storage persistence.</p>
           <div class="project-tags">
             <span>JavaScript</span>
             <span>CSS3</span>
@@ -365,8 +369,8 @@
           </div>
         </div>
         <div class="project-info">
-          <h3>API Json Placeholder</h3>
-          <p>Interactive app displaying users and posts from JSONPlaceholder API with dynamic content loading.</p>
+          <h3 data-i18n="projects.api.title">API Json Placeholder</h3>
+          <p data-i18n="projects.api.desc">Interactive app displaying users and posts from JSONPlaceholder API with dynamic content loading.</p>
           <div class="project-tags">
             <span>JavaScript</span>
             <span>REST API</span>
@@ -384,8 +388,8 @@
           </div>
         </div>
         <div class="project-info">
-          <h3>Twitter Clone</h3>
-          <p>Pixel-perfect Twitter UI clone with responsive layout, sidebar navigation, and trending section.</p>
+          <h3 data-i18n="projects.twitter.title">Twitter Clone</h3>
+          <p data-i18n="projects.twitter.desc">Pixel-perfect Twitter UI clone with responsive layout, sidebar navigation, and trending section.</p>
           <div class="project-tags">
             <span>HTML5</span>
             <span>CSS3</span>
@@ -394,38 +398,38 @@
       </div>
     </div>
     <div class="more-projects reveal">
-      <p>And many more on</p>
+      <p data-i18n="projects.moreOn">And many more on</p>
       <a href="https://github.com/Mandela95?tab=repositories" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-        <i class="fab fa-github"></i> View All on GitHub
+        <i class="fab fa-github"></i> <span data-i18n="projects.viewAll">View All on GitHub</span>
       </a>
     </div>
   </section>
 
   <!-- Contact Section -->
   <section class="contact" id="contact">
-    <h2 class="section-title reveal">Get In Touch</h2>
-    <p class="contact-subtitle reveal">Have a project in mind or want to collaborate? Feel free to reach out!</p>
+    <h2 class="section-title reveal" data-i18n="contact.title">Get In Touch</h2>
+    <p class="contact-subtitle reveal" data-i18n="contact.subtitle">Have a project in mind or want to collaborate? Feel free to reach out!</p>
     <div class="contact-content">
       <div class="contact-info reveal">
         <div class="contact-item">
           <i class="fas fa-envelope"></i>
           <div>
-            <h4>Email</h4>
+            <h4 data-i18n="contact.email">Email</h4>
             <a href="mailto:mohamedelseady247@gmail.com">mohamedelseady247@gmail.com</a>
           </div>
         </div>
         <div class="contact-item">
           <i class="fas fa-phone"></i>
           <div>
-            <h4>Phone</h4>
+            <h4 data-i18n="contact.phone">Phone</h4>
             <a href="tel:+201146817834">(+20) 114 681 7834</a>
           </div>
         </div>
         <div class="contact-item">
           <i class="fas fa-map-marker-alt"></i>
           <div>
-            <h4>Location</h4>
-            <p>Egypt</p>
+            <h4 data-i18n="contact.location">Location</h4>
+            <p data-i18n="contact.locationValue">Egypt</p>
           </div>
         </div>
         <div class="contact-socials">
@@ -435,22 +439,23 @@
           <a href="https://www.instagram.com/els3eedy/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
         </div>
       </div>
-      <form class="contact-form reveal" action="https://formspree.io/f/xpznqkdo" method="POST">
+      <form class="contact-form reveal" id="contactForm">
         <div class="form-group">
-          <input type="text" name="name" placeholder="Your Name" required />
+          <input type="text" name="name" id="formName" data-i18n-placeholder="contact.namePlaceholder" placeholder="Your Name" required />
         </div>
         <div class="form-group">
-          <input type="email" name="email" placeholder="Your Email" required />
+          <input type="email" name="email" id="formEmail" data-i18n-placeholder="contact.emailPlaceholder" placeholder="Your Email" required />
         </div>
         <div class="form-group">
-          <input type="text" name="subject" placeholder="Subject" />
+          <input type="text" name="subject" id="formSubject" data-i18n-placeholder="contact.subjectPlaceholder" placeholder="Subject" />
         </div>
         <div class="form-group">
-          <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+          <textarea name="message" id="formMessage" rows="5" data-i18n-placeholder="contact.messagePlaceholder" placeholder="Your Message" required></textarea>
         </div>
-        <button type="submit" class="btn btn-primary btn-full">
-          <i class="fas fa-paper-plane"></i> Send Message
+        <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+          <i class="fas fa-paper-plane"></i> <span data-i18n="contact.send">Send Message</span>
         </button>
+        <p class="form-status" id="formStatus"></p>
       </form>
     </div>
   </section>
@@ -464,19 +469,21 @@
   <footer>
     <div class="footer-content">
       <div class="footer-logo">El-Seady<span>.</span></div>
-      <p>Building the web, one pixel at a time.</p>
+      <p data-i18n="footer.tagline">Building the web, one pixel at a time.</p>
       <div class="footer-links">
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+        <a href="#about" data-i18n="nav.about">About</a>
+        <a href="#services" data-i18n="nav.services">Services</a>
+        <a href="#projects" data-i18n="nav.projects">Projects</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
       </div>
       <div class="footer-bottom">
-        <p>Made with <span class="heart">&hearts;</span> by Mandela &copy; <span id="currentYear"></span> All Rights Reserved.</p>
+        <p data-i18n="footer.copy">Made with <span class="heart">&hearts;</span> by Mandela &copy; <span id="currentYear"></span> All Rights Reserved.</p>
       </div>
     </div>
   </footer>
 
+  <script src="i18n/en.js"></script>
+  <script src="i18n/ar.js"></script>
   <script src="main.js"></script>
 </body>
 
