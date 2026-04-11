@@ -271,9 +271,9 @@ document.head.appendChild(styleSheet);
 // 2. Add an Email Service (Gmail, Outlook, etc.) — copy the Service ID
 // 3. Create an Email Template with variables: {{from_name}}, {{from_email}}, {{subject}}, {{message}}
 // 4. Copy the Template ID and your Public Key from Account > API Keys
-const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY"; // Replace with your EmailJS public key
-const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID"; // Replace with your EmailJS service ID
-const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID"; // Replace with your EmailJS template ID
+const EMAILJS_PUBLIC_KEY = "m26vm1miNAVSgjUwu"; // Replace with your EmailJS public key
+const EMAILJS_SERVICE_ID = "service_0cs804k"; // Replace with your EmailJS service ID
+const EMAILJS_TEMPLATE_ID = "template_2y4qh6f"; // Replace with your EmailJS template ID
 
 let emailjsReady = false;
 try {
@@ -315,9 +315,9 @@ contactForm.addEventListener("submit", (e) => {
 
   emailjs
     .send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-      from_name: name,
-      from_email: email,
-      subject: subject || "Portfolio Contact",
+      name: name,
+      email: email,
+      title: subject || "Portfolio Contact",
       message: message,
     })
     .then(() => {

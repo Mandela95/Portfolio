@@ -146,10 +146,9 @@ header.scrolled {
 }
 
 .logo {
-  font-size: 1.6rem;
-  font-weight: 800;
-  color: var(--text-primary);
-  letter-spacing: -0.5px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
 
 .logo span {
@@ -1003,7 +1002,7 @@ nav ul li a.active::after {
 footer {
   background: var(--bg-secondary);
   border-top: 1px solid var(--border-color);
-  padding: 3rem 2rem 1.5rem;
+  padding: 2rem;
   text-align: center;
 }
 
