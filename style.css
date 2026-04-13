@@ -478,7 +478,7 @@ nav ul li a.active::after {
 
 /* ===== About Section ===== */
 .about {
-  padding: 6rem 2rem;
+  padding: 2rem;
   max-width: var(--max-width);
   margin: 0 auto;
 }
