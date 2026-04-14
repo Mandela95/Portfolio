@@ -6,6 +6,7 @@ const ar = {
     services: "الخدمات",
     skills: "المهارات",
     projects: "المشاريع",
+    demoVideo: "فيديو توضيحي",
     contact: "تواصل معي",
   },
   hero: {
