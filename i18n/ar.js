@@ -98,6 +98,7 @@ const ar = {
     subtitle: "لديك مشروع أو تريد التعاون؟ لا تتردد في التواصل!",
     email: "البريد الإلكتروني",
     phone: "الهاتف",
+    phoneValue: "٠١١٤٦٨١٧٨٣٤",
     location: "الموقع",
     locationValue: "مصر",
     namePlaceholder: "اسمك",
