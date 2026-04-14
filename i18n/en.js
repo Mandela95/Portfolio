@@ -100,6 +100,7 @@ const en = {
       "Have a project in mind or want to collaborate? Feel free to reach out!",
     email: "Email",
     phone: "Phone",
+    phoneValue: "+20 114 681 7834",
     location: "Location",
     locationValue: "Egypt",
     namePlaceholder: "Your Name",
