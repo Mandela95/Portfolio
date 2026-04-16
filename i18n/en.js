@@ -94,6 +94,10 @@ const en = {
       desc: "Pixel-perfect Twitter UI clone with responsive layout, sidebar navigation, and trending section.",
     },
   },
+  demoVideo: {
+    title: "Portfolio Video Demo",
+    desc: "See all features, UI, and logic of my work in action. <br><small>(Video hosted on Vidline)</small>",
+  },
   contact: {
     title: "Get In Touch",
     subtitle:
