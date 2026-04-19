@@ -215,15 +215,46 @@
     <h2 class="section-title reveal" data-i18n="githubStats.title">GitHub Overview</h2>
     <div class="stats-grid reveal">
       <div class="stat-card">
-        <img src="https://github-readme-stats.vercel.app/api?username=Mandela95&theme=dark&hide_border=true&bg_color=0a0a0a&border_color=2a2a2a&title_color=ffffff&text_color=a0a0a0&icon_color=6c63ff" alt="GitHub Stats" loading="lazy" />
+        <img src="https://github-readme-stats.vercel.app/api?username=Mandela95&theme=dark&hide_border=true&bg_color=0a0a0a&border_color=2a2a2a&title_color=ffffff&text_color=a0a0a0&icon_color=6c63ff" alt="Stats & Analytics" loading="lazy" />
       </div>
       <div class="stat-card">
         <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Mandela95&theme=dark&hide_border=true&bg_color=0a0a0a&border_color=2a2a2a&title_color=ffffff&text_color=a0a0a0" alt="Top Languages" loading="lazy" />
       </div>
     </div>
-    
-    <!-- Live Repositories Section -->
 
+  </section>
+
+
+    <!-- Analytics Dashboard Section -->
+  <section class="analytics" id="github-stats">
+    <h2 class="section-title reveal" data-i18n="analytics.title">Project Analytics</h2>
+    <div class="analytics-grid">
+      <div class="analytics-card reveal">
+        <i class="fas fa-folder-open"></i>
+        <h3 data-i18n="analytics.totalProjects">Total Projects</h3>
+        <p class="analytics-value" data-i18n="analytics.totalProjects_value">20+</p>
+      </div>
+      <div class="analytics-card reveal">
+        <i class="fas fa-code"></i>
+        <h3 data-i18n="analytics.totalContributions">Total Contributions</h3>
+        <p class="analytics-value" data-i18n="analytics.totalContributions_value">500+</p>
+      </div>
+      <div class="analytics-card reveal">
+        <i class="fas fa-recycle"></i>
+        <h3 data-i18n="analytics.codeReuse">Code Reuse Rate</h3>
+        <p class="analytics-value" data-i18n="analytics.codeReuse_value">60%</p>
+      </div>
+      <div class="analytics-card reveal">
+        <i class="fas fa-fire"></i>
+        <h3 data-i18n="analytics.activeTime">Active Development</h3>
+        <p class="analytics-value" data-i18n="analytics.activeTime_value">5+ years</p>
+      </div>
+      <div class="analytics-card reveal">
+        <i class="fas fa-keyboard"></i>
+        <h3 data-i18n="analytics.linesOfCode">Total Lines of Code</h3>
+        <p class="analytics-value" data-i18n="analytics.linesOfCode_value">50K+</p>
+      </div>
+    </div>
   </section>
 
   <!-- Skills Section -->
@@ -397,6 +428,16 @@
   <!-- Projects Section -->
   <section class="projects" id="projects">
     <h2 class="section-title reveal" data-i18n="projects.title">Featured Projects</h2>
+    <div class="search-container reveal">
+      <input 
+        type="text" 
+        id="projectSearchInput" 
+        class="search-input" 
+        placeholder="Search projects by name or technology..."
+        data-i18n-placeholder="projectSearch.searchPlaceholder"
+      />
+      <i class="fas fa-search search-icon"></i>
+    </div>
     <div class="projects-filter reveal">
       <button class="filter-btn active" data-filter="all" data-i18n="projects.all">All</button>
       <button class="filter-btn" data-filter="javascript" data-i18n="projects.javascript">JavaScript</button>
@@ -517,6 +558,7 @@
         </div>
       </div>
     </div>
+    <div id="searchResults" class="projects-grid" style="display: none; margin-top: 2rem;"></div>
     <div class="more-projects reveal">
       <p data-i18n="projects.moreOn">And many more on</p>
       <a href="https://github.com/Mandela95?tab=repositories" target="_blank" rel="noopener noreferrer" class="btn btn-outline">

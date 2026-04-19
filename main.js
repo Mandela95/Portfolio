@@ -344,3 +344,62 @@ timelineItems.forEach(item => {
     revealObserver.observe(item);
   }
 });
+
+// ===== Project Search =====
+const searchInput = document.getElementById("projectSearchInput");
+const searchResults = document.getElementById("searchResults");
+const projectsGrid = document.querySelector(".projects .projects-grid");
+const originalProjectCards = projectsGrid ? Array.from(projectsGrid.querySelectorAll(".project-card")) : [];
+
+if (searchInput && searchResults) {
+  searchInput.addEventListener("input", (e) => {
+    const query = e.target.value.toLowerCase().trim();
+    
+    if (query === "") {
+      projectsGrid.style.display = "grid";
+      searchResults.style.display = "none";
+      searchResults.innerHTML = "";
+      return;
+    }
+
+    const filteredCards = originalProjectCards.filter((card) => {
+      const text = card.textContent.toLowerCase();
+      return text.includes(query);
+    });
+
+    if (filteredCards.length === 0) {
+      projectsGrid.style.display = "none";
+      searchResults.style.display = "grid";
+      searchResults.innerHTML = `<p style="grid-column: 1 / -1; text-align: center; color: var(--text-secondary); padding: 2rem;">No projects found matching your search.</p>`;
+    } else {
+      projectsGrid.style.display = "none";
+      searchResults.style.display = "grid";
+      searchResults.innerHTML = "";
+      filteredCards.forEach((card) => {
+        const clone = card.cloneNode(true);
+        clone.classList.add("reveal");
+        searchResults.appendChild(clone);
+        if (typeof revealObserver !== "undefined" && revealObserver) {
+          revealObserver.observe(clone);
+        }
+      });
+    }
+  });
+}
+
+// ===== Analytics Counter Animation =====
+const analyticsCards = document.querySelectorAll(".analytics-card");
+const analyticsObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const card = entry.target;
+        card.classList.add("active");
+        analyticsObserver.unobserve(card);
+      }
+    });
+  },
+  { threshold: 0.5 }
+);
+
+analyticsCards.forEach((card) => analyticsObserver.observe(card));
