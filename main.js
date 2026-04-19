@@ -334,3 +334,13 @@ contactForm.addEventListener("submit", (e) => {
       submitBtn.innerHTML = `<i class="fas fa-paper-plane"></i> <span data-i18n="contact.send">${t.send}</span>`;
     });
 });
+
+// ===== Timeline Animations =====
+// Timeline items already have reveal animations from the intersection observer
+// Additional hover effects are handled by CSS
+const timelineItems = document.querySelectorAll(".timeline-item");
+timelineItems.forEach(item => {
+  if (reveals) {
+    revealObserver.observe(item);
+  }
+});

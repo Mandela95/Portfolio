@@ -3,6 +3,7 @@ const ar = {
   lang: "ar",
   nav: {
     about: "عنّي",
+    timeline: "الرحلة الوظيفية",
     services: "الخدمات",
     githubStats: "آحصائيات",
     skills: "المهارات",
@@ -49,6 +50,40 @@ const ar = {
   },
   githubStats: {
     title: "نظرة عامة على GitHub",
+  },
+  timeline: {
+    title: "رحلة مسيرتي الوظيفية",
+    nursery: {
+      date: "يناير 2024 - الحاضر",
+      title: "مهندس برمجيات",
+      company: "Nursery Story (اسكتلندا، المملكة المتحدة)",
+      tech: "TypeScript | React.js | React Native | Node.js",
+      sectionTitle: "الإنجازات الرئيسية:",
+      h1: "الموبايل: تسليم ميزة الفواتير (React Native) مع تكامل بوابة الدفع",
+      h2: "الموبايل: إدارة النشر الكامل على App Store و Google Play لأنظمة iOS و Android",
+      h3: "الواجهة الأمامية: تطبيق منطق الجدولة المالية والميزات الاجتماعية (الإعجابات والتعليقات)",
+      h4: "الواجهة الخلفية: تحسين استعلامات قاعدة البيانات، مما يقلل وقت التحميل بنسبة 95٪",
+      h5: "الواجهة الخلفية: تصميم سير العمل للحجوزات وتسجيل الدفعات لـ 70+ حضانة و 300+ مربية",
+    },
+    upskilling: {
+      date: "فبراير 2023 - يناير 2024",
+      title: "مهندس برمجيات",
+      company: "Upskilling (الجيزة، مصر)",
+      tech: "React | TypeScript | Node.js | MUI | JWT Auth | SQL",
+      sectionTitle: "المشاريع المنجزة:",
+      h1: "إدارة الفنادق: نظام Full-stack مع JWT وشرح لوحة التحكم والحجوزات وإدارة الغرف",
+      h2: "منصة الاختبارات: تحكم قائم على الأدوار (مسؤول/طالب)، إنشاء الاختبارات وتتبع النتائج وتحليل التقدم",
+      h3: "إدارة الطعام: عمليات CRUD مع صلاحيات، رفع الصور مع المعاينة وأدوار المستخدمين",
+      h4: "دعم المظهر الداكن/الفاتح وتوطين عربي/إنجليزي عبر جميع المشاريع",
+    },
+    education: {
+      date: "2021 - الحاضر",
+      title: "مطوّر Full-Stack ذاتي التعليم",
+      company: "التعلم المستمر والتطوير",
+      tech: "React | React Native | Next.js | Node.js | TypeScript | JavaScript | SQL | MongoDB | Redux | MUI | Tailwind CSS | Git | REST APIs | JWT Authentication",
+      h1: "تقنيات الواجهة الأمامية: React.js, Next.js, React Native, Redux, MUI, Tailwind CSS",
+      h2: "الواجهة الخلفية وقواعد البيانات: Node.js, Express.js, SQL, MongoDB, JWT Authentication, REST APIs",
+    },
   },
   blog: {
     title: "أحدث المقالات",

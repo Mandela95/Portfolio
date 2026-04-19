@@ -3,6 +3,7 @@ const en = {
   lang: "en",
   nav: {
     about: "About",
+    timeline: "Timeline",
     services: "Services",
     githubStats: "GitHub Stats",
     skills: "Skills",
@@ -50,6 +51,40 @@ const en = {
   },
   githubStats: {
     title: "GitHub Overview",
+  },
+  timeline: {
+    title: "Career Journey",
+    nursery: {
+      date: "Jan 2024 - Present",
+      title: "Software Engineer",
+      company: "Nursery Story (Scotland, UK)",
+      tech: "TypeScript | React.js | React Native | Node.js",
+      sectionTitle: "Key Accomplishments:",
+      h1: "Mobile: Delivered invoicing feature (React Native) with payment gateway integration",
+      h2: "Mobile: Managed full-cycle App Store & Google Play deployments across iOS & Android",
+      h3: "Frontend: Implemented funding schedule logic & social engagement features (likes, comments)",
+      h4: "Backend: Optimized database queries, reducing load time by 95% for large nurseries",
+      h5: "Backend: Designed booking workflows & payment logging for 70+ nurseries & 300+ childminders",
+    },
+    upskilling: {
+      date: "Feb 2023 - Jan 2024",
+      title: "Software Engineer",
+      company: "Upskilling (Giza, Egypt)",
+      tech: "React | TypeScript | Node.js | MUI | JWT Auth | SQL",
+      sectionTitle: "Projects Built:",
+      h1: "Hotel Management: Full-stack system with JWT auth, admin dashboard, booking & room management",
+      h2: "Quiz Platform: Role-based access (admin/student), quiz creation, result tracking, progress analytics",
+      h3: "Food Management: CRUD operations with permissions, image upload with preview, user roles",
+      h4: "Dark/Light theme support & Arabic/English localization across all projects",
+    },
+    education: {
+      date: "2021 - Present",
+      title: "Self-Taught Full-Stack Developer",
+      company: "Continuous Learning & Development",
+      tech: "React | React Native | Next.js | Node.js | TypeScript | JavaScript | SQL | MongoDB | Redux | MUI | Tailwind CSS | Git | REST APIs | JWT Authentication",
+      h1: "Frontend Technologies: React.js, Next.js, React Native, Redux, MUI, Tailwind CSS",
+      h2: "Backend & Database: Node.js, Express.js, SQL, MongoDB, JWT Authentication, REST APIs",
+    },
   },
   blog: {
     title: "Latest Articles",
