@@ -47,6 +47,11 @@ function setLanguage(lang) {
   roleIndex = 0;
   charIndex = 0;
   isDeleting = false;
+  
+  // Update chat placeholder
+  if (typeof updateChatPlaceholder === "function") {
+    updateChatPlaceholder();
+  }
 }
 
 function getNestedValue(obj, path) {
@@ -403,3 +408,139 @@ const analyticsObserver = new IntersectionObserver(
 );
 
 analyticsCards.forEach((card) => analyticsObserver.observe(card));
+
+// ===== AI Chat Assistant =====
+document.addEventListener("DOMContentLoaded", () => {
+  const chatWidget = document.getElementById("chatWidget");
+  const chatButton = document.getElementById("chatButton");
+  const chatClose = document.getElementById("chatClose");
+  const chatModal = document.getElementById("chatModal");
+  const chatInput = document.getElementById("chatInput");
+  const chatSend = document.getElementById("chatSend");
+  const chatMessages = document.getElementById("chatMessages");
+  const suggestionBtns = document.querySelectorAll(".suggestion-btn");
+
+  // Safety check - only initialize if chat elements exist
+  if (!chatButton || !chatModal || !chatInput) return;
+
+// Get language from current i18n
+const getChatResponse = (message) => {
+  const currentLang = document.documentElement.lang || "en";
+  const responses =
+    currentLang === "ar"
+      ? translations.ar.chat.responses
+      : translations.en.chat.responses;
+
+  const lowerMessage = message.toLowerCase();
+
+  if (
+    lowerMessage.includes("skill") ||
+    lowerMessage.includes("مهارات") ||
+    lowerMessage.includes("تقنيات") ||
+    lowerMessage.includes("tech")
+  ) {
+    return responses.skills;
+  } else if (
+    lowerMessage.includes("project") ||
+    lowerMessage.includes("مشاريع") ||
+    lowerMessage.includes("build")
+  ) {
+    return responses.projects;
+  } else if (
+    lowerMessage.includes("experience") ||
+    lowerMessage.includes("خبرة") ||
+    lowerMessage.includes("work")
+  ) {
+    return responses.experience;
+  } else if (
+    lowerMessage.includes("contact") ||
+    lowerMessage.includes("تواصل") ||
+    lowerMessage.includes("email") ||
+    lowerMessage.includes("phone")
+  ) {
+    return responses.contact;
+  }
+  return responses.default;
+};
+
+const addMessage = (text, isBot = true) => {
+  const messageDiv = document.createElement("div");
+  messageDiv.classList.add("message", isBot ? "bot-message" : "user-message");
+
+  const contentDiv = document.createElement("div");
+  contentDiv.classList.add("message-content");
+  contentDiv.textContent = text;
+
+  messageDiv.appendChild(contentDiv);
+  chatMessages.appendChild(messageDiv);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+};
+
+const sendMessage = () => {
+  const message = chatInput.value.trim();
+  if (message === "") return;
+
+  // Add user message
+  addMessage(message, false);
+  chatInput.value = "";
+
+  // Simulate bot response delay
+  setTimeout(() => {
+    const response = getChatResponse(message);
+    addMessage(response, true);
+  }, 500);
+};
+
+// Toggle chat modal
+chatButton.addEventListener("click", () => {
+  chatModal.classList.toggle("active");
+});
+
+// Close chat modal
+chatClose.addEventListener("click", () => {
+  chatModal.classList.remove("active");
+});
+
+// Close chat modal when clicking outside it
+document.addEventListener("click", (e) => {
+  if (!chatWidget.contains(e.target) && chatModal.classList.contains("active")) {
+    chatModal.classList.remove("active");
+  }
+});
+
+// Send message on button click
+chatSend.addEventListener("click", sendMessage);
+
+// Send message on Enter key
+chatInput.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    sendMessage();
+  }
+});
+
+// Handle suggestion buttons
+suggestionBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const question = btn.getAttribute("data-question");
+    const currentLang = document.documentElement.lang || "en";
+    const questions = {
+      skills: translations[currentLang].chat.suggestedSkills,
+      projects: translations[currentLang].chat.suggestedProjects,
+      experience: translations[currentLang].chat.suggestedExperience,
+      contact: translations[currentLang].chat.suggestedContact,
+    };
+    chatInput.value = questions[question] || "";
+    chatInput.focus();
+  });
+});
+
+// Update chat placeholder on language change
+const updateChatPlaceholder = () => {
+  const currentLang = document.documentElement.lang || "en";
+  const placeholder =
+    currentLang === "ar"
+      ? translations.ar.chat.inputPlaceholder
+      : translations.en.chat.inputPlaceholder;
+  chatInput.placeholder = placeholder;
+};
+});
