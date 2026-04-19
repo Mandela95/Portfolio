@@ -371,12 +371,13 @@ nav ul li a.active::after {
   );
 }
 
+/* Todo: remove this background gradient */
 [data-theme="light"] .hero-overlay {
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0.5) 0%,
-    rgba(0, 0, 0, 0.65) 50%,
-    rgba(0, 0, 0, 0.8) 100%
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.3) 50%,
+    rgba(0, 0, 0, 0.4) 100%
   );
 }
 
@@ -711,6 +712,45 @@ nav ul li a.active::after {
   line-height: 1.7;
 }
 
+/* ===== GitHub Stats Section ===== */
+.github-stats {
+  padding: 6rem 2rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.github-stats .section-title {
+  margin-bottom: 3rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+
+.stat-card {
+  width: 100%;
+  max-width: 500px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: all var(--transition);
+}
+
+.stat-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-5px);
+}
+
+.stat-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-lg);
+}
+
 /* ===== Skills Section ===== */
 .skills {
   padding: 6rem 2rem;
@@ -737,6 +777,7 @@ nav ul li a.active::after {
   border-radius: var(--radius);
   transition: all var(--transition);
   cursor: default;
+  position: relative;
 }
 
 .skill-item:hover {
@@ -757,7 +798,7 @@ nav ul li a.active::after {
   transform: scale(1.15);
 }
 
-.skill-item span {
+.skill-item span:first-of-type {
   font-size: 0.8rem;
   font-weight: 600;
   color: var(--text-secondary);
@@ -920,6 +961,119 @@ nav ul li a.active::after {
 .more-projects p {
   color: var(--text-muted);
   margin-bottom: 1rem;
+}
+
+/* ===== Blog Section ===== */
+.blog {
+  padding: 6rem 2rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.blog-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 2rem;
+  transition: all var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--accent);
+}
+
+.blog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.blog-date {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.blog-category {
+  display: inline-block;
+  padding: 0.35rem 0.75rem;
+  background: rgba(108, 99, 255, 0.15);
+  color: var(--accent);
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.blog-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 1rem 0;
+  line-height: 1.4;
+  color: var(--text-primary);
+}
+
+.blog-card p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.blog-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.blog-tags span {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.blog-tags span::before {
+  content: '';
+}
+
+.blog-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all var(--transition);
+  width: fit-content;
+}
+
+.blog-link:hover {
+  gap: 0.75rem;
+}
+
+.blog-link i {
+  transition: transform var(--transition);
+}
+
+.blog-card:hover .blog-link i {
+  transform: translateX(4px);
 }
 
 /* ===== Contact Section ===== */
@@ -1275,6 +1429,15 @@ footer > .footer-content > p {
     font-size: 2rem;
   }
 
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .stat-card {
+    max-width: 100%;
+  }
+
   .footer-links {
     flex-wrap: wrap;
     gap: 1rem;
@@ -1305,6 +1468,27 @@ footer > .footer-content > p {
   .skill-item i,
   .skill-item svg {
     font-size: 2rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-card {
+    max-width: 100%;
+  }
+
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .blog-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .blog-header {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 

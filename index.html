@@ -26,7 +26,9 @@
       <ul>
         <li><a href="#about" class="nav-link" data-i18n="nav.about">About</a></li>
         <li><a href="#services" class="nav-link" data-i18n="nav.services">Services</a></li>
+        <li><a href="#github-stats" class="nav-link" data-i18n="nav.githubStats">GitHub</a></li>
         <li><a href="#skills" class="nav-link" data-i18n="nav.skills">Skills</a></li>
+        <li><a href="#blog" class="nav-link" data-i18n="nav.blog">Blog</a></li>
         <li><a href="#projects" class="nav-link" data-i18n="nav.projects">Projects</a></li>
         <li><a href="#demo-video" class="nav-link" data-i18n="nav.demoVideo">Demo Video</a></li>
         <li><a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a></li>
@@ -150,6 +152,19 @@
     </div>
   </section>
 
+  <!-- GitHub Stats Section -->
+  <section class="github-stats" id="github-stats">
+    <h2 class="section-title reveal" data-i18n="githubStats.title">GitHub Overview</h2>
+    <div class="stats-grid reveal">
+      <div class="stat-card">
+        <img src="https://github-readme-stats.vercel.app/api?username=Mandela95&theme=dark&hide_border=true&bg_color=0a0a0a&border_color=2a2a2a&title_color=ffffff&text_color=a0a0a0&icon_color=6c63ff" alt="GitHub Stats" loading="lazy" />
+      </div>
+      <div class="stat-card">
+        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Mandela95&theme=dark&hide_border=true&bg_color=0a0a0a&border_color=2a2a2a&title_color=ffffff&text_color=a0a0a0" alt="Top Languages" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
   <!-- Skills Section -->
   <section class="skills" id="skills">
     <h2 class="section-title reveal" data-i18n="skills.title">Tech Stack</h2>
@@ -218,6 +233,103 @@
         <i class="fa-solid fa-android"></i>
         <span>Android</span>
       </div>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section class="blog" id="blog">
+    <h2 class="section-title reveal" data-i18n="blog.title">Latest Articles</h2>
+    <div class="blog-grid reveal">
+      <!-- React Hooks -->
+      <article class="blog-card reveal">
+        <div class="blog-header">
+          <span class="blog-date" data-i18n="blog.articles.0.author">OverReacted</span>
+          <span class="blog-category" data-i18n="blog.articles.0.category">React</span>
+        </div>
+        <h3 data-i18n="blog.articles.0.title">A Complete Guide to useEffect</h3>
+        <p data-i18n="blog.articles.0.description">Master React Hooks with an in-depth exploration of useEffect. Learn how to manage side effects, handle dependencies, and write efficient React code that avoids common pitfalls.</p>
+        <div class="blog-tags">
+          <span>#react</span>
+          <span>#hooks</span>
+          <span>#useEffect</span>
+        </div>
+        <a href="https://overreacted.io/a-complete-guide-to-useeffect/" target="_blank" rel="noopener noreferrer" class="blog-link"><span data-i18n="blog.readArticle">Read Article</span> <i class="fas fa-arrow-right"></i></a>
+      </article>
+      <!-- Web Performance -->
+      <article class="blog-card reveal">
+        <div class="blog-header">
+          <span class="blog-date" data-i18n="blog.articles.1.author">Google Web.dev</span>
+          <span class="blog-category" data-i18n="blog.articles.1.category">Performance</span>
+        </div>
+        <h3 data-i18n="blog.articles.1.title">Web Vitals: Essential Metrics for Performance</h3>
+        <p data-i18n="blog.articles.1.description">Google's official guide to Core Web Vitals and key performance metrics. Learn how to measure, optimize, and monitor your website's real-world performance with actionable insights.</p>
+        <div class="blog-tags">
+          <span>#performance</span>
+          <span>#webVitals</span>
+          <span>#metrics</span>
+        </div>
+        <a href="https://web.dev/vitals/" target="_blank" rel="noopener noreferrer" class="blog-link"><span data-i18n="blog.readArticle">Read Article</span> <i class="fas fa-arrow-right"></i></a>
+      </article>
+      <!-- JavaScript Fundamentals -->
+      <article class="blog-card reveal">
+        <div class="blog-header">
+          <span class="blog-date" data-i18n="blog.articles.2.author">JavaScript.info</span>
+          <span class="blog-category" data-i18n="blog.articles.2.category">JavaScript</span>
+        </div>
+        <h3 data-i18n="blog.articles.2.title">Understanding Promises, async/await & Event Loop</h3>
+        <p data-i18n="blog.articles.2.description">Deep dive into JavaScript's asynchronous model. Understand promises, async/await syntax, the event loop, hoisting, and how JavaScript executes code under the hood.</p>
+        <div class="blog-tags">
+          <span>#promises</span>
+          <span>#eventLoop</span>
+          <span>#async</span>
+        </div>
+        <a href="https://javascript.info/promise-basics" target="_blank" rel="noopener noreferrer" class="blog-link"><span data-i18n="blog.readArticle">Read Article</span> <i class="fas fa-arrow-right"></i></a>
+      </article>
+      <!-- TypeScript Best Practices -->
+      <article class="blog-card reveal">
+        <div class="blog-header">
+          <span class="blog-date" data-i18n="blog.articles.3.author">LogRocket Blog</span>
+          <span class="blog-category" data-i18n="blog.articles.3.category">TypeScript</span>
+        </div>
+        <h3 data-i18n="blog.articles.3.title">Advanced TypeScript: Generics & Type Utilities</h3>
+        <p data-i18n="blog.articles.3.description">Master advanced TypeScript patterns including generics, utility types, and conditional types. Learn professional patterns for building scalable, type-safe applications at scale.</p>
+        <div class="blog-tags">
+          <span>#typescript</span>
+          <span>#generics</span>
+          <span>#types</span>
+        </div>
+        <a href="https://blog.logrocket.com/understanding-typescript-generics/" target="_blank" rel="noopener noreferrer" class="blog-link"><span data-i18n="blog.readArticle">Read Article</span> <i class="fas fa-arrow-right"></i></a>
+      </article>
+      <!-- Hoisting -->
+      <article class="blog-card reveal">
+        <div class="blog-header">
+          <span class="blog-date" data-i18n="blog.articles.4.author">MDN Web Docs</span>
+          <span class="blog-category" data-i18n="blog.articles.4.category">JavaScript</span>
+        </div>
+        <h3 data-i18n="blog.articles.4.title">Hoisting in JavaScript: Variables & Functions</h3>
+        <p data-i18n="blog.articles.4.description">Understand how JavaScript hoisting works with var, let, const, and function declarations. Learn the Temporal Dead Zone and avoid common bugs related to variable scope.</p>
+        <div class="blog-tags">
+          <span>#hoisting</span>
+          <span>#scope</span>
+          <span>#variables</span>
+        </div>
+        <a href="https://developer.mozilla.org/en-US/docs/Glossary/Hoisting" target="_blank" rel="noopener noreferrer" class="blog-link"><span data-i18n="blog.readArticle">Read Article</span> <i class="fas fa-arrow-right"></i></a>
+      </article>
+      <!-- Database Design -->
+      <article class="blog-card reveal">
+        <div class="blog-header">
+          <span class="blog-date" data-i18n="blog.articles.5.author">Prisma Blog</span>
+          <span class="blog-category" data-i18n="blog.articles.6.category">Database</span>
+        </div>
+        <h3 data-i18n="blog.articles.5.title">Database Design Patterns & SQL Optimization</h3>
+        <p data-i18n="blog.articles.5.description">Learn database design best practices, query optimization techniques, and how to build scalable data architectures. Covers relationships, indexing, and performance tuning.</p>
+        <div class="blog-tags">
+          <span>#database</span>
+          <span>#sql</span>
+          <span>#optimization</span>
+        </div>
+        <a href="https://www.prisma.io/blog/" target="_blank" rel="noopener noreferrer" class="blog-link"><span data-i18n="blog.readArticle">Read Article</span> <i class="fas fa-arrow-right"></i></a>
+      </article>
     </div>
   </section>
 
@@ -343,62 +455,6 @@
           </div>
         </div>
       </div>
-      <!-- CRUDS -->
-      <div class="project-card reveal" data-category="javascript">
-        <div class="project-image">
-          <img src="Images/Cruds.png" alt="CRUDS Product Management" loading="lazy" />
-          <div class="project-overlay">
-            <a href="https://github.com/Mandela95/CRUDS" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View Code"><i class="fab fa-github"></i></a>
-            <a href="https://mandela95.github.io/CRUDS/" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i></a>
-          </div>
-        </div>
-        <div class="project-info">
-          <h3 data-i18n="projects.cruds.title">CRUDS System</h3>
-          <p data-i18n="projects.cruds.desc">Product management system with full CRUD operations, search/filter functionality, and local storage persistence.</p>
-          <div class="project-tags">
-            <span>JavaScript</span>
-            <span>CSS3</span>
-            <span>HTML5</span>
-          </div>
-        </div>
-      </div>
-      <!-- API Json Placeholder -->
-      <div class="project-card reveal" data-category="javascript">
-        <div class="project-image">
-          <img src="Images/Api json placeholder.png" alt="API Json Placeholder" loading="lazy" />
-          <div class="project-overlay">
-            <a href="https://github.com/Mandela95/Api-with-Json-Placeholder" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View Code"><i class="fab fa-github"></i></a>
-            <a href="https://mandela95.github.io/Api-with-Json-Placeholder/" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i></a>
-          </div>
-        </div>
-        <div class="project-info">
-          <h3 data-i18n="projects.api.title">API Json Placeholder</h3>
-          <p data-i18n="projects.api.desc">Interactive app displaying users and posts from JSONPlaceholder API with dynamic content loading.</p>
-          <div class="project-tags">
-            <span>JavaScript</span>
-            <span>REST API</span>
-            <span>CSS3</span>
-          </div>
-        </div>
-      </div>
-      <!-- Twitter Clone -->
-      <div class="project-card reveal" data-category="html-css">
-        <div class="project-image">
-          <img src="Images/Twitter.png" alt="Twitter Clone" loading="lazy" />
-          <div class="project-overlay">
-            <a href="https://github.com/Mandela95/Twitter-Clone" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View Code"><i class="fab fa-github"></i></a>
-            <a href="https://mandela95.github.io/Twitter-Clone/" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i></a>
-          </div>
-        </div>
-        <div class="project-info">
-          <h3 data-i18n="projects.twitter.title">Twitter Clone</h3>
-          <p data-i18n="projects.twitter.desc">Pixel-perfect Twitter UI clone with responsive layout, sidebar navigation, and trending section.</p>
-          <div class="project-tags">
-            <span>HTML5</span>
-            <span>CSS3</span>
-          </div>
-        </div>
-      </div>
     </div>
     <div class="more-projects reveal">
       <p data-i18n="projects.moreOn">And many more on</p>
@@ -410,7 +466,7 @@
 
     <!-- Demo Video Section -->
   <section class="demo-video" id="demo-video">
-    <h2 class="section-title reveal" data-i18n="demoVideo.title">Portfolio Video Demo</h2>
+    <h2 class="section-title reveal" data-i18n="demoVideo.title">Demo Video</h2>
     <div class="video-wrapper reveal" style="max-width: 700px; margin: 0 auto;">
       <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;box-shadow:0 2px 16px rgba(0,0,0,0.12);">
         <iframe src="https://www.vidline.com/share/V0O6HJRR2J/198d9a3af8dd732ce9a509d8c6b47aa1" 
@@ -471,7 +527,7 @@
           <textarea name="message" id="formMessage" rows="5" data-i18n-placeholder="contact.messagePlaceholder" placeholder="Your Message" required></textarea>
         </div>
         <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
-          <i class="fas fa-paper-plane"></i> <span data-i18n="contact.send">Send Message</span>
+           <span data-i18n="contact.send">Send Message</span> <i class="fas fa-paper-plane"></i>
         </button>
         <p class="form-status" id="formStatus"></p>
       </form>

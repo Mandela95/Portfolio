@@ -4,7 +4,9 @@ const en = {
   nav: {
     about: "About",
     services: "Services",
+    githubStats: "GitHub Stats",
     skills: "Skills",
+    blog: "Blog",
     projects: "Projects",
     demoVideo: "Demo Video",
     contact: "Contact",
@@ -45,6 +47,51 @@ const en = {
     performance: "Performance Optimization",
     performanceDesc:
       "Optimizing web apps for speed with lazy loading, code splitting, and best practices for Core Web Vitals.",
+  },
+  githubStats: {
+    title: "GitHub Overview",
+  },
+  blog: {
+    title: "Latest Articles",
+    readArticle: "Read Article",
+    articles: [
+      {
+        title: "A Complete Guide to useEffect",
+        description: "Master React Hooks with an in-depth exploration of useEffect. Learn how to manage side effects, handle dependencies, and write efficient React code that avoids common pitfalls.",
+        category: "React",
+        author: "OverReacted",
+      },
+      {
+        title: "Web Vitals: Essential Metrics for Performance",
+        description: "Google's official guide to Core Web Vitals and key performance metrics. Learn how to measure, optimize, and monitor your website's real-world performance with actionable insights.",
+        category: "Performance",
+        author: "Google Web.dev",
+      },
+      {
+        title: "Understanding Promises, async/await & Event Loop",
+        description: "Deep dive into JavaScript's asynchronous model. Understand promises, async/await syntax, the event loop, hoisting, and how JavaScript executes code under the hood.",
+        category: "JavaScript",
+        author: "JavaScript.info",
+      },
+      {
+        title: "Advanced TypeScript: Generics & Type Utilities",
+        description: "Master advanced TypeScript patterns including generics, utility types, and conditional types. Learn professional patterns for building scalable, type-safe applications at scale.",
+        category: "TypeScript",
+        author: "LogRocket Blog",
+      },
+      {
+        title: "Hoisting in JavaScript: Variables & Functions",
+        description: "Understand how JavaScript hoisting works with var, let, const, and function declarations. Learn the Temporal Dead Zone and avoid common bugs related to variable scope.",
+        category: "JavaScript",
+        author: "MDN Web Docs",
+      },
+      {
+        title: "Database Design Patterns & SQL Optimization",
+        description: "Learn database design best practices, query optimization techniques, and how to build scalable data architectures. Covers relationships, indexing, and performance tuning.",
+        category: "Database",
+        author: "Prisma Blog",
+      },
+    ],
   },
   skills: {
     title: "Tech Stack",
@@ -95,7 +142,7 @@ const en = {
     },
   },
   demoVideo: {
-    title: "Portfolio Video Demo",
+    title: "Demo Video",
     desc: "See all features, UI, and logic of my work in action. <br><small>(Video hosted on Vidline)</small>",
   },
   contact: {

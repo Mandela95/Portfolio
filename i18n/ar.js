@@ -4,7 +4,9 @@ const ar = {
   nav: {
     about: "عنّي",
     services: "الخدمات",
+    githubStats: "آحصائيات",
     skills: "المهارات",
+    blog: "مقالات",
     projects: "المشاريع",
     demoVideo: "فيديو توضيحي",
     contact: "تواصل معي",
@@ -44,6 +46,51 @@ const ar = {
     performance: "تحسين الأداء",
     performanceDesc:
       "تحسين أداء التطبيقات من خلال التحميل الكسول وتقسيم الأكواد وأفضل ممارسات Core Web Vitals.",
+  },
+  githubStats: {
+    title: "نظرة عامة على GitHub",
+  },
+  blog: {
+    title: "أحدث المقالات",
+    readArticle: "اقرأ المقال",
+    articles: [
+      {
+        title: "دليل شامل إلى useEffect",
+        description: "اتقن React Hooks من خلال استكشاف متعمق لـ useEffect. تعلم كيفية إدارة الآثار الجانبية والتعامل مع التبعيات وكتابة أكواد React فعالة تتجنب الأخطاء الشائعة.",
+        category: "React",
+        author: "OverReacted",
+      },
+      {
+        title: "Web Vitals: مقاييس أساسية للأداء",
+        description: "دليل Google الرسمي لـ Core Web Vitals والمقاييس الرئيسية للأداء. تعلم كيفية قياس وتحسين ومراقبة أداء موقعك في العالم الحقيقي برؤى عملية.",
+        category: "الأداء",
+        author: "Google Web.dev",
+      },
+      {
+        title: "فهم Promises و async/await و Event Loop",
+        description: "غوص عميق في نموذج JavaScript غير المتزامن. افهم promises وصيغة async/await وحلقة الأحداث وhoisting وكيفية تنفيذ JavaScript للأكواد تحت الغطاء.",
+        category: "JavaScript",
+        author: "JavaScript.info",
+      },
+      {
+        title: "TypeScript متقدم: Generics و Type Utilities",
+        description: "اتقن أنماط TypeScript المتقدمة بما في ذلك generics والأنواع المساعدة والأنواع الشرطية. تعلم أنماط احترافية لبناء تطبيقات قابلة للتوسع وآمنة من حيث الأنواع.",
+        category: "TypeScript",
+        author: "LogRocket Blog",
+      },
+      {
+        title: "Hoisting في JavaScript: المتغيرات والدوال",
+        description: "افهم كيفية عمل hoisting في JavaScript مع var و let و const وإعلانات الدوال. تعلم Temporal Dead Zone وتجنب الأخطاء الشائعة المتعلقة بنطاق المتغيرات.",
+        category: "JavaScript",
+        author: "MDN Web Docs",
+      },
+      {
+        title: "أنماط تصميم قاعدة البيانات وتحسين SQL",
+        description: "تعلم أفضل ممارسات تصميم قاعدة البيانات وتقنيات تحسين الاستعلام وكيفية بناء معماريات بيانات قابلة للتوسع. يغطي العلاقات والفهرسة وضبط الأداء.",
+        category: "قاعدة البيانات",
+        author: "Prisma Blog",
+      },
+    ],
   },
   skills: {
     title: "المهارات التقنية",
