@@ -1,0 +1,21 @@
+{
+  "name": "Mohamed El-Seady Portfolio",
+  "short_name": "El-Seady",
+  "description": "Front-End and React Native Software Engineer portfolio.",
+  "start_url": "/Portfolio/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#6c63ff",
+  "icons": [
+    {
+      "src": "Images/Logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "Images/Logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

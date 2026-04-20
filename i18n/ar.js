@@ -3,12 +3,13 @@ const ar = {
   lang: "ar",
   nav: {
     about: "عنّي",
-    timeline: "الرحلة الوظيفية",
+    timeline: "المسار الوظيفي",
     services: "الخدمات",
     githubStats: "آحصائيات",
     skills: "المهارات",
     blog: "مقالات",
     projects: "المشاريع",
+    testimonials: "التوصيات",
     collaboration: "التعاون",
     demoVideo: "فيديو توضيحي",
     contact: "تواصل معي",
@@ -203,6 +204,16 @@ const ar = {
       title: "نسخة تويتر",
       desc: "نسخة مطابقة لواجهة تويتر مع تصميم متجاوب وشريط جانبي وقسم الترندات.",
     },
+  },
+  testimonials: {
+    title: "توصية مميزة",
+    subtitle: "إشارة مهنية موثقة من LinkedIn",
+    source: "توصية على LinkedIn",
+    summary:
+      "توصية من زميل على LinkedIn تبرز التعاون وتحمل المسؤولية والالتزام بالتسليم في مشاريع البرمجيات.",
+    author: "توصية من زميل",
+    context: "موثقة على LinkedIn",
+    view: "عرض LinkedIn",
   },
   demoVideo: {
     title: "فيديو توضيحي",

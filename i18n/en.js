@@ -9,6 +9,7 @@ const en = {
     skills: "Skills",
     blog: "Blog",
     projects: "Projects",
+    testimonials: "Testimonials",
     collaboration: "Collaboration",
     demoVideo: "Demo Video",
     contact: "Contact",
@@ -204,6 +205,16 @@ const en = {
       title: "Twitter Clone",
       desc: "Pixel-perfect Twitter UI clone with responsive layout, sidebar navigation, and trending section.",
     },
+  },
+  testimonials: {
+    title: "Featured Recommendation",
+    subtitle: "A verified professional signal from LinkedIn",
+    source: "LinkedIn Recommendation",
+    summary:
+      "A colleague recommendation on LinkedIn highlights my collaboration, ownership, and delivery mindset across software projects.",
+    author: "Colleague Recommendation",
+    context: "Verified on LinkedIn",
+    view: "View LinkedIn",
   },
   demoVideo: {
     title: "Demo Video",

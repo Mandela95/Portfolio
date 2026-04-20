@@ -39,4 +39,3 @@ A modern, fully responsive portfolio website showcasing my work as a Front-End D
 ![Portfolio(Mobile)](https://raw.githubusercontent.com/Mandela95/Portfolio/refs/heads/main/Images/Mobile%20dark.png)
 
 ![Portfolio(Mobile)](https://raw.githubusercontent.com/Mandela95/Portfolio/refs/heads/main/Images/Mobile.png)
-
