@@ -1110,6 +1110,12 @@ nav ul li a.active::after {
 .testimonial-footer p {
   color: var(--text-secondary);
   font-size: 0.9rem;
+  margin-top: 0.2rem;
+}
+
+.testimonial-footer p:last-child {
+  color: var(--text-muted);
+  font-size: 0.82rem;
 }
 
 /* ===== Blog Section ===== */
@@ -1318,7 +1324,28 @@ nav ul li a.active::after {
   color: var(--text-secondary);
   font-weight: 600;
   font-size: 0.95rem;
+  margin-bottom: 0;
+}
+
+.timeline-company-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
   margin-bottom: 1rem;
+}
+
+.timeline-mode {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.7rem;
+  color: var(--accent);
+  background: rgba(139, 133, 255, 0.1);
+  border: 1px solid rgba(139, 133, 255, 0.24);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
 }
 
 .timeline-tech {

@@ -18,7 +18,7 @@
   <meta property="og:image:alt" content="Mohamed El-Seady portfolio homepage preview" />
   <meta property="og:site_name" content="Mohamed El-Seady Portfolio" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Mohamed El-Seady | Front-End Developer&amp; React Native Software Engineer" />
+  <meta name="twitter:title" content="Mohamed El-Seady | Frontend &amp; React Native Developer" />
   <meta name="twitter:description" content="React, TypeScript, Next.js, React Native, and Node.js portfolio with featured projects and career highlights." />
   <meta name="twitter:image" content="https://mandela95.github.io/Portfolio/Images/Home.png" />
   <meta name="twitter:creator" content="@MohElseady" />
@@ -80,15 +80,8 @@
       <ul>
         <li><a href="#about" class="nav-link" data-i18n="nav.about">About</a></li>
         <li><a href="#timeline" class="nav-link" data-i18n="nav.timeline">Timeline</a></li>
-        <!-- <li><a href="#services" class="nav-link" data-i18n="nav.services">Services</a></li> -->
-        <!-- <li><a href="#stats-analytics" class="nav-link" data-i18n="nav.githubStats">Stats & Analytics</a></li> -->
         <li><a href="#skills" class="nav-link" data-i18n="nav.skills">Skills</a></li>
-        <!-- <li><a href="#blog" class="nav-link" data-i18n="nav.blog">Blog</a></li> -->
         <li><a href="#projects" class="nav-link" data-i18n="nav.projects">Projects</a></li>
-        <!-- <li><a href="#collaboration" class="nav-link" data-i18n="nav.collaboration">Collaboration</a></li> -->
-        <!-- <li><a href="#demo-video" class="nav-link" data-i18n="nav.demoVideo">Demo Video</a></li> -->
-
-
         <li><a href="#testimonials" class="nav-link" data-i18n="nav.testimonials">Testimonials</a></li>
         <li><a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a></li>
       </ul>
@@ -117,12 +110,12 @@
       <h2 class="hero-role reveal">
         <span class="typed-text" id="typedText"></span><span class="cursor">|</span>
       </h2>
-      <p class="hero-description reveal" data-i18n="hero.description">Building modern, responsive, and performant web experiences.</p>
+      <p class="hero-description reveal" data-i18n="hero.description">Building accessible, performant web and mobile experiences with React, TypeScript, and React Native.</p>
       <div class="hero-buttons reveal">
         <a href="https://drive.google.com/file/d/1EI5MWLlUoqhkiFQU5EWJICNacov604sr/view" class="btn btn-primary"
           target="_blank" rel="noopener noreferrer">
-          <span data-i18n="hero.downloadCV">Download CV</span>
-          <i class="fas fa-download"></i>
+          <span data-i18n="hero.viewCV">View CV</span>
+          <i class="fas fa-file-lines"></i>
         </a>
         <a href="#projects" class="btn btn-outline">
           <span data-i18n="hero.viewWork">View My Work</span>
@@ -150,7 +143,7 @@
         <img src="Images/chat gpt .png" alt="Mohamed El-Seady" loading="lazy" decoding="async" />
       </div>
       <div class="about-text reveal">
-        <h3 data-i18n="about.subtitle">Frontend and Cross-platform mobile developer</h3>
+        <h3 data-i18n="about.subtitle">Frontend and Cross-platform Mobile Developer</h3>
         <p data-i18n="about.p1">
           With <strong>+3 years</strong> of hands-on experience crafting modern web applications. I build interactive, responsive, and accessible user interfaces using <strong>TypeScript</strong> and <strong>React.js</strong>, and mobile apps using <strong>React Native</strong>.
         </p>
@@ -186,8 +179,11 @@
         <div class="timeline-content">
           <div class="timeline-date" data-i18n="timeline.nursery.date">Jan 2024 - Present</div>
           <h3 data-i18n="timeline.nursery.title">Software Engineer</h3>
-          <p data-i18n="timeline.nursery.company">Nursery Story (Scotland, UK)</p>
-          <div class="timeline-tech" data-i18n="timeline.nursery.tech"> TypeScript | React.js | React Native | Node.js</div>
+          <div class="timeline-company-row">
+            <p data-i18n="timeline.nursery.company">Nursery Story (Scotland, UK)</p>
+            <span class="timeline-mode" data-i18n="timeline.nursery.mode">Remote, Full-time</span>
+          </div>
+          <div class="timeline-tech" data-i18n="timeline.nursery.tech"> TypeScript | React.js | React Native | Node.js | PostgreSQL</div>
           <h4 class="timeline-section-title" data-i18n="timeline.nursery.sectionTitle">Key Accomplishments:</h4>
           <ul class="timeline-highlights">
             <li data-i18n="timeline.nursery.h1">Mobile: Delivered invoicing feature (React Native) with payment gateway integration</li>
@@ -205,8 +201,11 @@
         <div class="timeline-content">
           <div class="timeline-date" data-i18n="timeline.upskilling.date">Feb 2023 - Jan 2024</div>
           <h3 data-i18n="timeline.upskilling.title">Software Engineer</h3>
-          <p data-i18n="timeline.upskilling.company"><a href="https://upskilling.com/" target="_blank" rel="noopener noreferrer">Upskilling</a> (Maadi, Egypt)</p>
-          <div class="timeline-tech" data-i18n="timeline.upskilling.tech">React | TypeScript | Node.js | MUI | JWT Auth | SQL</div>
+          <div class="timeline-company-row">
+            <p data-i18n="timeline.upskilling.company"><a href="https://upskilling.com/" target="_blank" rel="noopener noreferrer">Upskilling</a> (Maadi, Egypt)</p>
+            <span class="timeline-mode" data-i18n="timeline.upskilling.mode">Hybrid, Full-time</span>
+          </div>
+          <div class="timeline-tech" data-i18n="timeline.upskilling.tech">React | TypeScript | Node.js | MUI | JWT Auth</div>
           <h4 class="timeline-section-title" data-i18n="timeline.upskilling.sectionTitle">Projects Built:</h4>
           <ul class="timeline-highlights">
             <li data-i18n="timeline.upskilling.h1">Hotel Management: Full-stack system with JWT auth, admin dashboard, booking & room management</li>
@@ -735,15 +734,17 @@
         <span data-i18n="testimonials.source">LinkedIn Recommendation</span>
       </div>
       <blockquote data-i18n="testimonials.summary">
-        A colleague recommendation on LinkedIn highlights my collaboration, ownership, and delivery mindset across software projects.
+        I've had the pleasure of working closely with Mohamed El-Seady, and I can confidently say he is one of the most reliable and impactful full-stack engineers I've worked with.
       </blockquote>
       <div class="testimonial-footer">
         <div>
-          <strong data-i18n="testimonials.author">Colleague Recommendation</strong>
-          <p data-i18n="testimonials.context">Verified on LinkedIn</p>
+          <strong data-i18n="testimonials.author">Mahmoud El-Fiky</strong>
+          <p data-i18n="testimonials.role">Full-Stack & Cross-platform Mobile Developer</p>
+          <p data-i18n="testimonials.context">Worked with Mohamed on the same team</p>
+          <p data-i18n="testimonials.date">December 10, 2025</p>
         </div>
         <a href="https://www.linkedin.com/in/mo-seady/" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-          <i class="fab fa-linkedin"></i> <span data-i18n="testimonials.view">View LinkedIn</span>
+          <i class="fab fa-linkedin"></i> <span data-i18n="testimonials.view">View full recommendation</span>
         </a>
       </div>
     </div>
@@ -971,8 +972,10 @@
       <p data-i18n="footer.tagline">Building the web, one pixel at a time.</p>
       <div class="footer-links">
         <a href="#about" data-i18n="nav.about">About</a>
-        <a href="#services" data-i18n="nav.services">Services</a>
+        <a href="#timeline" data-i18n="nav.timeline">Timeline</a>
+        <a href="#skills" data-i18n="nav.skills">Skills</a>
         <a href="#projects" data-i18n="nav.projects">Projects</a>
+        <a href="#testimonials" data-i18n="nav.testimonials">Testimonials</a>
         <a href="#contact" data-i18n="nav.contact">Contact</a>
       </div>
       <div class="footer-bottom">
