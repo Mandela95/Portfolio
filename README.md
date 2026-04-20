@@ -30,6 +30,8 @@ A modern, fully responsive portfolio website showcasing my work as a Front-End D
 
 ![Portfolio(About Me)](https://raw.githubusercontent.com/Mandela95/Portfolio/refs/heads/main/Images/About%20Me.png)
 
+![Portfolio(Chatbot)](https://raw.githubusercontent.com/Mandela95/Portfolio/refs/heads/main/Images/AI-Assistant-Chatbot.png)
+
 ![Portfolio(Projects)](https://raw.githubusercontent.com/Mandela95/Portfolio/refs/heads/main/Images/Projects%20Ar.png)
 
 ![Portfolio(Contact)](https://raw.githubusercontent.com/Mandela95/Portfolio/refs/heads/main/Images/Contact%20Me.png)
