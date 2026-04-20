@@ -7,10 +7,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Mohamed El-Seady — Front-End Developer Portfolio. React, Next.js, JavaScript, and modern web development." />
   <title>Mohamed El-Seady | Front-End Developer</title>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://github-readme-stats.vercel.app" />
+  <link rel="preconnect" href="https://images.unsplash.com" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <link rel="stylesheet" href="normalize.css" />
   <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 
 <body>
@@ -22,12 +27,12 @@
   <!-- Header -->
   <header id="header">
     <a href="#" class="logo"><img src="Images/Logo.png" alt="Logo" /></a>
-    <nav id="nav">
+    <nav id="nav" aria-label="Primary navigation">
       <ul>
         <li><a href="#about" class="nav-link" data-i18n="nav.about">About</a></li>
         <li><a href="#timeline" class="nav-link" data-i18n="nav.timeline">Timeline</a></li>
         <li><a href="#services" class="nav-link" data-i18n="nav.services">Services</a></li>
-        <li><a href="#github-stats" class="nav-link" data-i18n="nav.githubStats">GitHub</a></li>
+        <li><a href="#stats-analytics" class="nav-link" data-i18n="nav.githubStats">Stats & Analytics</a></li>
         <li><a href="#skills" class="nav-link" data-i18n="nav.skills">Skills</a></li>
         <li><a href="#blog" class="nav-link" data-i18n="nav.blog">Blog</a></li>
         <li><a href="#projects" class="nav-link" data-i18n="nav.projects">Projects</a></li>
@@ -43,7 +48,7 @@
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
         <i class="fas fa-moon"></i>
       </button>
-      <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-controls="nav" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
@@ -90,7 +95,7 @@
     <h2 class="section-title reveal" data-i18n="about.title">About Me</h2>
     <div class="about-content">
       <div class="about-image reveal">
-        <img src="Images/chat gpt .png" alt="Mohamed El-Seady" loading="lazy" />
+        <img src="Images/chat gpt .png" alt="Mohamed El-Seady" loading="lazy" decoding="async" />
       </div>
       <div class="about-text reveal">
         <h3 data-i18n="about.subtitle">Frontend and Cross-platform mobile developer</h3>
@@ -226,48 +231,48 @@
   </section>
 
   <!-- GitHub Stats Section -->
-  <section class="github-stats" id="github-stats">
-    <h2 class="section-title reveal" data-i18n="githubStats.title">GitHub Overview</h2>
-    <div class="stats-grid reveal">
-      <div class="stat-card">
-        <img src="https://github-readme-stats.vercel.app/api?username=Mandela95&theme=dark&hide_border=true&bg_color=0a0a0a&border_color=2a2a2a&title_color=ffffff&text_color=a0a0a0&icon_color=6c63ff" alt="Stats & Analytics" loading="lazy" />
-      </div>
-      <div class="stat-card">
-        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Mandela95&theme=dark&hide_border=true&bg_color=0a0a0a&border_color=2a2a2a&title_color=ffffff&text_color=a0a0a0" alt="Top Languages" loading="lazy" />
+  <section class="stats-analytics" id="stats-analytics">
+    <div class="github-stats">
+      <h2 class="section-title reveal" data-i18n="githubStats.title">GitHub Overview</h2>
+      <div class="stats-grid reveal">
+        <div class="stat-card">
+          <img src="https://github-readme-stats.vercel.app/api?username=Mandela95&theme=dark&hide_border=true&bg_color=0a0a0a&border_color=2a2a2a&title_color=ffffff&text_color=a0a0a0&icon_color=6c63ff" alt="GitHub contribution statistics for Mohamed El-Seady" loading="lazy" decoding="async" />
+        </div>
+        <div class="stat-card">
+          <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Mandela95&theme=dark&hide_border=true&bg_color=0a0a0a&border_color=2a2a2a&title_color=ffffff&text_color=a0a0a0" alt="Most used GitHub programming languages" loading="lazy" decoding="async" />
+        </div>
       </div>
     </div>
 
-  </section>
-
-
     <!-- Analytics Dashboard Section -->
-  <section class="analytics" id="github-stats">
-    <h2 class="section-title reveal" data-i18n="analytics.title">Career Analytics</h2>
-    <div class="analytics-grid">
-      <div class="analytics-card reveal">
-        <i class="fas fa-folder-open"></i>
-        <h3 data-i18n="analytics.totalProjects">Total Projects</h3>
-        <p class="analytics-value" data-i18n="analytics.totalProjects_value">20+</p>
-      </div>
-      <div class="analytics-card reveal">
-        <i class="fas fa-code"></i>
-        <h3 data-i18n="analytics.totalContributions">Total Contributions</h3>
-        <p class="analytics-value" data-i18n="analytics.totalContributions_value">500+</p>
-      </div>
-      <div class="analytics-card reveal">
-        <i class="fas fa-recycle"></i>
-        <h3 data-i18n="analytics.codeReuse">Code Reuse Rate</h3>
-        <p class="analytics-value" data-i18n="analytics.codeReuse_value">60%</p>
-      </div>
-      <div class="analytics-card reveal">
-        <i class="fas fa-fire"></i>
-        <h3 data-i18n="analytics.activeTime">Active Development</h3>
-        <p class="analytics-value" data-i18n="analytics.activeTime_value">5+ years</p>
-      </div>
-      <div class="analytics-card reveal">
-        <i class="fas fa-keyboard"></i>
-        <h3 data-i18n="analytics.linesOfCode">Total Lines of Code</h3>
-        <p class="analytics-value" data-i18n="analytics.linesOfCode_value">50K+</p>
+    <div class="analytics">
+      <h2 class="section-title reveal" data-i18n="analytics.title">Career Analytics</h2>
+      <div class="analytics-grid">
+        <div class="analytics-card reveal">
+          <i class="fas fa-folder-open"></i>
+          <h3 data-i18n="analytics.totalProjects">Total Projects</h3>
+          <p class="analytics-value" data-i18n="analytics.totalProjects_value">20+</p>
+        </div>
+        <div class="analytics-card reveal">
+          <i class="fas fa-code"></i>
+          <h3 data-i18n="analytics.totalContributions">Total Contributions</h3>
+          <p class="analytics-value" data-i18n="analytics.totalContributions_value">500+</p>
+        </div>
+        <div class="analytics-card reveal">
+          <i class="fas fa-recycle"></i>
+          <h3 data-i18n="analytics.codeReuse">Code Reuse Rate</h3>
+          <p class="analytics-value" data-i18n="analytics.codeReuse_value">60%</p>
+        </div>
+        <div class="analytics-card reveal">
+          <i class="fas fa-fire"></i>
+          <h3 data-i18n="analytics.activeTime">Active Development</h3>
+          <p class="analytics-value" data-i18n="analytics.activeTime_value">5+ years</p>
+        </div>
+        <div class="analytics-card reveal">
+          <i class="fas fa-keyboard"></i>
+          <h3 data-i18n="analytics.linesOfCode">Total Lines of Code</h3>
+          <p class="analytics-value" data-i18n="analytics.linesOfCode_value">50K+</p>
+        </div>
       </div>
     </div>
   </section>
@@ -426,7 +431,7 @@
       <article class="blog-card reveal">
         <div class="blog-header">
           <span class="blog-date" data-i18n="blog.articles.5.author">Prisma Blog</span>
-          <span class="blog-category" data-i18n="blog.articles.6.category">Database</span>
+          <span class="blog-category" data-i18n="blog.articles.5.category">Database</span>
         </div>
         <h3 data-i18n="blog.articles.5.title">Database Design Patterns & SQL Optimization</h3>
         <p data-i18n="blog.articles.5.description">Learn database design best practices, query optimization techniques, and how to build scalable data architectures. Covers relationships, indexing, and performance tuning.</p>
@@ -450,20 +455,21 @@
         class="search-input" 
         placeholder="Search projects by name or technology..."
         data-i18n-placeholder="projectSearch.searchPlaceholder"
+        aria-label="Search projects by name or technology"
       />
       <i class="fas fa-search search-icon"></i>
     </div>
     <div class="projects-filter reveal">
-      <button class="filter-btn active" data-filter="all" data-i18n="projects.all">All</button>
-      <button class="filter-btn" data-filter="javascript" data-i18n="projects.javascript">JavaScript</button>
-      <button class="filter-btn" data-filter="react" data-i18n="projects.react">React</button>
-      <button class="filter-btn" data-filter="nextjs" data-i18n="projects.nextjs">Next.js</button>
+      <button class="filter-btn active" data-filter="all" data-i18n="projects.all" aria-pressed="true">All</button>
+      <button class="filter-btn" data-filter="javascript" data-i18n="projects.javascript" aria-pressed="false">JavaScript</button>
+      <button class="filter-btn" data-filter="react" data-i18n="projects.react" aria-pressed="false">React</button>
+      <button class="filter-btn" data-filter="nextjs" data-i18n="projects.nextjs" aria-pressed="false">Next.js</button>
     </div>
     <div class="projects-grid">
       <!-- Hotel Management System -->
       <div class="project-card reveal" data-category="react">
         <div class="project-image">
-          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop" alt="Hotel Management System" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop" alt="Hotel Management System" loading="lazy" decoding="async" />
           <div class="project-overlay">
             <a href="https://github.com/Mandela95/Hotel-Management-System" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View Code"><i class="fab fa-github"></i></a>
             <a href="https://mandela95.github.io/Hotel-Management-System/auth" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i></a>
@@ -472,6 +478,20 @@
         <div class="project-info">
           <h3 data-i18n="projects.hotel.title">Hotel Management System</h3>
           <p data-i18n="projects.hotel.desc">Full-featured hotel booking and management dashboard with room availability, reservations, and guest management.</p>
+          <div class="project-proof">
+            <div>
+              <span data-i18n="projects.labels.role">Role</span>
+              <strong data-i18n="projects.hotel.role">Full-stack feature builder</strong>
+            </div>
+            <div>
+              <span data-i18n="projects.labels.challenge">Challenge</span>
+              <strong data-i18n="projects.hotel.challenge">Auth, room CRUD, bookings, and admin flows</strong>
+            </div>
+            <div>
+              <span data-i18n="projects.labels.outcome">Outcome</span>
+              <strong data-i18n="projects.hotel.outcome">Production-style dashboard with protected workflows</strong>
+            </div>
+          </div>
           <div class="project-tags">
             <span>React</span>
             <span>Node.js</span>
@@ -482,7 +502,7 @@
       <!-- Quiz App -->
       <div class="project-card reveal" data-category="react">
         <div class="project-image">
-          <img src="https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?w=600&h=400&fit=crop" alt="Quiz App" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?w=600&h=400&fit=crop" alt="Quiz App" loading="lazy" decoding="async" />
           <div class="project-overlay">
             <a href="https://github.com/Mandela95/Quiz-App" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View Code"><i class="fab fa-github"></i></a>
             <a href="https://mandela95.github.io/Quiz-App/" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i></a>
@@ -491,6 +511,20 @@
         <div class="project-info">
           <h3 data-i18n="projects.quiz.title">Quiz App</h3>
           <p data-i18n="projects.quiz.desc">Interactive quiz application with multiple categories, timer, score tracking, and dynamic question generation.</p>
+          <div class="project-proof">
+            <div>
+              <span data-i18n="projects.labels.role">Role</span>
+              <strong data-i18n="projects.quiz.role">Frontend logic and state management</strong>
+            </div>
+            <div>
+              <span data-i18n="projects.labels.challenge">Challenge</span>
+              <strong data-i18n="projects.quiz.challenge">Timed quiz flow, scoring, and role-based UX</strong>
+            </div>
+            <div>
+              <span data-i18n="projects.labels.outcome">Outcome</span>
+              <strong data-i18n="projects.quiz.outcome">Reusable quiz experience with progress tracking</strong>
+            </div>
+          </div>
           <div class="project-tags">
             <span>React</span>
             <span>Redux</span>
@@ -501,7 +535,7 @@
       <!-- Food Management System -->
       <div class="project-card reveal" data-category="react">
         <div class="project-image">
-          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&h=400&fit=crop" alt="Food Management System" loading="lazy" />
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&h=400&fit=crop" alt="Food Management System" loading="lazy" decoding="async" />
           <div class="project-overlay">
             <a href="https://github.com/Mandela95/Food-Management-App" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View Code"><i class="fab fa-github"></i></a>
             <a href="https://food-management-app.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i></a>
@@ -510,6 +544,20 @@
         <div class="project-info">
           <h3 data-i18n="projects.food.title">Food Management App</h3>
           <p data-i18n="projects.food.desc">Restaurant food ordering and management platform with menu management, order tracking, and admin dashboard.</p>
+          <div class="project-proof">
+            <div>
+              <span data-i18n="projects.labels.role">Role</span>
+              <strong data-i18n="projects.food.role">CRUD interface and API integration</strong>
+            </div>
+            <div>
+              <span data-i18n="projects.labels.challenge">Challenge</span>
+              <strong data-i18n="projects.food.challenge">Permissions, image preview, and form validation</strong>
+            </div>
+            <div>
+              <span data-i18n="projects.labels.outcome">Outcome</span>
+              <strong data-i18n="projects.food.outcome">Admin-ready management flow for food items</strong>
+            </div>
+          </div>
           <div class="project-tags">
             <span>React</span>
             <span>Axios</span>
@@ -520,7 +568,7 @@
       <!-- React Shopping Cart -->
       <div class="project-card reveal" data-category="react">
         <div class="project-image">
-          <img src="Images/Store.jpg" alt="React Shopping Cart" loading="lazy" />
+          <img src="Images/Store.jpg" alt="React Shopping Cart" loading="lazy" decoding="async" />
           <div class="project-overlay">
             <a href="https://github.com/Mandela95/React-Shopping-Cart" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View Code"><i class="fab fa-github"></i></a>
             <a href="https://musical-praline-88a901.netlify.app" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i></a>
@@ -529,6 +577,20 @@
         <div class="project-info">
           <h3 data-i18n="projects.cart.title">React Shopping Cart</h3>
           <p data-i18n="projects.cart.desc">E-commerce shopping cart with product listing, add-to-cart functionality, and dynamic price calculation.</p>
+          <div class="project-proof">
+            <div>
+              <span data-i18n="projects.labels.role">Role</span>
+              <strong data-i18n="projects.cart.role">Frontend shopping experience</strong>
+            </div>
+            <div>
+              <span data-i18n="projects.labels.challenge">Challenge</span>
+              <strong data-i18n="projects.cart.challenge">Cart state, totals, and responsive product layout</strong>
+            </div>
+            <div>
+              <span data-i18n="projects.labels.outcome">Outcome</span>
+              <strong data-i18n="projects.cart.outcome">Clear e-commerce flow from browsing to checkout</strong>
+            </div>
+          </div>
           <div class="project-tags">
             <span>React</span>
             <span>Bootstrap</span>
@@ -538,7 +600,7 @@
       <!-- Social Media App -->
       <div class="project-card reveal" data-category="javascript">
         <div class="project-image">
-          <img src="Images/Social-App.jpg" alt="Social Media App" loading="lazy" />
+          <img src="Images/Social-App.jpg" alt="Social Media App" loading="lazy" decoding="async" />
           <div class="project-overlay">
             <a href="https://github.com/Mandela95/Social-App" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View Code"><i class="fab fa-github"></i></a>
             <a href="https://social-media-mandela-app.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i></a>
@@ -547,6 +609,20 @@
         <div class="project-info">
           <h3 data-i18n="projects.social.title">Social Media App</h3>
           <p data-i18n="projects.social.desc">Social platform with user posts, comments, and real-time data fetched from REST APIs using Axios.</p>
+          <div class="project-proof">
+            <div>
+              <span data-i18n="projects.labels.role">Role</span>
+              <strong data-i18n="projects.social.role">API-driven UI builder</strong>
+            </div>
+            <div>
+              <span data-i18n="projects.labels.challenge">Challenge</span>
+              <strong data-i18n="projects.social.challenge">Async data loading, posts, comments, and UX states</strong>
+            </div>
+            <div>
+              <span data-i18n="projects.labels.outcome">Outcome</span>
+              <strong data-i18n="projects.social.outcome">Interactive feed experience backed by REST APIs</strong>
+            </div>
+          </div>
           <div class="project-tags">
             <span>JavaScript</span>
             <span>REST APIs</span>
@@ -557,7 +633,7 @@
       <!-- Blog Next.js -->
       <div class="project-card reveal" data-category="nextjs">
         <div class="project-image">
-          <img src="Images/Blog.png" alt="Blog Next.js" loading="lazy" />
+          <img src="Images/Blog.png" alt="Blog Next.js" loading="lazy" decoding="async" />
           <div class="project-overlay">
             <a href="https://github.com/Mandela95/Blog-Next.js" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View Code"><i class="fab fa-github"></i></a>
             <a href="https://blog-next-js-theta.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i></a>
@@ -566,6 +642,20 @@
         <div class="project-info">
           <h3 data-i18n="projects.blog.title">Blog Next.js</h3>
           <p data-i18n="projects.blog.desc">Server-side rendered blog with dynamic routing, markdown support, and optimized performance using Next.js.</p>
+          <div class="project-proof">
+            <div>
+              <span data-i18n="projects.labels.role">Role</span>
+              <strong data-i18n="projects.blog.role">Next.js page architecture</strong>
+            </div>
+            <div>
+              <span data-i18n="projects.labels.challenge">Challenge</span>
+              <strong data-i18n="projects.blog.challenge">Dynamic routes, content rendering, and performance</strong>
+            </div>
+            <div>
+              <span data-i18n="projects.labels.outcome">Outcome</span>
+              <strong data-i18n="projects.blog.outcome">SEO-friendly blog structure with fast navigation</strong>
+            </div>
+          </div>
           <div class="project-tags">
             <span>Next.js</span>
             <span>React</span>
@@ -573,7 +663,7 @@
         </div>
       </div>
     </div>
-    <div id="searchResults" class="projects-grid" style="display: none; margin-top: 2rem;"></div>
+    <div id="searchResults" class="projects-grid" style="display: none; margin-top: 2rem;" aria-live="polite"></div>
     <div class="more-projects reveal">
       <p data-i18n="projects.moreOn">And many more on</p>
       <a href="https://github.com/Mandela95?tab=repositories" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
@@ -681,6 +771,9 @@
       <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;box-shadow:0 2px 16px rgba(0,0,0,0.12);">
         <iframe src="https://www.vidline.com/share/V0O6HJRR2J/198d9a3af8dd732ce9a509d8c6b47aa1" 
                 title="Portfolio Demo Video" 
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="fullscreen; picture-in-picture"
                 allowfullscreen 
                 style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"></iframe>
       </div>
@@ -725,21 +818,25 @@
       </div>
       <form class="contact-form reveal" id="contactForm">
         <div class="form-group">
+          <label class="sr-only" for="formName" data-i18n="contact.nameLabel">Your Name</label>
           <input type="text" name="name" id="formName" data-i18n-placeholder="contact.namePlaceholder" placeholder="Your Name" required />
         </div>
         <div class="form-group">
+          <label class="sr-only" for="formEmail" data-i18n="contact.emailLabel">Your Email</label>
           <input type="email" name="email" id="formEmail" data-i18n-placeholder="contact.emailPlaceholder" placeholder="Your Email" required />
         </div>
         <div class="form-group">
+          <label class="sr-only" for="formSubject" data-i18n="contact.subjectLabel">Subject</label>
           <input type="text" name="subject" id="formSubject" data-i18n-placeholder="contact.subjectPlaceholder" placeholder="Subject" />
         </div>
         <div class="form-group">
+          <label class="sr-only" for="formMessage" data-i18n="contact.messageLabel">Your Message</label>
           <textarea name="message" id="formMessage" rows="5" data-i18n-placeholder="contact.messagePlaceholder" placeholder="Your Message" required></textarea>
         </div>
         <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
            <span data-i18n="contact.send">Send Message</span> <i class="fas fa-paper-plane"></i>
         </button>
-        <p class="form-status" id="formStatus"></p>
+        <p class="form-status" id="formStatus" aria-live="polite"></p>
       </form>
     </div>
   </section>
@@ -750,15 +847,15 @@
   </button>
   <!-- AI Chat Assistant Modal -->
   <div class="chat-widget" id="chatWidget">
-    <div class="chat-button" id="chatButton" aria-label="Open chat assistant">
+    <button type="button" class="chat-button" id="chatButton" aria-label="Open chat assistant" aria-controls="chatModal" aria-expanded="false">
       <i class="fas fa-comments"></i>
       <span class="chat-badge">1</span>
-    </div>
+    </button>
     
-    <div class="chat-modal" id="chatModal">
+    <div class="chat-modal" id="chatModal" role="dialog" aria-modal="false" aria-labelledby="chatTitle" aria-hidden="true">
       <div class="chat-header">
         <div class="chat-title-group">
-          <h3 data-i18n="chat.title">AI Assistant</h3>
+          <h3 id="chatTitle" data-i18n="chat.title">AI Assistant</h3>
           <p data-i18n="chat.subtitle">Ask me anything about my work!</p>
         </div>
         <button class="chat-close" id="chatClose" aria-label="Close chat">
@@ -782,6 +879,7 @@
       </div>
       
       <div class="chat-input-wrapper">
+        <label class="sr-only" for="chatInput" data-i18n="chat.inputLabel">Type your message</label>
         <input type="text" id="chatInput" class="chat-input" data-i18n-placeholder="chat.inputPlaceholder" placeholder="Type your message..." />
         <button class="chat-send" id="chatSend" aria-label="Send message">
           <i class="fas fa-paper-plane"></i>
@@ -806,9 +904,10 @@
     </div>
   </footer>
 
-  <script src="i18n/en.js"></script>
-  <script src="i18n/ar.js"></script>
-  <script src="main.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script defer src="i18n/en.js"></script>
+  <script defer src="i18n/ar.js"></script>
+  <script defer src="main.js"></script>
 </body>
 
 </html>

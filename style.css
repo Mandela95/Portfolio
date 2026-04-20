@@ -74,6 +74,33 @@ img {
   display: block;
 }
 
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -936,6 +963,36 @@ nav ul li a.active::after {
   font-size: 0.9rem;
   line-height: 1.6;
   margin-bottom: 1rem;
+}
+
+.project-proof {
+  display: grid;
+  gap: 0.65rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, rgba(108, 99, 255, 0.08), rgba(59, 130, 246, 0.06));
+  border: 1px solid rgba(108, 99, 255, 0.18);
+  border-radius: var(--radius);
+}
+
+.project-proof div {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.project-proof span {
+  color: var(--accent);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.project-proof strong {
+  color: var(--text-primary);
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.45;
 }
 
 .project-tags {
@@ -2336,4 +2393,31 @@ footer > .footer-content > p {
 
 [dir="rtl"] .collab-features {
   text-align: right;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .cursor,
+  .scroll-indicator,
+  .heart,
+  .loader-spinner {
+    animation: none !important;
+  }
 }

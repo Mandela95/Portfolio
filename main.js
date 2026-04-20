@@ -47,6 +47,9 @@ function setLanguage(lang) {
   roleIndex = 0;
   charIndex = 0;
   isDeleting = false;
+  if (prefersReducedMotion && typedTextEl) {
+    typedTextEl.textContent = roles[0];
+  }
   
   // Update chat placeholder
   if (typeof updateChatPlaceholder === "function") {
@@ -81,6 +84,7 @@ function updateThemeIcon(theme) {
 
 // ===== Typing Variables (declared early so setLanguage can access them) =====
 const typedTextEl = document.getElementById("typedText");
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 let roles = translations[currentLang].hero.roles;
 let roleIndex = 0;
 let charIndex = 0;
@@ -102,6 +106,7 @@ const nav = document.getElementById("nav");
 hamburger.addEventListener("click", () => {
   hamburger.classList.toggle("active");
   nav.classList.toggle("open");
+  hamburger.setAttribute("aria-expanded", nav.classList.contains("open"));
 });
 
 // Close menu when clicking a nav link
@@ -109,6 +114,7 @@ nav.querySelectorAll(".nav-link").forEach((link) => {
   link.addEventListener("click", () => {
     hamburger.classList.remove("active");
     nav.classList.remove("open");
+    hamburger.setAttribute("aria-expanded", "false");
   });
 });
 
@@ -117,6 +123,7 @@ document.addEventListener("click", (e) => {
   if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
     hamburger.classList.remove("active");
     nav.classList.remove("open");
+    hamburger.setAttribute("aria-expanded", "false");
   }
 });
 
@@ -211,6 +218,8 @@ function animateCounter(el, target) {
 
 // ===== Typing Effect =====
 function typeEffect() {
+  if (prefersReducedMotion) return;
+
   const currentRole = roles[roleIndex];
 
   if (isDeleting) {
@@ -243,8 +252,12 @@ const projectCards = document.querySelectorAll(".project-card");
 
 filterBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
-    filterBtns.forEach((b) => b.classList.remove("active"));
+    filterBtns.forEach((b) => {
+      b.classList.remove("active");
+      b.setAttribute("aria-pressed", "false");
+    });
     btn.classList.add("active");
+    btn.setAttribute("aria-pressed", "true");
 
     const filter = btn.getAttribute("data-filter");
 
@@ -373,9 +386,13 @@ if (searchInput && searchResults) {
     });
 
     if (filteredCards.length === 0) {
+      const noResultsMessage =
+        translations[currentLang]?.projectSearch?.noResults ||
+        "No projects found matching your search.";
+
       projectsGrid.style.display = "none";
       searchResults.style.display = "grid";
-      searchResults.innerHTML = `<p style="grid-column: 1 / -1; text-align: center; color: var(--text-secondary); padding: 2rem;">No projects found matching your search.</p>`;
+      searchResults.innerHTML = `<p style="grid-column: 1 / -1; text-align: center; color: var(--text-secondary); padding: 2rem;">${noResultsMessage}</p>`;
     } else {
       projectsGrid.style.display = "none";
       searchResults.style.display = "grid";
@@ -491,20 +508,39 @@ const sendMessage = () => {
   }, 500);
 };
 
+const setChatOpen = (isOpen) => {
+  chatModal.classList.toggle("active", isOpen);
+  chatModal.setAttribute("aria-hidden", String(!isOpen));
+  chatModal.setAttribute("aria-modal", String(isOpen));
+  chatButton.setAttribute("aria-expanded", String(isOpen));
+
+  if (isOpen) {
+    chatInput.focus();
+  }
+};
+
 // Toggle chat modal
 chatButton.addEventListener("click", () => {
-  chatModal.classList.toggle("active");
+  setChatOpen(!chatModal.classList.contains("active"));
 });
 
 // Close chat modal
 chatClose.addEventListener("click", () => {
-  chatModal.classList.remove("active");
+  setChatOpen(false);
+  chatButton.focus();
 });
 
 // Close chat modal when clicking outside it
 document.addEventListener("click", (e) => {
   if (!chatWidget.contains(e.target) && chatModal.classList.contains("active")) {
-    chatModal.classList.remove("active");
+    setChatOpen(false);
+  }
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && chatModal.classList.contains("active")) {
+    setChatOpen(false);
+    chatButton.focus();
   }
 });
 
