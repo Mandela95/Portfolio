@@ -435,10 +435,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const chatInput = document.getElementById("chatInput");
   const chatSend = document.getElementById("chatSend");
   const chatMessages = document.getElementById("chatMessages");
+  const chatBadge = document.querySelector(".chat-badge");
   const suggestionBtns = document.querySelectorAll(".suggestion-btn");
 
   // Safety check - only initialize if chat elements exist
   if (!chatButton || !chatModal || !chatInput) return;
+
+const chatBadgeDismissedKey = "chatBadgeDismissed";
+
+if (chatBadge && localStorage.getItem(chatBadgeDismissedKey) === "true") {
+  chatBadge.classList.add("hidden");
+}
 
 // Get language from current i18n
 const getChatResponse = (message) => {
@@ -511,6 +518,10 @@ const setChatOpen = (isOpen) => {
   chatButton.setAttribute("aria-expanded", String(isOpen));
 
   if (isOpen) {
+    if (chatBadge) {
+      chatBadge.classList.add("hidden");
+      localStorage.setItem(chatBadgeDismissedKey, "true");
+    }
     chatInput.focus();
   }
 };
