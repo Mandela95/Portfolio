@@ -293,7 +293,7 @@ const en = {
     responses: {
       skills: "I'm skilled in React.js, React Native, TypeScript, Next.js, Node.js, JavaScript, SQL, MongoDB, Redux, MUI, Tailwind CSS, and more. I also have experience with Git, REST APIs, JWT authentication, accessibility, and responsive design.",
       projects: "I've built Hotel Management Systems, Quiz Platforms, Food Management Systems, and multiple React/React Native applications. Each project showcases modern development practices and production-ready code.",
-      experience: "I have 3+ years of professional experience as a Software Engineer at Nursery Story (UK) and Upskilling (Egypt), plus self-taught learning since 2021. I've worked with teams across different time zones and contributed to both frontend and backend development.",
+      experience: "I have 3+ years of professional experience as a Software Engineer at Nursery Story (UK) and Upskilling (Egypt), plus self-taught learning since 2020. I've worked with teams across different time zones and contributed to frontend, backend, and mobile app development.",
       contact: "You can reach me via email at mohamedelseady247@gmail.com, phone at +20 114 681 7834, or connect on LinkedIn and GitHub. I'm open to freelance projects and new opportunities!",
       default: "Thanks for your interest! Feel free to explore more sections of my portfolio or contact me directly with specific questions.",
     },

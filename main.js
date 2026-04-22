@@ -449,32 +449,28 @@ const getChatResponse = (message) => {
       : translations.en.chat.responses;
 
   const lowerMessage = message.toLowerCase();
+  const includesAny = (keywords) =>
+    keywords.some((keyword) => lowerMessage.includes(keyword));
 
-  if (
-    lowerMessage.includes("skill") ||
-    lowerMessage.includes("مهارات") ||
-    lowerMessage.includes("تقنيات") ||
-    lowerMessage.includes("tech")
-  ) {
+  if (includesAny(["skill", "skills", "tech", "مهارة", "مهارات", "تقنية", "تقنيات"])) {
     return responses.skills;
-  } else if (
-    lowerMessage.includes("project") ||
-    lowerMessage.includes("مشاريع") ||
-    lowerMessage.includes("build")
-  ) {
+  } else if (includesAny(["project", "projects", "build", "مشروع", "مشاريع"])) {
     return responses.projects;
   } else if (
-    lowerMessage.includes("experience") ||
-    lowerMessage.includes("خبرة") ||
-    lowerMessage.includes("work")
+    includesAny([
+      "experience",
+      "work",
+      "career",
+      "job",
+      "خبرة",
+      "خبرتك",
+      "وظيف",
+      "عمل",
+      "شغل",
+    ])
   ) {
     return responses.experience;
-  } else if (
-    lowerMessage.includes("contact") ||
-    lowerMessage.includes("تواصل") ||
-    lowerMessage.includes("email") ||
-    lowerMessage.includes("phone")
-  ) {
+  } else if (includesAny(["contact", "email", "phone", "تواصل", "بريد", "هاتف"])) {
     return responses.contact;
   }
   return responses.default;
