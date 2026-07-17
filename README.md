@@ -2,7 +2,7 @@
 
 live-server: https://mandela95.github.io/Portfolio/
 
-A modern, fully responsive portfolio website showcasing my work as a Front-End Developer and Mobile Developer with 3+ years of hands-on experience in web and mobile application development.
+A modern, fully responsive portfolio website showcasing my work as a Front-End Developer and Mobile Developer with 4+ years of hands-on experience in web and mobile application development.
 
 # Key Features ✨
 
