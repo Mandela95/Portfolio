@@ -44,8 +44,6 @@ A modern, fully responsive portfolio website showcasing my work as a Front-End D
 
 ![Contact Section](https://raw.githubusercontent.com/Mandela95/Portfolio/refs/heads/main/Images/Contact%20Me.png)
 
-![SEO Result](https://raw.githubusercontent.com/Mandela95/Portfolio/refs/heads/main/Images/SEO.png)
-
 ### Mobile
 
 ![Mobile Dark](https://raw.githubusercontent.com/Mandela95/Portfolio/refs/heads/main/Images/Mobile%20dark.png)
