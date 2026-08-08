@@ -1,11 +1,14 @@
 node_modules/
-package-lock.json
 
 # OS / editor noise
 .DS_Store
 Thumbs.db
-.vscode/
 .idea/
+
+# Editor config is shared on purpose (it pins the formatter), the rest is not.
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
 
 # Tooling output
 .lighthouseci/

@@ -18,8 +18,10 @@ jobs:
         with:
           node-version: 20
 
+      # npm ci installs the locked versions exactly, so CI cannot silently pick up a
+      # newer Prettier that formats the repo differently than it does locally.
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Check formatting
         run: npm run format:check
