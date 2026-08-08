@@ -52,6 +52,12 @@ function setLanguage(lang) {
     if (value) el.placeholder = value;
   });
 
+  // Update accessible names that are not visible text (e.g. the video play button)
+  document.querySelectorAll("[data-i18n-label]").forEach((el) => {
+    const value = getNestedValue(t, el.getAttribute("data-i18n-label"));
+    if (value) el.setAttribute("aria-label", value);
+  });
+
   // Update lang toggle. The accessible name has to contain the visible label ("AR"/"EN"),
   // otherwise voice-control users can't activate it by saying what they see.
   const langToggle = document.getElementById("langToggle");
@@ -118,7 +124,10 @@ applyTheme(savedTheme);
 // api.github.com is first-party, needs no key for public data, and renders as real DOM,
 // which means it inherits the theme instead of baking colours into an image URL.
 const GH_USER = "Mandela95";
-const GH_CACHE_KEY = "ghStats";
+// Versioned: bumping this invalidates entries cached under an older shape, so adding a
+// field can never leave returning visitors stuck with a stale, incomplete record.
+const GH_CACHE_KEY = "ghStats:v2";
+const GH_CACHE_FIELDS = ["repos", "followers", "since", "languages"];
 const GH_CACHE_TTL = 60 * 60 * 1000; // 1 hour — well inside the 60 req/hr anonymous limit
 
 // GitHub's own language colours, so the bars read as familiar.
@@ -143,14 +152,28 @@ async function loadGitHubStats() {
 
   if (!data) {
     try {
-      const [userRes, reposRes] = await Promise.all([
+      // Commit totals come from GitHub's own search API. A third-party badge service would
+      // report richer "contributions", but the last one this site depended on went offline
+      // and took the section with it — first-party and verifiable wins.
+      const [userRes, reposRes, commitsRes] = await Promise.all([
         fetch(`https://api.github.com/users/${GH_USER}`),
         fetch(`https://api.github.com/users/${GH_USER}/repos?per_page=100&type=owner`),
+        fetch(`https://api.github.com/search/commits?q=author:${GH_USER}&per_page=1`).catch(
+          () => null,
+        ),
       ]);
       if (!userRes.ok || !reposRes.ok) throw new Error("GitHub API unavailable");
 
       const user = await userRes.json();
       const repos = await reposRes.json();
+
+      // Search is rate-limited separately (10/min anonymous), so treat it as optional:
+      // a miss hides one row rather than losing the whole section.
+      let commits = null;
+      if (commitsRes && commitsRes.ok) {
+        const found = await commitsRes.json();
+        if (typeof found.total_count === "number") commits = found.total_count;
+      }
 
       const langCounts = {};
       repos.forEach((repo) => {
@@ -162,6 +185,7 @@ async function loadGitHubStats() {
       data = {
         repos: user.public_repos,
         followers: user.followers,
+        commits,
         since: new Date(user.created_at).getFullYear(),
         languages: Object.entries(langCounts)
           .sort((a, b) => b[1] - a[1])
@@ -189,7 +213,11 @@ function readCachedStats() {
     const raw = sessionStorage.getItem(GH_CACHE_KEY);
     if (!raw) return null;
     const { at, data } = JSON.parse(raw);
-    return Date.now() - at < GH_CACHE_TTL ? data : null;
+    if (Date.now() - at >= GH_CACHE_TTL) return null;
+    // Belt and braces alongside the version: a record missing any expected field is
+    // treated as a miss rather than rendered with gaps.
+    if (!data || GH_CACHE_FIELDS.some((f) => data[f] === undefined)) return null;
+    return data;
   } catch (e) {
     return null;
   }
@@ -199,6 +227,13 @@ function renderGitHubStats(data) {
   document.getElementById("ghRepos").textContent = data.repos;
   document.getElementById("ghFollowers").textContent = data.followers;
   document.getElementById("ghSince").textContent = data.since;
+
+  const commitsEl = document.getElementById("ghCommits");
+  if (typeof data.commits === "number") {
+    commitsEl.textContent = data.commits.toLocaleString();
+  } else {
+    commitsEl.closest("div")?.remove();
+  }
 
   const total = data.languages.reduce((sum, [, count]) => sum + count, 0) || 1;
   const list = document.getElementById("ghLangs");
@@ -708,6 +743,36 @@ document.addEventListener("DOMContentLoaded", () => {
       chatInput.focus();
     });
   });
+});
+
+// ===== YouTube facade =====
+// A raw YouTube <iframe> pulls well over a megabyte of Google JS on page load and sets
+// cookies before anyone presses play. These placeholders load the real player only on
+// click, so an unwatched video costs one self-hosted poster image and nothing else.
+document.querySelectorAll(".yt-facade").forEach((facade) => {
+  const button = facade.querySelector(".yt-facade-btn");
+  const videoId = facade.dataset.videoId;
+  if (!button || !videoId) return;
+
+  button.addEventListener(
+    "click",
+    () => {
+      const iframe = document.createElement("iframe");
+      // nocookie host + autoplay, since the click already expressed intent to watch.
+      iframe.src =
+        `https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}` +
+        "?autoplay=1&rel=0";
+      iframe.title = button.getAttribute("aria-label") || "Video player";
+      iframe.allow =
+        "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      iframe.referrerPolicy = "strict-origin-when-cross-origin";
+      iframe.allowFullscreen = true;
+
+      facade.replaceChildren(iframe);
+      iframe.focus();
+    },
+    { once: true },
+  );
 });
 
 // ===== Boot =====

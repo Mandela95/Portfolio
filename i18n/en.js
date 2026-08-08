@@ -12,6 +12,7 @@ const en = {
     timeline: "Timeline",
     skills: "Skills",
     projects: "Projects",
+    demo: "Demo",
     testimonials: "Testimonials",
     contact: "Contact",
   },
@@ -32,7 +33,7 @@ const en = {
   about: {
     title: "About Me",
     subtitle: "Full-Stack Engineer & Founder of Class A",
-    p1: "With <strong>+5 years</strong> of hands-on experience crafting modern web applications. I build interactive, responsive, and accessible user interfaces using <strong>TypeScript</strong> and <strong>React.js</strong>, and mobile apps using <strong>React Native</strong>.",
+    p1: "With <strong>5+ years</strong> of hands-on experience crafting modern web applications. I build interactive, responsive, and accessible user interfaces using <strong>TypeScript</strong> and <strong>React.js</strong>, and mobile apps using <strong>React Native</strong>.",
     p2: "I love turning complex problems into simple, beautiful, and intuitive designs. When I'm not coding, you'll find me exploring new technologies and contributing to open-source projects.",
     yearsExp: "Years Experience",
     projectsDone: "Projects Completed",
@@ -56,6 +57,7 @@ const en = {
     activity: "Activity",
     repos: "Public repositories",
     followers: "Followers",
+    commits: "Public commits",
     memberSince: "On GitHub since",
     viewProfile: "View profile on GitHub",
     topLanguages: "Most used languages",
@@ -184,12 +186,12 @@ const en = {
       privateSource: "Private source",
     },
     classA: {
-      title: "Class A — Education Management SaaS",
+      title: "Class A — EdTech SaaS",
       desc: "Multi-tenant platform for tutoring and educational centres, replacing scattered WhatsApp groups, spreadsheets, and paper records with one structured system for admins, teachers, and parents.",
-      role: "Founder, product lead, and sole full-stack engineer",
+      role: "Founder, product lead, and full-stack engineer",
       challenge:
         "Multi-tenant billing, QR attendance, and WhatsApp automation across Arabic and English",
-      outcome: "Live, paying-customer SaaS built from market research through to production",
+      outcome: "Live SaaS taken from market research through to production",
       readCaseStudy: "Read the full case study",
     },
     hotel: {
@@ -227,13 +229,6 @@ const en = {
       challenge: "Async data loading, posts, comments, and UX states",
       outcome: "Interactive feed experience backed by REST APIs",
     },
-    blog: {
-      title: "Blog Next.js",
-      desc: "Server-side rendered blog with dynamic routing, markdown support, and optimized performance using Next.js.",
-      role: "Next.js page architecture",
-      challenge: "Dynamic routes, content rendering, and performance",
-      outcome: "SEO-friendly blog structure with fast navigation",
-    },
   },
   testimonials: {
     title: "Recommendations",
@@ -270,7 +265,13 @@ const en = {
     ],
   },
   demoVideo: {
-    title: "Demo Video",
+    title: "Demo Videos",
+    badgeLabel: "Product demo",
+    classATitle: "Class A — product demo",
+    classADesc:
+      "A walkthrough of the platform I founded and built: attendance, billing, and the parent portal.",
+    playClassA: "Play video: Class A product demo",
+    portfolioTitle: "Portfolio walkthrough",
     desc: "See all features, UI, and logic of my work in action. <br><small>(Video hosted on Vidline)</small>",
   },
   projectSearch: {
@@ -297,46 +298,6 @@ const en = {
     sending: "Sending...",
     success: "Message sent successfully!",
     error: "Failed to send. Please try again.",
-  },
-  collaboration: {
-    title: "Collaboration & Teamwork",
-    subtitle: "Experience working with diverse teams in agile environments",
-    teamExp: "Team Experience",
-    teamExpDesc:
-      "Worked in cross-functional teams with designers, backend engineers, and product managers to deliver high-quality solutions",
-    agile: "Agile Scrum Methodology",
-    standup: "Daily Standups & Code Reviews",
-    sprint: "Sprint Planning & Retrospectives",
-    communication: "Communication",
-    communicationDesc:
-      "Clear documentation, effective communication, and collaborative problem-solving across time zones and cultures",
-    docs: "Technical Documentation",
-    remote: "Remote Collaboration Tools",
-    mentoring: "Mentoring & Knowledge Sharing",
-    versionControl: "Version Control",
-    versionControlDesc:
-      "Proficient with Git workflows, pull requests, code reviews, and collaborative development practices",
-    gitFlow: "Git Flow & Branching Strategies",
-    prReview: "Pull Request Reviews & Feedback",
-    conflict: "Merge Conflict Resolution",
-    projectMgmt: "Project Management",
-    projectMgmtDesc:
-      "Experience with Jira, Trello, and other tools for task tracking, timeline management, and team coordination",
-    jira: "Jira & Issue Tracking",
-    timeline: "Timeline & Deadline Management",
-    milestones: "Milestones & Deliverables",
-    openSource: "Open Source",
-    openSourceDesc:
-      "Active contributor to open-source projects, sharing knowledge and collaborating with global developer communities",
-    contribute: "Contributing to Open Source",
-    community: "Community Engagement",
-    knowledge: "Knowledge Sharing & Documentation",
-    clientRelations: "Client Relations",
-    clientRelationsDesc:
-      "Strong client management skills with focus on understanding requirements and delivering exceptional results",
-    requirements: "Requirements Gathering & Analysis",
-    feedback: "Feedback Implementation & Iteration",
-    delivery: "Quality Assurance & Delivery",
   },
   chat: {
     title: "Quick Answers",
@@ -376,7 +337,11 @@ const en = {
       stack: "Stack",
       stackValue: "Next.js, TypeScript, PostgreSQL, Supabase",
       status: "Status",
-      statusValue: "Live, with paying customers",
+      statusValue: "Live in production",
+    },
+    demo: {
+      title: "See it running",
+      body: "A walkthrough of the product: how a session is scheduled, how attendance is taken at the door, and what a parent sees at the other end.",
     },
     problem: {
       title: "The problem",
@@ -433,7 +398,7 @@ const en = {
     },
     outcome: {
       title: "Where it stands",
-      p1: "Class A is live and serving paying centres. It went from an idea to a production platform — product strategy, design, branding, and full-stack engineering — carried by one person.",
+      p1: "Class A is live and in use by tutoring centres. It went from an idea to a production platform — product strategy, design, branding, and full-stack engineering — carried by one person.",
       p2: "The part I would carry into any team is the sequence: talk to the people with the problem, map what existing tools refuse to do, and build for the constraint rather than the feature list. The QR scanner exists because of a queue at a door, not because it looked good on a roadmap.",
       quote:
         "He is the mastermind behind Class A, conceiving the idea and executing it flawlessly from scratch\u2026 He built a system that not only includes all top-tier market features but also addresses existing gaps by introducing missing functionalities that none of the competitors offered.",

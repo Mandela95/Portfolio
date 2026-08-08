@@ -681,6 +681,10 @@ nav ul li a.active::after {
   border-radius: var(--radius-lg);
   aspect-ratio: 3/4;
   object-fit: cover;
+  /* The portrait is a transparent cutout, so it needs a surface behind it.
+     Tokens rather than a baked-in backdrop, so it follows the theme. */
+  background: linear-gradient(160deg, var(--bg-card-hover), var(--bg-secondary));
+  border: 1px solid var(--border-color);
 }
 
 .about-image::before {
@@ -2273,95 +2277,6 @@ footer > .footer-content > p {
   direction: ltr;
 }
 
-/* ===== Collaboration Section ===== */
-.collaboration {
-  padding: 6rem 2rem;
-  max-width: var(--max-width);
-  margin: 0 auto;
-  background: var(--bg-secondary);
-}
-
-.collaboration .section-title {
-  margin-bottom: 1rem;
-}
-
-.collaboration .section-subtitle {
-  font-size: 1.1rem;
-  color: var(--text-secondary);
-  margin-bottom: 3rem;
-  text-align: center;
-}
-
-.collaboration-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-}
-
-.collab-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius);
-  padding: 2.5rem 2rem;
-  transition: all var(--transition);
-  text-align: center;
-}
-
-.collab-card:hover {
-  border-color: var(--accent);
-  box-shadow: var(--shadow-hover);
-  transform: translateY(-5px);
-}
-
-.collab-icon {
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(135deg, var(--accent), #8b5cf6);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 1.5rem;
-  font-size: 1.8rem;
-  color: white;
-}
-
-.collab-card h3 {
-  font-size: 1.3rem;
-  margin-bottom: 1rem;
-  color: var(--text-primary);
-}
-
-.collab-card p {
-  font-size: 0.95rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-}
-
-.collab-features {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  text-align: left;
-}
-
-.collab-features li {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.8rem;
-  margin-bottom: 0.8rem;
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-}
-
-.collab-features i {
-  color: var(--accent);
-  margin-top: 0.2rem;
-  flex-shrink: 0;
-}
-
 /* ===== AI Chat Widget ===== */
 .chat-widget {
   position: fixed;
@@ -2629,18 +2544,6 @@ footer > .footer-content > p {
 
 /* ===== Responsive Collaboration ===== */
 @media (max-width: 768px) {
-  .collaboration {
-    padding: 4rem 1.5rem;
-  }
-
-  .collaboration-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .collab-card {
-    padding: 2rem 1.5rem;
-  }
-
   .chat-widget {
     bottom: calc(1rem + 50px + 0.8rem);
   }
@@ -2691,10 +2594,6 @@ footer > .footer-content > p {
 
 [dir="rtl"] .chat-input-wrapper {
   flex-direction: row-reverse;
-}
-
-[dir="rtl"] .collab-features {
-  text-align: right;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2973,4 +2872,189 @@ footer > .footer-content > p {
 
 [dir="rtl"] .project-case-link i {
   transform: scaleX(-1);
+}
+
+/* ===== Video embeds ===== */
+.video-item {
+  max-width: 760px;
+  margin: 0 auto 4rem;
+}
+
+.video-item:last-child {
+  margin-bottom: 0;
+}
+
+.video-item h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.video-desc {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  margin-bottom: 1.25rem;
+}
+
+.video-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.video-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* --- YouTube facade: a poster and a play button. The real player is only
+       inserted on click, so the page costs nothing to Google until then. --- */
+.yt-facade {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  background: #000;
+}
+
+.yt-facade-btn {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: block;
+}
+
+.yt-facade-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition:
+    transform var(--transition),
+    filter var(--transition);
+}
+
+.yt-facade-btn:hover img,
+.yt-facade-btn:focus-visible img {
+  transform: scale(1.03);
+  filter: brightness(0.85);
+}
+
+.yt-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.yt-play-bg {
+  fill: #212121;
+  fill-opacity: 0.8;
+  transition:
+    fill var(--transition),
+    fill-opacity var(--transition);
+}
+
+.yt-facade-btn:hover .yt-play-bg,
+.yt-facade-btn:focus-visible .yt-play-bg {
+  fill: #f00;
+  fill-opacity: 1;
+}
+
+.yt-facade iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.yt-facade-btn:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: -3px;
+}
+
+/* Brand badge over the video poster. Text rather than baked into the image, so it stays
+   sharp at any DPI, translates with the page, and is readable by assistive tech. */
+.yt-brand {
+  position: absolute;
+  top: 1rem;
+  inset-inline-start: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 0.9rem 0.5rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(10, 10, 10, 0.62);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  pointer-events: none; /* clicks fall through to the play button */
+}
+
+.yt-brand img {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  background: #fff;
+  padding: 2px;
+}
+
+.yt-brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+  text-align: start;
+}
+
+.yt-brand-text strong {
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+
+.yt-brand-text span {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 480px) {
+  .yt-brand {
+    top: 0.6rem;
+    inset-inline-start: 0.6rem;
+    padding: 0.4rem 0.7rem 0.4rem 0.45rem;
+  }
+
+  .yt-brand img {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+/* Keep "View full recommendation" on one line — it wrapped to three inside the
+   narrower grid cards once the section went from one card to three. */
+.testimonial-footer .btn {
+  white-space: nowrap;
+  font-size: 0.78rem;
+  padding: 0.5rem 1rem;
+  gap: 0.4rem;
+}
+
+.testimonial-footer .btn i {
+  font-size: 0.9em;
 }

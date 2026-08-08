@@ -151,7 +151,7 @@
           </div>
           <div>
             <dt data-i18n="caseStudy.meta.status">Status</dt>
-            <dd data-i18n="caseStudy.meta.statusValue">Live, with paying customers</dd>
+            <dd data-i18n="caseStudy.meta.statusValue">Live in production</dd>
           </div>
         </dl>
 
@@ -186,6 +186,56 @@
           </figcaption>
         </figure>
       </header>
+
+      <!-- Demo -->
+      <section class="cs-section reveal">
+        <h2 data-i18n="caseStudy.demo.title">See it running</h2>
+        <p data-i18n="caseStudy.demo.body">
+          A walkthrough of the product: how a session is scheduled, how attendance is taken at the
+          door, and what a parent sees at the other end.
+        </p>
+        <!-- Facade: nothing loads from YouTube until the visitor presses play. -->
+        <div class="yt-facade" data-video-id="HN31bgXiru4">
+          <button
+            type="button"
+            class="yt-facade-btn"
+            data-i18n-label="demoVideo.playClassA"
+            aria-label="Play video: Class A product demo"
+          >
+            <img
+              src="Images/class-a-video-poster.webp"
+              alt=""
+              width="1280"
+              height="720"
+              loading="lazy"
+              decoding="async"
+            />
+            <span class="yt-play" aria-hidden="true">
+              <svg viewBox="0 0 68 48" width="68" height="48">
+                <path
+                  class="yt-play-bg"
+                  d="M66.5 7.7c-.8-2.9-2.5-5.4-5.4-6.2C55.8.1 34 0 34 0S12.2.1 6.9 1.5C4 2.3 2.3 4.8 1.5 7.7.1 13 0 24 0 24s.1 11 1.5 16.3c.8 2.9 2.5 5.4 5.4 6.2C12.2 47.9 34 48 34 48s21.8-.1 27.1-1.5c2.9-.8 4.6-3.3 5.4-6.2C67.9 35 68 24 68 24s-.1-11-1.5-16.3z"
+                />
+                <path d="M45 24 27 14v20" fill="#fff" />
+              </svg>
+            </span>
+          </button>
+          <span class="yt-brand" aria-hidden="true">
+            <img
+              src="Images/class-a-mark.webp"
+              alt=""
+              width="96"
+              height="93"
+              loading="lazy"
+              decoding="async"
+            />
+            <span class="yt-brand-text">
+              <strong>Class A</strong>
+              <span data-i18n="demoVideo.badgeLabel">Product demo</span>
+            </span>
+          </span>
+        </div>
+      </section>
 
       <!-- Problem -->
       <section class="cs-section reveal">
@@ -374,8 +424,9 @@
       <section class="cs-section reveal">
         <h2 data-i18n="caseStudy.outcome.title">Where it stands</h2>
         <p data-i18n="caseStudy.outcome.p1">
-          Class A is live and serving paying centres. It went from an idea to a production platform
-          — product strategy, design, branding, and full-stack engineering — carried by one person.
+          Class A is live and in use by tutoring centres. It went from an idea to a production
+          platform — product strategy, design, branding, and full-stack engineering — carried by one
+          person.
         </p>
         <p data-i18n="caseStudy.outcome.p2">
           The part I would carry into any team is the sequence: talk to the people with the problem,

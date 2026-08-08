@@ -138,9 +138,11 @@
           <li><a href="#timeline" class="nav-link" data-i18n="nav.timeline">Timeline</a></li>
           <li><a href="#skills" class="nav-link" data-i18n="nav.skills">Skills</a></li>
           <li><a href="#projects" class="nav-link" data-i18n="nav.projects">Projects</a></li>
+
           <li>
             <a href="#testimonials" class="nav-link" data-i18n="nav.testimonials">Testimonials</a>
           </li>
+          <li><a href="#demo-video" class="nav-link" data-i18n="nav.demo">Demo</a></li>
           <li><a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a></li>
         </ul>
       </nav>
@@ -266,7 +268,7 @@
             <h3 data-i18n="about.subtitle">Frontend and Cross-platform Mobile Developer</h3>
             <p data-i18n="about.p1">
               With
-              <strong>+5 years</strong>
+              <strong>5+ years</strong>
               of hands-on experience crafting modern web applications. I build interactive,
               responsive, and accessible user interfaces using
               <strong>TypeScript</strong>
@@ -544,6 +546,10 @@
                 <div>
                   <dt data-i18n="githubStats.followers">Followers</dt>
                   <dd id="ghFollowers">—</dd>
+                </div>
+                <div>
+                  <dt data-i18n="githubStats.commits">Public commits</dt>
+                  <dd id="ghCommits">—</dd>
                 </div>
                 <div>
                   <dt data-i18n="githubStats.memberSince">On GitHub since</dt>
@@ -956,7 +962,7 @@
                 <div>
                   <span data-i18n="projects.labels.outcome">Outcome</span>
                   <strong data-i18n="projects.classA.outcome">
-                    Live, paying-customer SaaS built from market research through to production
+                    Live SaaS taken from market research through to production
                   </strong>
                 </div>
               </div>
@@ -1278,61 +1284,6 @@
               </div>
             </div>
           </div>
-          <!-- Blog Next.js -->
-          <div class="project-card reveal" data-category="nextjs">
-            <div class="project-image">
-              <img src="Images/Blog.webp" alt="Blog Next.js" loading="lazy" decoding="async" />
-              <div class="project-overlay">
-                <a
-                  href="https://github.com/Mandela95/Blog-Next.js"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="project-link"
-                  aria-label="View Code"
-                >
-                  <i class="fab fa-github" aria-hidden="true"></i>
-                </a>
-                <a
-                  href="https://blog-next-js-theta.vercel.app/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="project-link"
-                  aria-label="Live Demo"
-                >
-                  <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-                </a>
-              </div>
-            </div>
-            <div class="project-info">
-              <h3 data-i18n="projects.blog.title">Blog Next.js</h3>
-              <p data-i18n="projects.blog.desc">
-                Server-side rendered blog with dynamic routing, markdown support, and optimized
-                performance using Next.js.
-              </p>
-              <div class="project-proof">
-                <div>
-                  <span data-i18n="projects.labels.role">Role</span>
-                  <strong data-i18n="projects.blog.role">Next.js page architecture</strong>
-                </div>
-                <div>
-                  <span data-i18n="projects.labels.challenge">Challenge</span>
-                  <strong data-i18n="projects.blog.challenge">
-                    Dynamic routes, content rendering, and performance
-                  </strong>
-                </div>
-                <div>
-                  <span data-i18n="projects.labels.outcome">Outcome</span>
-                  <strong data-i18n="projects.blog.outcome">
-                    SEO-friendly blog structure with fast navigation
-                  </strong>
-                </div>
-              </div>
-              <div class="project-tags">
-                <span>Next.js</span>
-                <span>React</span>
-              </div>
-            </div>
-          </div>
         </div>
         <p id="searchResults" class="search-status" role="status" aria-live="polite" hidden></p>
         <div class="more-projects reveal">
@@ -1449,210 +1400,76 @@
         </div>
       </section>
 
-      <!-- Collaboration Section -->
-      <section class="collaboration" id="collaboration">
-        <h2 class="section-title reveal" data-i18n="collaboration.title">
-          Collaboration & Teamwork
-        </h2>
-        <p class="section-subtitle reveal" data-i18n="collaboration.subtitle">
-          Experience working with diverse teams in agile environments
-        </p>
-
-        <div class="collaboration-grid">
-          <!-- Team Experience -->
-          <div class="collab-card reveal">
-            <div class="collab-icon">
-              <i class="fas fa-users" aria-hidden="true"></i>
-            </div>
-            <h3 data-i18n="collaboration.teamExp">Team Experience</h3>
-            <p data-i18n="collaboration.teamExpDesc">
-              Worked in cross-functional teams with designers, backend engineers, and product
-              managers to deliver high-quality solutions
-            </p>
-            <ul class="collab-features">
-              <li>
-                <i class="fas fa-check" aria-hidden="true"></i>
-                <span data-i18n="collaboration.agile">Agile Scrum Methodology</span>
-              </li>
-              <li>
-                <i class="fas fa-check" aria-hidden="true"></i>
-                <span data-i18n="collaboration.standup">Daily Standups & Code Reviews</span>
-              </li>
-              <li>
-                <i class="fas fa-check" aria-hidden="true"></i>
-                <span data-i18n="collaboration.sprint">Sprint Planning & Retrospectives</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Communication Skills -->
-          <div class="collab-card reveal">
-            <div class="collab-icon">
-              <i class="fas fa-comments" aria-hidden="true"></i>
-            </div>
-            <h3 data-i18n="collaboration.communication">Communication</h3>
-            <p data-i18n="collaboration.communicationDesc">
-              Clear documentation, effective communication, and collaborative problem-solving across
-              time zones and cultures
-            </p>
-            <ul class="collab-features">
-              <li>
-                <i class="fas fa-check" aria-hidden="true"></i>
-                <span data-i18n="collaboration.docs">Technical Documentation</span>
-              </li>
-              <li>
-                <i class="fas fa-check" aria-hidden="true"></i>
-                <span data-i18n="collaboration.remote">Remote Collaboration Tools</span>
-              </li>
-              <li>
-                <i class="fas fa-check" aria-hidden="true"></i>
-                <span data-i18n="collaboration.mentoring">Mentoring & Knowledge Sharing</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Version Control -->
-          <div class="collab-card reveal">
-            <div class="collab-icon">
-              <i class="fas fa-code-branch" aria-hidden="true"></i>
-            </div>
-            <h3 data-i18n="collaboration.versionControl">Version Control</h3>
-            <p data-i18n="collaboration.versionControlDesc">
-              Proficient with Git workflows, pull requests, code reviews, and collaborative
-              development practices
-            </p>
-            <ul class="collab-features">
-              <li>
-                <i class="fas fa-check" aria-hidden="true"></i>
-                <span data-i18n="collaboration.gitFlow">Git Flow & Branching Strategies</span>
-              </li>
-              <li>
-                <i class="fas fa-check" aria-hidden="true"></i>
-                <span data-i18n="collaboration.prReview">Pull Request Reviews & Feedback</span>
-              </li>
-              <li>
-                <i class="fas fa-check" aria-hidden="true"></i>
-                <span data-i18n="collaboration.conflict">Merge Conflict Resolution</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Project Management -->
-          <div class="collab-card reveal">
-            <div class="collab-icon">
-              <i class="fas fa-tasks" aria-hidden="true"></i>
-            </div>
-            <h3 data-i18n="collaboration.projectMgmt">Project Management</h3>
-            <p data-i18n="collaboration.projectMgmtDesc">
-              Experience with Jira, Trello, and other tools for task tracking, timeline management,
-              and team coordination
-            </p>
-            <ul class="collab-features">
-              <li>
-                <i class="fas fa-check" aria-hidden="true"></i>
-                <span data-i18n="collaboration.jira">Jira & Issue Tracking</span>
-              </li>
-              <li>
-                <i class="fas fa-check" aria-hidden="true"></i>
-                <span data-i18n="collaboration.timeline">Timeline & Deadline Management</span>
-              </li>
-              <li>
-                <i class="fas fa-check" aria-hidden="true"></i>
-                <span data-i18n="collaboration.milestones">Milestones & Deliverables</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Open Source -->
-          <div class="collab-card reveal">
-            <div class="collab-icon">
-              <i class="fas fa-share-alt" aria-hidden="true"></i>
-            </div>
-            <h3 data-i18n="collaboration.openSource">Open Source</h3>
-            <p data-i18n="collaboration.openSourceDesc">
-              Active contributor to open-source projects, sharing knowledge and collaborating with
-              global developer communities
-            </p>
-            <ul class="collab-features">
-              <li>
-                <i class="fas fa-check" aria-hidden="true"></i>
-                <span data-i18n="collaboration.contribute">Contributing to Open Source</span>
-              </li>
-              <li>
-                <i class="fas fa-check" aria-hidden="true"></i>
-                <span data-i18n="collaboration.community">Community Engagement</span>
-              </li>
-              <li>
-                <i class="fas fa-check" aria-hidden="true"></i>
-                <span data-i18n="collaboration.knowledge">Knowledge Sharing & Documentation</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Client Relations -->
-          <div class="collab-card reveal">
-            <div class="collab-icon">
-              <i class="fas fa-handshake" aria-hidden="true"></i>
-            </div>
-            <h3 data-i18n="collaboration.clientRelations">Client Relations</h3>
-            <p data-i18n="collaboration.clientRelationsDesc">
-              Strong client management skills with focus on understanding requirements and
-              delivering exceptional results
-            </p>
-            <ul class="collab-features">
-              <li>
-                <i class="fas fa-check" aria-hidden="true"></i>
-                <span data-i18n="collaboration.requirements">
-                  Requirements Gathering & Analysis
-                </span>
-              </li>
-              <li>
-                <i class="fas fa-check" aria-hidden="true"></i>
-                <span data-i18n="collaboration.feedback">Feedback Implementation & Iteration</span>
-              </li>
-              <li>
-                <i class="fas fa-check" aria-hidden="true"></i>
-                <span data-i18n="collaboration.delivery">Quality Assurance & Delivery</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
       <!-- Demo Video Section -->
       <section class="demo-video" id="demo-video">
-        <h2 class="section-title reveal" data-i18n="demoVideo.title">Demo Video</h2>
-        <div class="video-wrapper reveal" style="max-width: 700px; margin: 0 auto">
-          <div
-            style="
-              position: relative;
-              padding-bottom: 56.25%;
-              height: 0;
-              overflow: hidden;
-              border-radius: 12px;
-              box-shadow: 0 2px 16px rgba(0, 0, 0, 0.12);
-            "
-          >
+        <h2 class="section-title reveal" data-i18n="demoVideo.title">Demo Videos</h2>
+
+        <div class="video-item reveal">
+          <h3 data-i18n="demoVideo.classATitle">Class A — product demo</h3>
+          <p class="video-desc" data-i18n="demoVideo.classADesc">
+            A walkthrough of the platform I founded and built: attendance, billing, and the parent
+            portal.
+          </p>
+          <!-- Facade: nothing loads from YouTube until the visitor presses play. -->
+          <div class="yt-facade" data-video-id="HN31bgXiru4">
+            <button
+              type="button"
+              class="yt-facade-btn"
+              data-i18n-label="demoVideo.playClassA"
+              aria-label="Play video: Class A product demo"
+            >
+              <img
+                src="Images/class-a-video-poster.webp"
+                alt=""
+                width="1280"
+                height="720"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="yt-play" aria-hidden="true">
+                <svg viewBox="0 0 68 48" width="68" height="48">
+                  <path
+                    class="yt-play-bg"
+                    d="M66.5 7.7c-.8-2.9-2.5-5.4-5.4-6.2C55.8.1 34 0 34 0S12.2.1 6.9 1.5C4 2.3 2.3 4.8 1.5 7.7.1 13 0 24 0 24s.1 11 1.5 16.3c.8 2.9 2.5 5.4 5.4 6.2C12.2 47.9 34 48 34 48s21.8-.1 27.1-1.5c2.9-.8 4.6-3.3 5.4-6.2C67.9 35 68 24 68 24s-.1-11-1.5-16.3z"
+                  />
+                  <path d="M45 24 27 14v20" fill="#fff" />
+                </svg>
+              </span>
+            </button>
+            <span class="yt-brand" aria-hidden="true">
+              <img
+                src="Images/class-a-mark.webp"
+                alt=""
+                width="96"
+                height="93"
+                loading="lazy"
+                decoding="async"
+              />
+              <span class="yt-brand-text">
+                <strong>Class A</strong>
+                <span data-i18n="demoVideo.badgeLabel">Product demo</span>
+              </span>
+            </span>
+          </div>
+          <a href="class-a.html" class="project-case-link">
+            <span data-i18n="projects.classA.readCaseStudy">Read the full case study</span>
+            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+
+        <div class="video-item reveal">
+          <h3 data-i18n="demoVideo.portfolioTitle">Portfolio walkthrough</h3>
+          <p class="video-desc" data-i18n="demoVideo.desc"></p>
+          <div class="video-frame">
             <iframe
               src="https://www.vidline.com/share/V0O6HJRR2J/198d9a3af8dd732ce9a509d8c6b47aa1"
-              title="Portfolio Demo Video"
+              title="Portfolio walkthrough video"
               loading="lazy"
               referrerpolicy="strict-origin-when-cross-origin"
               allow="fullscreen; picture-in-picture"
               allowfullscreen
-              style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none"
             ></iframe>
           </div>
-          <p
-            style="
-              margin-top: 1rem;
-              text-align: center;
-              max-width: 600px;
-              margin-left: auto;
-              margin-right: auto;
-            "
-            data-i18n="demoVideo.desc"
-          ></p>
         </div>
       </section>
 
@@ -1896,6 +1713,7 @@
           <a href="#timeline" data-i18n="nav.timeline">Timeline</a>
           <a href="#skills" data-i18n="nav.skills">Skills</a>
           <a href="#projects" data-i18n="nav.projects">Projects</a>
+          <a href="#demo-video" data-i18n="nav.demo">Demo</a>
           <a href="#testimonials" data-i18n="nav.testimonials">Testimonials</a>
           <a href="#contact" data-i18n="nav.contact">Contact</a>
         </div>

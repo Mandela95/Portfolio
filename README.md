@@ -10,13 +10,18 @@ vanilla JavaScript.
 
 ## Lighthouse
 
-| Device      | Performance | Accessibility | Best Practices | SEO |
-| ----------- | ----------- | ------------- | -------------- | --- |
-| **Desktop** | 98          | 100           | 100            | 100 |
-| **Mobile**  | 96          | 100           | 100            | 100 |
+Measured locally, desktop preset:
 
-Total page weight: **662 KB**. These scores are enforced on every push — CI fails the build if the
-site regresses below them (see [`.github/lighthouserc.json`](.github/lighthouserc.json)).
+| Page                   | Performance | Accessibility | Best Practices | SEO |
+| ---------------------- | ----------- | ------------- | -------------- | --- |
+| **Portfolio**          | 100         | 100           | 100            | 100 |
+| **Class A case study** | 98          | 100           | 100            | 100 |
+
+On the throttled mobile preset performance sits at 90–95 (LCP is hero text over simulated slow 4G),
+which is why CI asserts a floor of 85 rather than the desktop figure — the accessibility, best
+practices, and SEO categories are asserted at a perfect 100. Total page weight is **646 KB**, and
+the YouTube embeds add nothing until someone presses play. See
+[`.github/lighthouserc.json`](.github/lighthouserc.json).
 
 ---
 
@@ -31,8 +36,9 @@ site regresses below them (see [`.github/lighthouserc.json`](.github/lighthouser
 | ⚡ **Fast**                | WebP imagery, non-blocking fonts and icons, `IntersectionObserver` instead of scroll handlers      |
 | 🔍 **SEO-ready**           | Canonical URL, Open Graph, Twitter cards, JSON-LD `Person` schema, sitemap, robots.txt             |
 | 🧭 **Career timeline**     | Roles, stack, and quantified accomplishments                                                       |
-| 🎯 **7 featured projects** | Filter by technology plus free-text search, each with Role / Challenge / Outcome                   |
+| 🎯 **6 featured projects** | Filter by technology plus free-text search, each with Role / Challenge / Outcome                   |
 | 📝 **Case study**          | A dedicated page on Class A: research, competitor gaps, architecture, and outcome                  |
+| 🎬 **Video, cheaply**      | YouTube embeds use a click-to-load facade — no Google requests or cookies until play is pressed    |
 | 💬 **Recommendations**     | Three verified LinkedIn recommendations from former teammates                                      |
 | 📊 **GitHub overview**     | Repo/follower counts and language breakdown, fetched live from the GitHub REST API                 |
 | ✉️ **Contact form**        | EmailJS-backed, with honeypot spam protection and a `mailto:` fallback                             |
