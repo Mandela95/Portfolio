@@ -53,6 +53,12 @@ const en = {
   },
   githubStats: {
     title: "GitHub Overview",
+    activity: "Activity",
+    repos: "Public repositories",
+    followers: "Followers",
+    memberSince: "On GitHub since",
+    viewProfile: "View profile on GitHub",
+    topLanguages: "Most used languages",
   },
   timeline: {
     title: "Career Journey",
@@ -209,13 +215,19 @@ const en = {
     title: "Featured Recommendation",
     subtitle: "A verified professional signal from LinkedIn",
     source: "LinkedIn Recommendation",
-    summary:
-      "I've had the pleasure of working closely with Mohamed El-Seady, and I can confidently say he is one of the most reliable and impactful full-stack engineers I've worked with. His ability to deliver high-quality solutions across web and mobile consistently elevates the entire team.",
-    author: "Mahmoud El-Fiky",
-    role: "Full-Stack & Cross-platform Mobile Developer",
-    context: "Worked with Mohamed on the same team",
-    date: "December 10, 2025",
     view: "View full recommendation",
+    // One entry per recommendation, matched by index to the cards in index.html.
+    // ar.js must stay the same length and order.
+    items: [
+      {
+        quote:
+          "I've had the pleasure of working closely with Mohamed El-Seady, and I can confidently say he is one of the most reliable and impactful full-stack engineers I've worked with. His ability to deliver high-quality solutions across web and mobile consistently elevates the entire team.",
+        author: "Mahmoud El-Fiky",
+        role: "Full-Stack & Cross-platform Mobile Developer",
+        context: "Worked with Mohamed on the same team",
+        date: "December 10, 2025",
+      },
+    ],
   },
   demoVideo: {
     title: "Demo Video",

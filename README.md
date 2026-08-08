@@ -12,10 +12,10 @@ vanilla JavaScript.
 
 | Device      | Performance | Accessibility | Best Practices | SEO |
 | ----------- | ----------- | ------------- | -------------- | --- |
-| **Desktop** | 99          | 100           | 100            | 100 |
+| **Desktop** | 100         | 100           | 100            | 100 |
 | **Mobile**  | 97          | 100           | 100            | 100 |
 
-Total page weight: **626 KB**. These scores are enforced on every push — CI fails the build if the
+Total page weight: **646 KB**. These scores are enforced on every push — CI fails the build if the
 site regresses below them (see [`.github/lighthouserc.json`](.github/lighthouserc.json)).
 
 ---
@@ -25,7 +25,7 @@ site regresses below them (see [`.github/lighthouserc.json`](.github/lighthouser
 | Feature                    | Detail                                                                                             |
 | -------------------------- | -------------------------------------------------------------------------------------------------- |
 | 🌐 **Bilingual (EN / AR)** | Full localization with real RTL support, including direction flip and an Arabic-specific typeface  |
-| 🌓 **Dark / Light theme**  | Persisted to `localStorage`, with theme-aware third-party embeds                                   |
+| 🌓 **Dark / Light theme**  | Persisted to `localStorage`, applied via CSS custom properties                                     |
 | 📱 **Responsive**          | Mobile-first layout, tested from 320px up                                                          |
 | ♿ **Accessible**          | Semantic landmarks, skip link, ARIA states, focus-trapped dialog, `prefers-reduced-motion` support |
 | ⚡ **Fast**                | WebP imagery, non-blocking fonts and icons, `IntersectionObserver` instead of scroll handlers      |
@@ -33,7 +33,7 @@ site regresses below them (see [`.github/lighthouserc.json`](.github/lighthouser
 | 🧭 **Career timeline**     | Roles, stack, and quantified accomplishments                                                       |
 | 🎯 **6 featured projects** | Filter by technology plus free-text search, each with Role / Challenge / Outcome                   |
 | 💬 **Testimonial**         | Verified LinkedIn recommendation from a former teammate                                            |
-| 📊 **GitHub overview**     | Live contribution and language stats                                                               |
+| 📊 **GitHub overview**     | Repo/follower counts and language breakdown, fetched live from the GitHub REST API                 |
 | ✉️ **Contact form**        | EmailJS-backed, with honeypot spam protection and a `mailto:` fallback                             |
 
 ---

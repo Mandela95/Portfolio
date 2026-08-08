@@ -85,7 +85,6 @@ const savedTheme = localStorage.getItem("theme") || "dark";
 function applyTheme(theme) {
   document.documentElement.setAttribute("data-theme", theme);
   updateThemeIcon(theme);
-  updateGitHubStatsTheme(theme);
 }
 
 themeToggle.addEventListener("click", () => {
@@ -104,26 +103,137 @@ function updateThemeIcon(theme) {
       : '<i class="fas fa-moon" aria-hidden="true"></i>';
 }
 
-// The GitHub stats cards are remote-rendered images, so their colours have to be
-// requested from the API rather than styled with CSS.
-const GH_THEMES = {
-  dark: { bg: "0a0a0a", border: "2a2a2a", title: "ffffff", text: "a0a0a0", icon: "8b85ff" },
-  light: { bg: "ffffff", border: "e0e0e0", title: "1a1a1a", text: "555555", icon: "4f46e5" },
+applyTheme(savedTheme);
+
+// ===== GitHub Overview =====
+// Built from the official REST API rather than a third-party badge service. The previous
+// embed (github-readme-stats.vercel.app) went offline and took the whole section with it;
+// api.github.com is first-party, needs no key for public data, and renders as real DOM,
+// which means it inherits the theme instead of baking colours into an image URL.
+const GH_USER = "Mandela95";
+const GH_CACHE_KEY = "ghStats";
+const GH_CACHE_TTL = 60 * 60 * 1000; // 1 hour — well inside the 60 req/hr anonymous limit
+
+// GitHub's own language colours, so the bars read as familiar.
+const LANG_COLORS = {
+  JavaScript: "#f1e05a",
+  TypeScript: "#3178c6",
+  HTML: "#e34c26",
+  CSS: "#563d7c",
+  Python: "#3572a5",
+  Java: "#b07219",
+  Shell: "#89e051",
+  Dart: "#00b4ab",
+  Kotlin: "#a97bff",
+  Swift: "#f05138",
 };
 
-function updateGitHubStatsTheme(theme) {
-  const c = GH_THEMES[theme] || GH_THEMES.dark;
-  document.querySelectorAll(".gh-stat").forEach((img) => {
-    const path = img.getAttribute("data-gh-path");
-    if (!path) return;
-    img.src =
-      `https://github-readme-stats.vercel.app/${path}` +
-      `&hide_border=true&bg_color=${c.bg}&border_color=${c.border}` +
-      `&title_color=${c.title}&text_color=${c.text}&icon_color=${c.icon}`;
+async function loadGitHubStats() {
+  const section = document.getElementById("stats-analytics");
+  if (!section) return;
+
+  let data = readCachedStats();
+
+  if (!data) {
+    try {
+      const [userRes, reposRes] = await Promise.all([
+        fetch(`https://api.github.com/users/${GH_USER}`),
+        fetch(`https://api.github.com/users/${GH_USER}/repos?per_page=100&type=owner`),
+      ]);
+      if (!userRes.ok || !reposRes.ok) throw new Error("GitHub API unavailable");
+
+      const user = await userRes.json();
+      const repos = await reposRes.json();
+
+      const langCounts = {};
+      repos.forEach((repo) => {
+        if (repo.language) {
+          langCounts[repo.language] = (langCounts[repo.language] || 0) + 1;
+        }
+      });
+
+      data = {
+        repos: user.public_repos,
+        followers: user.followers,
+        since: new Date(user.created_at).getFullYear(),
+        languages: Object.entries(langCounts)
+          .sort((a, b) => b[1] - a[1])
+          .slice(0, 5),
+      };
+
+      try {
+        sessionStorage.setItem(GH_CACHE_KEY, JSON.stringify({ at: Date.now(), data }));
+      } catch (e) {
+        /* storage full or blocked — the fetch still succeeded, so carry on */
+      }
+    } catch (e) {
+      // Leave the section hidden. A missing section beats a broken one.
+      console.warn("GitHub stats unavailable:", e.message);
+      return;
+    }
+  }
+
+  renderGitHubStats(data);
+  section.hidden = false;
+}
+
+function readCachedStats() {
+  try {
+    const raw = sessionStorage.getItem(GH_CACHE_KEY);
+    if (!raw) return null;
+    const { at, data } = JSON.parse(raw);
+    return Date.now() - at < GH_CACHE_TTL ? data : null;
+  } catch (e) {
+    return null;
+  }
+}
+
+function renderGitHubStats(data) {
+  document.getElementById("ghRepos").textContent = data.repos;
+  document.getElementById("ghFollowers").textContent = data.followers;
+  document.getElementById("ghSince").textContent = data.since;
+
+  const total = data.languages.reduce((sum, [, count]) => sum + count, 0) || 1;
+  const list = document.getElementById("ghLangs");
+  list.textContent = "";
+
+  data.languages.forEach(([name, count]) => {
+    const percent = Math.round((count / total) * 100);
+    const color = LANG_COLORS[name] || "var(--accent)";
+
+    const li = document.createElement("li");
+    li.className = "gh-lang";
+
+    const head = document.createElement("div");
+    head.className = "gh-lang-head";
+
+    const label = document.createElement("span");
+    label.className = "gh-lang-name";
+    label.textContent = name;
+
+    const value = document.createElement("span");
+    value.className = "gh-lang-value";
+    value.textContent = `${percent}%`;
+
+    head.append(label, value);
+
+    const track = document.createElement("div");
+    track.className = "gh-lang-track";
+    // The list already conveys the values as text, so the bar is decorative.
+    track.setAttribute("aria-hidden", "true");
+
+    const bar = document.createElement("span");
+    bar.className = "gh-lang-bar";
+    bar.style.width = `${percent}%`;
+    bar.style.background = color;
+
+    track.appendChild(bar);
+    li.append(head, track);
+    list.appendChild(li);
   });
 }
 
-applyTheme(savedTheme);
+loadGitHubStats();
 
 // ===== Typing Variables (declared early so setLanguage can access them) =====
 const typedTextEl = document.getElementById("typedText");

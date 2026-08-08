@@ -42,7 +42,7 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://github-readme-stats.vercel.app" />
+    <link rel="preconnect" href="https://api.github.com" />
     <link rel="icon" type="image/png" href="Images/icon-192.png" />
     <link rel="apple-touch-icon" href="Images/icon-192.png" />
     <link rel="manifest" href="manifest.webmanifest" />
@@ -465,29 +465,44 @@
       </section>
 
       <!-- GitHub Stats Section -->
-      <section class="stats-analytics" id="stats-analytics">
+      <!-- Rendered from the official GitHub REST API in main.js. The section starts hidden and
+           is only revealed once real data arrives, so a failed request shows nothing rather
+           than a broken card. -->
+      <section class="stats-analytics" id="stats-analytics" hidden>
         <div class="github-stats">
           <h2 class="section-title reveal" data-i18n="githubStats.title">GitHub Overview</h2>
           <div class="stats-grid reveal">
             <div class="stat-card">
-              <img
-                class="gh-stat"
-                data-gh-path="api?username=Mandela95"
-                src="https://github-readme-stats.vercel.app/api?username=Mandela95&hide_border=true&bg_color=0a0a0a&border_color=2a2a2a&title_color=ffffff&text_color=a0a0a0&icon_color=8b85ff"
-                alt="GitHub contribution statistics for Mohamed El-Seady"
-                loading="lazy"
-                decoding="async"
-              />
+              <h3 class="stat-card-title" data-i18n="githubStats.activity">Activity</h3>
+              <dl class="gh-figures">
+                <div>
+                  <dt data-i18n="githubStats.repos">Public repositories</dt>
+                  <dd id="ghRepos">—</dd>
+                </div>
+                <div>
+                  <dt data-i18n="githubStats.followers">Followers</dt>
+                  <dd id="ghFollowers">—</dd>
+                </div>
+                <div>
+                  <dt data-i18n="githubStats.memberSince">On GitHub since</dt>
+                  <dd id="ghSince">—</dd>
+                </div>
+              </dl>
+              <a
+                class="gh-profile-link"
+                href="https://github.com/Mandela95"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="fab fa-github" aria-hidden="true"></i>
+                <span data-i18n="githubStats.viewProfile">View profile on GitHub</span>
+              </a>
             </div>
             <div class="stat-card">
-              <img
-                class="gh-stat"
-                data-gh-path="api/top-langs/?username=Mandela95"
-                src="https://github-readme-stats.vercel.app/api/top-langs/?username=Mandela95&hide_border=true&bg_color=0a0a0a&border_color=2a2a2a&title_color=ffffff&text_color=a0a0a0&icon_color=8b85ff"
-                alt="Most used GitHub programming languages"
-                loading="lazy"
-                decoding="async"
-              />
+              <h3 class="stat-card-title" data-i18n="githubStats.topLanguages">
+                Most used languages
+              </h3>
+              <ul class="gh-langs" id="ghLangs"></ul>
             </div>
           </div>
         </div>
@@ -1179,32 +1194,39 @@
           A verified professional signal from LinkedIn
         </p>
 
-        <div class="testimonial-card reveal">
-          <div class="testimonial-badge">
-            <i class="fab fa-linkedin" aria-hidden="true"></i>
-            <span data-i18n="testimonials.source">LinkedIn Recommendation</span>
-          </div>
-          <blockquote data-i18n="testimonials.summary">
-            I've had the pleasure of working closely with Mohamed El-Seady, and I can confidently
-            say he is one of the most reliable and impactful full-stack engineers I've worked with.
-          </blockquote>
-          <div class="testimonial-footer">
-            <div>
-              <strong data-i18n="testimonials.author">Mahmoud El-Fiky</strong>
-              <p data-i18n="testimonials.role">Full-Stack & Cross-platform Mobile Developer</p>
-              <p data-i18n="testimonials.context">Worked with Mohamed on the same team</p>
-              <p data-i18n="testimonials.date">December 10, 2025</p>
-            </div>
-            <a
-              href="https://www.linkedin.com/in/mo-seady/details/recommendations/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="btn btn-outline"
-            >
+        <!-- One card per recommendation. Copy a block and bump the items index to add another;
+             the matching entry must exist in testimonials.items in BOTH language files. -->
+        <div class="testimonials-grid">
+          <article class="testimonial-card reveal">
+            <div class="testimonial-badge">
               <i class="fab fa-linkedin" aria-hidden="true"></i>
-              <span data-i18n="testimonials.view">View full recommendation</span>
-            </a>
-          </div>
+              <span data-i18n="testimonials.source">LinkedIn Recommendation</span>
+            </div>
+            <blockquote data-i18n="testimonials.items.0.quote">
+              I've had the pleasure of working closely with Mohamed El-Seady, and I can confidently
+              say he is one of the most reliable and impactful full-stack engineers I've worked
+              with.
+            </blockquote>
+            <div class="testimonial-footer">
+              <div>
+                <strong data-i18n="testimonials.items.0.author">Mahmoud El-Fiky</strong>
+                <p data-i18n="testimonials.items.0.role">
+                  Full-Stack &amp; Cross-platform Mobile Developer
+                </p>
+                <p data-i18n="testimonials.items.0.context">Worked with Mohamed on the same team</p>
+                <p data-i18n="testimonials.items.0.date">December 10, 2025</p>
+              </div>
+              <a
+                href="https://www.linkedin.com/in/mo-seady/details/recommendations/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-outline"
+              >
+                <i class="fab fa-linkedin" aria-hidden="true"></i>
+                <span data-i18n="testimonials.view">View full recommendation</span>
+              </a>
+            </div>
+          </article>
         </div>
       </section>
 
