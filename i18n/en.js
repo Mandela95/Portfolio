@@ -1,6 +1,12 @@
 const en = {
   dir: "ltr",
   lang: "en",
+  a11y: {
+    skipToContent: "Skip to main content",
+    // Must contain the button's visible text ("AR"/"EN") to satisfy WCAG label-in-name.
+    langToggleToAr: "Switch language to Arabic (AR)",
+    langToggleToEn: "Switch language to English (EN)",
+  },
   nav: {
     about: "About",
     timeline: "Timeline",
@@ -26,7 +32,7 @@ const en = {
   about: {
     title: "About Me",
     subtitle: "Frontend and Cross-platform Mobile Developer",
-    p1: 'With <strong>+3 years</strong> of hands-on experience crafting modern web applications. I build interactive, responsive, and accessible user interfaces using <strong>TypeScript</strong> and <strong>React.js</strong>, and mobile apps using <strong>React Native</strong>.',
+    p1: "With <strong>+5 years</strong> of hands-on experience crafting modern web applications. I build interactive, responsive, and accessible user interfaces using <strong>TypeScript</strong> and <strong>React.js</strong>, and mobile apps using <strong>React Native</strong>.",
     p2: "I love turning complex problems into simple, beautiful, and intuitive designs. When I'm not coding, you'll find me exploring new technologies and contributing to open-source projects.",
     yearsExp: "Years Experience",
     projectsDone: "Projects Completed",
@@ -37,8 +43,7 @@ const en = {
     webDev: "Web Development",
     webDevDesc: "Building robust, scalable web applications with React.js.",
     mobileDev: "Mobile App Development",
-    mobileDevDesc:
-      "Creating mobile apps for iOS and Android using React Native.",
+    mobileDevDesc: "Creating mobile apps for iOS and Android using React Native.",
     responsive: "Responsive Design",
     responsiveDesc:
       "Translating Figma designs into pixel-perfect, responsive layouts that work flawlessly across all devices.",
@@ -67,7 +72,8 @@ const en = {
     upskilling: {
       date: "Feb 2023 - Jan 2024",
       title: "Software Engineer",
-      company: '<a href="https://upskilling-egypt.com/" target="_blank" rel="noopener noreferrer">Upskilling</a> (Maadi, Egypt)',
+      company:
+        '<a href="https://upskilling-egypt.com/" target="_blank" rel="noopener noreferrer">Upskilling</a> (Maadi, Egypt)',
       mode: "Hybrid, Full-time",
       tech: "React | TypeScript | Node.js | MUI | JWT Auth",
       sectionTitle: "Projects Built:",
@@ -91,42 +97,50 @@ const en = {
     },
   },
   blog: {
-    title: "Latest Articles",
+    title: "Recommended Reading",
+    subtitle:
+      "Articles and docs by other authors that shaped how I build. Curated, not written, by me.",
     readArticle: "Read Article",
     articles: [
       {
         title: "A Complete Guide to useEffect",
-        description: "Master React Hooks with an in-depth exploration of useEffect. Learn how to manage side effects, handle dependencies, and write efficient React code that avoids common pitfalls.",
+        description:
+          "Master React Hooks with an in-depth exploration of useEffect. Learn how to manage side effects, handle dependencies, and write efficient React code that avoids common pitfalls.",
         category: "React",
         author: "OverReacted",
       },
       {
         title: "Web Vitals: Essential Metrics for Performance",
-        description: "Google's official guide to Core Web Vitals and key performance metrics. Learn how to measure, optimize, and monitor your website's real-world performance with actionable insights.",
+        description:
+          "Google's official guide to Core Web Vitals and key performance metrics. Learn how to measure, optimize, and monitor your website's real-world performance with actionable insights.",
         category: "Performance",
         author: "Google Web.dev",
       },
       {
         title: "Understanding Promises, async/await & Event Loop",
-        description: "Deep dive into JavaScript's asynchronous model. Understand promises, async/await syntax, the event loop, hoisting, and how JavaScript executes code under the hood.",
+        description:
+          "Deep dive into JavaScript's asynchronous model. Understand promises, async/await syntax, the event loop, hoisting, and how JavaScript executes code under the hood.",
         category: "JavaScript",
         author: "JavaScript.info",
       },
       {
         title: "Advanced TypeScript: Generics & Type Utilities",
-        description: "Master advanced TypeScript patterns including generics, utility types, and conditional types. Learn professional patterns for building scalable, type-safe applications at scale.",
+        description:
+          "Master advanced TypeScript patterns including generics, utility types, and conditional types. Learn professional patterns for building scalable, type-safe applications at scale.",
         category: "TypeScript",
         author: "LogRocket Blog",
       },
       {
         title: "Hoisting in JavaScript: Variables & Functions",
-        description: "Understand how JavaScript hoisting works with var, let, const, and function declarations. Learn the Temporal Dead Zone and avoid common bugs related to variable scope.",
+        description:
+          "Understand how JavaScript hoisting works with var, let, const, and function declarations. Learn the Temporal Dead Zone and avoid common bugs related to variable scope.",
         category: "JavaScript",
         author: "MDN Web Docs",
       },
       {
         title: "Database Design Patterns & SQL Optimization",
-        description: "Learn database design best practices, query optimization techniques, and how to build scalable data architectures. Covers relationships, indexing, and performance tuning.",
+        description:
+          "Learn database design best practices, query optimization techniques, and how to build scalable data architectures. Covers relationships, indexing, and performance tuning.",
         category: "Database",
         author: "Prisma Blog",
       },
@@ -211,23 +225,9 @@ const en = {
     searchPlaceholder: "Search projects by name or technology...",
     noResults: "No projects found matching your search.",
   },
-  analytics: {
-    title: "Career Analytics",
-    totalProjects: "Total Projects",
-    totalProjects_value: "20+",
-    totalContributions: "Total Contributions",
-    totalContributions_value: "500+",
-    codeReuse: "Code Reuse Rate",
-    codeReuse_value: "60%",
-    activeTime: "Active Development",
-    activeTime_value: "5+ years",
-    linesOfCode: "Total Lines of Code",
-    linesOfCode_value: "50K+",
-  },
   contact: {
     title: "Get In Touch",
-    subtitle:
-      "Have a project in mind or want to collaborate? Feel free to reach out!",
+    subtitle: "Have a project in mind or want to collaborate? Feel free to reach out!",
     email: "Email",
     phone: "Phone",
     phoneValue: "+20 114 681 7834",
@@ -250,40 +250,47 @@ const en = {
     title: "Collaboration & Teamwork",
     subtitle: "Experience working with diverse teams in agile environments",
     teamExp: "Team Experience",
-    teamExpDesc: "Worked in cross-functional teams with designers, backend engineers, and product managers to deliver high-quality solutions",
+    teamExpDesc:
+      "Worked in cross-functional teams with designers, backend engineers, and product managers to deliver high-quality solutions",
     agile: "Agile Scrum Methodology",
     standup: "Daily Standups & Code Reviews",
     sprint: "Sprint Planning & Retrospectives",
     communication: "Communication",
-    communicationDesc: "Clear documentation, effective communication, and collaborative problem-solving across time zones and cultures",
+    communicationDesc:
+      "Clear documentation, effective communication, and collaborative problem-solving across time zones and cultures",
     docs: "Technical Documentation",
     remote: "Remote Collaboration Tools",
     mentoring: "Mentoring & Knowledge Sharing",
     versionControl: "Version Control",
-    versionControlDesc: "Proficient with Git workflows, pull requests, code reviews, and collaborative development practices",
+    versionControlDesc:
+      "Proficient with Git workflows, pull requests, code reviews, and collaborative development practices",
     gitFlow: "Git Flow & Branching Strategies",
     prReview: "Pull Request Reviews & Feedback",
     conflict: "Merge Conflict Resolution",
     projectMgmt: "Project Management",
-    projectMgmtDesc: "Experience with Jira, Trello, and other tools for task tracking, timeline management, and team coordination",
+    projectMgmtDesc:
+      "Experience with Jira, Trello, and other tools for task tracking, timeline management, and team coordination",
     jira: "Jira & Issue Tracking",
     timeline: "Timeline & Deadline Management",
     milestones: "Milestones & Deliverables",
     openSource: "Open Source",
-    openSourceDesc: "Active contributor to open-source projects, sharing knowledge and collaborating with global developer communities",
+    openSourceDesc:
+      "Active contributor to open-source projects, sharing knowledge and collaborating with global developer communities",
     contribute: "Contributing to Open Source",
     community: "Community Engagement",
     knowledge: "Knowledge Sharing & Documentation",
     clientRelations: "Client Relations",
-    clientRelationsDesc: "Strong client management skills with focus on understanding requirements and delivering exceptional results",
+    clientRelationsDesc:
+      "Strong client management skills with focus on understanding requirements and delivering exceptional results",
     requirements: "Requirements Gathering & Analysis",
     feedback: "Feedback Implementation & Iteration",
     delivery: "Quality Assurance & Delivery",
   },
   chat: {
-    title: "AI Assistant",
-    subtitle: "Ask me anything about my work!",
-    greeting: "Hi! 👋 I'm Mohamed's AI Assistant. Feel free to ask me about his projects, skills, experience, or anything else!",
+    title: "Quick Answers",
+    subtitle: "Common questions about my work, answered instantly.",
+    greeting:
+      "Hi! 👋 Pick a question below or type a keyword (skills, projects, experience, contact) and I'll pull up the answer. For anything else, the contact form reaches me directly.",
     inputPlaceholder: "Type your message...",
     inputLabel: "Type your message",
     suggestedSkills: "What are your skills?",
@@ -291,11 +298,16 @@ const en = {
     suggestedExperience: "Work experience?",
     suggestedContact: "How to contact?",
     responses: {
-      skills: "I'm skilled in React.js, React Native, TypeScript, Next.js, Node.js, JavaScript, SQL, MongoDB, Redux, MUI, Tailwind CSS, and more. I also have experience with Git, REST APIs, JWT authentication, accessibility, and responsive design.",
-      projects: "I've built Hotel Management Systems, Quiz Platforms, Food Management Systems, and multiple React/React Native applications. Each project showcases modern development practices and production-ready code.",
-      experience: "I have 3+ years of professional experience as a Software Engineer at Nursery Story (UK) and Upskilling (Egypt), plus self-taught learning since 2020. I've worked with teams across different time zones and contributed to frontend, backend, and mobile app development.",
-      contact: "You can reach me via email at mohamedelseady247@gmail.com, phone at +20 114 681 7834, or connect on LinkedIn and GitHub. I'm open to freelance projects and new opportunities!",
-      default: "Thanks for your interest! Feel free to explore more sections of my portfolio or contact me directly with specific questions.",
+      skills:
+        "I'm skilled in React.js, React Native, TypeScript, Next.js, Node.js, JavaScript, SQL, MongoDB, Redux, MUI, Tailwind CSS, and more. I also have experience with Git, REST APIs, JWT authentication, accessibility, and responsive design.",
+      projects:
+        "I've built Hotel Management Systems, Quiz Platforms, Food Management Systems, and multiple React/React Native applications. Each project showcases modern development practices and production-ready code.",
+      experience:
+        "I have 5+ years of professional experience as a Software Engineer at Nursery Story (UK) and Upskilling (Egypt), plus self-taught learning since 2020. I've worked with teams across different time zones and contributed to frontend, backend, and mobile app development.",
+      contact:
+        "You can reach me via email at mohamedelseady247@gmail.com, phone at +20 114 681 7834, or connect on LinkedIn and GitHub. I'm open to freelance projects and new opportunities!",
+      default:
+        "Thanks for your interest! Feel free to explore more sections of my portfolio or contact me directly with specific questions.",
     },
   },
   footer: {

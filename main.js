@@ -1,7 +1,8 @@
 // ===== Page Loader =====
-window.addEventListener("load", () => {
-  const loader = document.getElementById("loader");
-  setTimeout(() => loader.classList.add("hidden"), 600);
+// Hidden as soon as the document is usable. No artificial delay — the loader exists to cover
+// the gap before first paint, not to add one.
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("loader").classList.add("hidden");
 });
 
 // ===== Dynamic Year =====
@@ -11,6 +12,17 @@ document.getElementById("currentYear").textContent = new Date().getFullYear();
 const translations = { en, ar };
 let currentLang = localStorage.getItem("lang") || "en";
 
+// Tajawal is only needed for Arabic, so English visitors never pay for it.
+function ensureArabicFont() {
+  if (document.getElementById("tajawalFont")) return;
+  const link = document.createElement("link");
+  link.id = "tajawalFont";
+  link.rel = "stylesheet";
+  link.href =
+    "https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap";
+  document.head.appendChild(link);
+}
+
 function setLanguage(lang) {
   currentLang = lang;
   localStorage.setItem("lang", lang);
@@ -19,6 +31,8 @@ function setLanguage(lang) {
   // Set dir and lang on <html>
   document.documentElement.setAttribute("dir", t.dir);
   document.documentElement.setAttribute("lang", t.lang);
+
+  if (lang === "ar") ensureArabicFont();
 
   // Update all data-i18n text content
   document.querySelectorAll("[data-i18n]").forEach((el) => {
@@ -34,9 +48,14 @@ function setLanguage(lang) {
     if (value) el.placeholder = value;
   });
 
-  // Update lang toggle button text
-  document.getElementById("langToggle").textContent =
-    lang === "en" ? "AR" : "EN";
+  // Update lang toggle. The accessible name has to contain the visible label ("AR"/"EN"),
+  // otherwise voice-control users can't activate it by saying what they see.
+  const langToggle = document.getElementById("langToggle");
+  langToggle.textContent = lang === "en" ? "AR" : "EN";
+  langToggle.setAttribute(
+    "aria-label",
+    lang === "en" ? t.a11y.langToggleToAr : t.a11y.langToggleToEn,
+  );
 
   // Re-set dynamic year (footer.copy innerHTML replaces the span)
   const yearEl = document.getElementById("currentYear");
@@ -50,11 +69,9 @@ function setLanguage(lang) {
   if (prefersReducedMotion && typedTextEl) {
     typedTextEl.textContent = roles[0];
   }
-  
-  // Update chat placeholder
-  if (typeof updateChatPlaceholder === "function") {
-    updateChatPlaceholder();
-  }
+
+  // Re-apply the active filter so newly translated cards keep the right visibility
+  applyProjectView();
 }
 
 function getNestedValue(obj, path) {
@@ -64,23 +81,49 @@ function getNestedValue(obj, path) {
 // ===== Theme Toggle =====
 const themeToggle = document.getElementById("themeToggle");
 const savedTheme = localStorage.getItem("theme") || "dark";
-document.documentElement.setAttribute("data-theme", savedTheme);
-updateThemeIcon(savedTheme);
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute("data-theme", theme);
+  updateThemeIcon(theme);
+  updateGitHubStatsTheme(theme);
+}
 
 themeToggle.addEventListener("click", () => {
   const current = document.documentElement.getAttribute("data-theme");
   const next = current === "dark" ? "light" : "dark";
-  document.documentElement.setAttribute("data-theme", next);
   localStorage.setItem("theme", next);
-  updateThemeIcon(next);
+  applyTheme(next);
 });
 
 function updateThemeIcon(theme) {
+  // aria-hidden matters here too: the button's name comes from its aria-label, and a bare
+  // icon glyph would otherwise leak into the accessible name.
   themeToggle.innerHTML =
     theme === "dark"
-      ? '<i class="fas fa-sun"></i>'
-      : '<i class="fas fa-moon"></i>';
+      ? '<i class="fas fa-sun" aria-hidden="true"></i>'
+      : '<i class="fas fa-moon" aria-hidden="true"></i>';
 }
+
+// The GitHub stats cards are remote-rendered images, so their colours have to be
+// requested from the API rather than styled with CSS.
+const GH_THEMES = {
+  dark: { bg: "0a0a0a", border: "2a2a2a", title: "ffffff", text: "a0a0a0", icon: "8b85ff" },
+  light: { bg: "ffffff", border: "e0e0e0", title: "1a1a1a", text: "555555", icon: "4f46e5" },
+};
+
+function updateGitHubStatsTheme(theme) {
+  const c = GH_THEMES[theme] || GH_THEMES.dark;
+  document.querySelectorAll(".gh-stat").forEach((img) => {
+    const path = img.getAttribute("data-gh-path");
+    if (!path) return;
+    img.src =
+      `https://github-readme-stats.vercel.app/${path}` +
+      `&hide_border=true&bg_color=${c.bg}&border_color=${c.border}` +
+      `&title_color=${c.title}&text_color=${c.text}&icon_color=${c.icon}`;
+  });
+}
+
+applyTheme(savedTheme);
 
 // ===== Typing Variables (declared early so setLanguage can access them) =====
 const typedTextEl = document.getElementById("typedText");
@@ -96,92 +139,101 @@ document.getElementById("langToggle").addEventListener("click", () => {
   setLanguage(next);
 });
 
-// Initialize language
-setLanguage(currentLang);
-
 // ===== Hamburger Menu =====
 const hamburger = document.getElementById("hamburger");
 const nav = document.getElementById("nav");
 
+function setNavOpen(isOpen) {
+  hamburger.classList.toggle("active", isOpen);
+  nav.classList.toggle("open", isOpen);
+  hamburger.setAttribute("aria-expanded", String(isOpen));
+}
+
 hamburger.addEventListener("click", () => {
-  hamburger.classList.toggle("active");
-  nav.classList.toggle("open");
-  hamburger.setAttribute("aria-expanded", nav.classList.contains("open"));
+  setNavOpen(!nav.classList.contains("open"));
 });
 
-// Close menu when clicking a nav link
 nav.querySelectorAll(".nav-link").forEach((link) => {
-  link.addEventListener("click", () => {
-    hamburger.classList.remove("active");
-    nav.classList.remove("open");
-    hamburger.setAttribute("aria-expanded", "false");
-  });
+  link.addEventListener("click", () => setNavOpen(false));
 });
 
-// Close menu when clicking outside
 document.addEventListener("click", (e) => {
   if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
-    hamburger.classList.remove("active");
-    nav.classList.remove("open");
-    hamburger.setAttribute("aria-expanded", "false");
+    setNavOpen(false);
   }
 });
 
-// ===== Header Scroll Effect =====
+// ===== Scroll-driven UI =====
+// One passive listener, coalesced into a single rAF callback. Both the header state and the
+// scroll-to-top button read only window.scrollY, which never forces layout.
 const header = document.getElementById("header");
-window.addEventListener("scroll", () => {
-  header.classList.toggle("scrolled", window.scrollY > 50);
-});
+const scrollTop = document.getElementById("scrollTop");
+let scrollTicking = false;
 
-// ===== Active Nav Scroll Spy =====
-const sections = document.querySelectorAll("section[id]");
-const navLinks = document.querySelectorAll(".nav-link");
-
-function activateNavLink() {
-  const scrollY = window.scrollY + 100;
-  sections.forEach((section) => {
-    const top = section.offsetTop;
-    const height = section.offsetHeight;
-    const id = section.getAttribute("id");
-    if (scrollY >= top && scrollY < top + height) {
-      navLinks.forEach((link) => {
-        link.classList.remove("active");
-        if (link.getAttribute("href") === "#" + id) {
-          link.classList.add("active");
-        }
-      });
-    }
-  });
+function onScrollFrame() {
+  const y = window.scrollY;
+  header.classList.toggle("scrolled", y > 50);
+  scrollTop.classList.toggle("show", y >= 400);
+  scrollTicking = false;
 }
 
-window.addEventListener("scroll", activateNavLink);
+window.addEventListener(
+  "scroll",
+  () => {
+    if (scrollTicking) return;
+    scrollTicking = true;
+    requestAnimationFrame(onScrollFrame);
+  },
+  { passive: true },
+);
 
-// ===== Scroll to Top =====
-const scrollTop = document.getElementById("scrollTop");
-
-window.addEventListener("scroll", () => {
-  scrollTop.classList.toggle("show", window.scrollY >= 400);
-});
+onScrollFrame();
 
 scrollTop.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
-// ===== Scroll Reveal (IntersectionObserver) =====
-const reveals = document.querySelectorAll(".reveal");
+// ===== Active Nav Scroll Spy =====
+// Replaces the old per-scroll offsetTop/offsetHeight reads, which forced a synchronous
+// layout on every single scroll event.
+const navLinks = document.querySelectorAll(".nav-link");
+const spySections = document.querySelectorAll("main section[id]");
 
+function setActiveNavLink(id) {
+  navLinks.forEach((link) => {
+    link.classList.toggle("active", link.getAttribute("href") === "#" + id);
+  });
+}
+
+const spyObserver = new IntersectionObserver(
+  (entries) => {
+    // Pick the entry closest to the top of the viewport among those currently visible.
+    const visible = entries
+      .filter((e) => e.isIntersecting)
+      .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+    if (visible.length) setActiveNavLink(visible[0].target.id);
+  },
+  { rootMargin: "-20% 0px -70% 0px", threshold: 0 },
+);
+
+spySections.forEach((section) => spyObserver.observe(section));
+
+// ===== Scroll Reveal (IntersectionObserver) =====
 const revealObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("active");
+        revealObserver.unobserve(entry.target);
       }
     });
   },
-  { threshold: 0.05, rootMargin: "0px 0px -30px 0px" }
+  { threshold: 0.05, rootMargin: "0px 0px -30px 0px" },
 );
 
-reveals.forEach((el) => revealObserver.observe(el));
+document.querySelectorAll(".reveal, .timeline-item").forEach((el) => {
+  revealObserver.observe(el);
+});
 
 // ===== Counter Animation =====
 const statNumbers = document.querySelectorAll(".stat-number");
@@ -191,29 +243,34 @@ const counterObserver = new IntersectionObserver(
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         const el = entry.target;
-        const target = parseInt(el.getAttribute("data-count"));
-        animateCounter(el, target);
+        animateCounter(el, parseInt(el.getAttribute("data-count"), 10));
         counterObserver.unobserve(el);
       }
     });
   },
-  { threshold: 0.5 }
+  { threshold: 0.5 },
 );
 
 statNumbers.forEach((el) => counterObserver.observe(el));
 
 function animateCounter(el, target) {
-  let current = 0;
-  const increment = target / 40;
-  const timer = setInterval(() => {
-    current += increment;
-    if (current >= target) {
-      el.textContent = target;
-      clearInterval(timer);
-    } else {
-      el.textContent = Math.floor(current);
-    }
-  }, 30);
+  if (!Number.isFinite(target)) return;
+  if (prefersReducedMotion) {
+    el.textContent = target;
+    return;
+  }
+
+  const duration = 1200;
+  const start = performance.now();
+
+  function step(now) {
+    const progress = Math.min((now - start) / duration, 1);
+    // Ease-out so the number settles rather than stopping dead.
+    el.textContent = Math.round(target * (1 - Math.pow(1 - progress, 3)));
+    if (progress < 1) requestAnimationFrame(step);
+  }
+
+  requestAnimationFrame(step);
 }
 
 // ===== Typing Effect =====
@@ -244,11 +301,44 @@ function typeEffect() {
   setTimeout(typeEffect, speed);
 }
 
-typeEffect();
-
-// ===== Project Filter =====
+// ===== Projects: filter + search =====
+// Single source of truth for what's visible. The filter buttons and the search box both write
+// into this state and then re-run one pass over the real cards — no cloning, no second grid,
+// and the two controls compose instead of fighting each other.
 const filterBtns = document.querySelectorAll(".filter-btn");
-const projectCards = document.querySelectorAll(".project-card");
+const projectCards = Array.from(document.querySelectorAll(".project-card"));
+const searchInput = document.getElementById("projectSearchInput");
+const searchStatus = document.getElementById("searchResults");
+
+let activeFilter = "all";
+let activeQuery = "";
+
+function applyProjectView() {
+  let matches = 0;
+
+  projectCards.forEach((card) => {
+    const categoryOk =
+      activeFilter === "all" || card.getAttribute("data-category") === activeFilter;
+    const queryOk = activeQuery === "" || card.textContent.toLowerCase().includes(activeQuery);
+    const show = categoryOk && queryOk;
+
+    card.classList.toggle("hidden", !show);
+    if (show) matches++;
+  });
+
+  if (!searchStatus) return;
+
+  if (matches === 0) {
+    const message =
+      getNestedValue(translations[currentLang], "projectSearch.noResults") ||
+      "No projects found matching your search.";
+    searchStatus.textContent = message;
+    searchStatus.hidden = false;
+  } else {
+    searchStatus.textContent = "";
+    searchStatus.hidden = true;
+  }
+}
 
 filterBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
@@ -259,43 +349,30 @@ filterBtns.forEach((btn) => {
     btn.classList.add("active");
     btn.setAttribute("aria-pressed", "true");
 
-    const filter = btn.getAttribute("data-filter");
-
-    projectCards.forEach((card) => {
-      const category = card.getAttribute("data-category");
-      if (filter === "all" || category === filter) {
-        card.classList.remove("hidden");
-        card.style.animation = "fadeIn 0.4s ease forwards";
-      } else {
-        card.classList.add("hidden");
-      }
-    });
+    activeFilter = btn.getAttribute("data-filter");
+    applyProjectView();
   });
 });
 
-// Fade in animation for filtered cards
-const styleSheet = document.createElement("style");
-styleSheet.textContent = `
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(15px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-`;
-document.head.appendChild(styleSheet);
+if (searchInput) {
+  searchInput.addEventListener("input", (e) => {
+    activeQuery = e.target.value.toLowerCase().trim();
+    applyProjectView();
+  });
+}
+
+applyProjectView();
 
 // ===== Contact Form with EmailJS =====
-// EmailJS Setup — replace these with your actual EmailJS credentials:
-// 1. Go to https://www.emailjs.com/ and create a free account
-// 2. Add an Email Service (Gmail, Outlook, etc.) — copy the Service ID
-// 3. Create an Email Template with variables: {{from_name}}, {{from_email}}, {{subject}}, {{message}}
-// 4. Copy the Template ID and your Public Key from Account > API Keys
-const EMAILJS_PUBLIC_KEY = "m26vm1miNAVSgjUwu"; // Replace with your EmailJS public key
-const EMAILJS_SERVICE_ID = "service_0cs804k"; // Replace with your EmailJS service ID
-const EMAILJS_TEMPLATE_ID = "template_2y4qh6f"; // Replace with your EmailJS template ID
+// The public key is safe to expose (that is what "public" means here), but the endpoint is
+// still open, so the honeypot below drops the obvious automated submissions.
+const EMAILJS_PUBLIC_KEY = "m26vm1miNAVSgjUwu";
+const EMAILJS_SERVICE_ID = "service_0cs804k";
+const EMAILJS_TEMPLATE_ID = "template_2y4qh6f";
 
 let emailjsReady = false;
 try {
-  if (typeof emailjs !== "undefined" && EMAILJS_PUBLIC_KEY !== "YOUR_PUBLIC_KEY") {
+  if (typeof emailjs !== "undefined") {
     emailjs.init(EMAILJS_PUBLIC_KEY);
     emailjsReady = true;
   }
@@ -311,6 +388,15 @@ contactForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const t = translations[currentLang].contact;
 
+  // Honeypot: real users never see this field, so anything in it is a bot.
+  // Report success so the bot doesn't retry with a different strategy.
+  if (document.getElementById("formCompany").value !== "") {
+    formStatus.textContent = t.success;
+    formStatus.className = "form-status success";
+    contactForm.reset();
+    return;
+  }
+
   const name = document.getElementById("formName").value.trim();
   const email = document.getElementById("formEmail").value.trim();
   const subject = document.getElementById("formSubject").value.trim();
@@ -320,12 +406,13 @@ contactForm.addEventListener("submit", (e) => {
 
   if (!emailjsReady) {
     // Fallback: open mailto link
-    const mailtoLink = `mailto:mohamedelseady247@gmail.com?subject=${encodeURIComponent(subject || "Portfolio Contact")}&body=${encodeURIComponent(`From: ${name} (${email})\n\n${message}`)}`;
+    const mailtoLink = `mailto:mohamedelseady247@gmail.com?subject=${encodeURIComponent(
+      subject || "Portfolio Contact",
+    )}&body=${encodeURIComponent(`From: ${name} (${email})\n\n${message}`)}`;
     window.open(mailtoLink);
     return;
   }
 
-  // Disable button and show sending state
   submitBtn.disabled = true;
   submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> ${t.sending}`;
   formStatus.textContent = "";
@@ -353,80 +440,8 @@ contactForm.addEventListener("submit", (e) => {
     });
 });
 
-// ===== Timeline Animations =====
-// Timeline items already have reveal animations from the intersection observer
-// Additional hover effects are handled by CSS
-const timelineItems = document.querySelectorAll(".timeline-item");
-timelineItems.forEach(item => {
-  if (reveals) {
-    revealObserver.observe(item);
-  }
-});
-
-// ===== Project Search =====
-const searchInput = document.getElementById("projectSearchInput");
-const searchResults = document.getElementById("searchResults");
-const projectsGrid = document.querySelector(".projects .projects-grid");
-const originalProjectCards = projectsGrid ? Array.from(projectsGrid.querySelectorAll(".project-card")) : [];
-
-if (searchInput && searchResults) {
-  searchInput.addEventListener("input", (e) => {
-    const query = e.target.value.toLowerCase().trim();
-    
-    if (query === "") {
-      projectsGrid.style.display = "grid";
-      searchResults.style.display = "none";
-      searchResults.innerHTML = "";
-      return;
-    }
-
-    const filteredCards = originalProjectCards.filter((card) => {
-      const text = card.textContent.toLowerCase();
-      return text.includes(query);
-    });
-
-    if (filteredCards.length === 0) {
-      const noResultsMessage =
-        translations[currentLang]?.projectSearch?.noResults ||
-        "No projects found matching your search.";
-
-      projectsGrid.style.display = "none";
-      searchResults.style.display = "grid";
-      searchResults.innerHTML = `<p style="grid-column: 1 / -1; text-align: center; color: var(--text-secondary); padding: 2rem;">${noResultsMessage}</p>`;
-    } else {
-      projectsGrid.style.display = "none";
-      searchResults.style.display = "grid";
-      searchResults.innerHTML = "";
-      filteredCards.forEach((card) => {
-        const clone = card.cloneNode(true);
-        clone.classList.add("reveal");
-        searchResults.appendChild(clone);
-        if (typeof revealObserver !== "undefined" && revealObserver) {
-          revealObserver.observe(clone);
-        }
-      });
-    }
-  });
-}
-
-// ===== Analytics Counter Animation =====
-const analyticsCards = document.querySelectorAll(".analytics-card");
-const analyticsObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const card = entry.target;
-        card.classList.add("active");
-        analyticsObserver.unobserve(card);
-      }
-    });
-  },
-  { threshold: 0.5 }
-);
-
-analyticsCards.forEach((card) => analyticsObserver.observe(card));
-
-// ===== AI Chat Assistant =====
+// ===== Quick Answers Dialog =====
+// Keyword lookup over the localized canned answers — deliberately not billed as an AI model.
 document.addEventListener("DOMContentLoaded", () => {
   const chatWidget = document.getElementById("chatWidget");
   const chatButton = document.getElementById("chatButton");
@@ -438,152 +453,146 @@ document.addEventListener("DOMContentLoaded", () => {
   const chatBadge = document.querySelector(".chat-badge");
   const suggestionBtns = document.querySelectorAll(".suggestion-btn");
 
-  // Safety check - only initialize if chat elements exist
   if (!chatButton || !chatModal || !chatInput) return;
 
-const chatBadgeDismissedKey = "chatBadgeDismissed";
+  const chatBadgeDismissedKey = "chatBadgeDismissed";
 
-if (chatBadge && localStorage.getItem(chatBadgeDismissedKey) === "true") {
-  chatBadge.classList.add("hidden");
-}
-
-// Get language from current i18n
-const getChatResponse = (message) => {
-  const currentLang = document.documentElement.lang || "en";
-  const responses =
-    currentLang === "ar"
-      ? translations.ar.chat.responses
-      : translations.en.chat.responses;
-
-  const lowerMessage = message.toLowerCase();
-  const includesAny = (keywords) =>
-    keywords.some((keyword) => lowerMessage.includes(keyword));
-
-  if (includesAny(["skill", "skills", "tech", "مهارة", "مهارات", "تقنية", "تقنيات"])) {
-    return responses.skills;
-  } else if (includesAny(["project", "projects", "build", "مشروع", "مشاريع"])) {
-    return responses.projects;
-  } else if (
-    includesAny([
-      "experience",
-      "work",
-      "career",
-      "job",
-      "خبرة",
-      "خبرتك",
-      "وظيف",
-      "عمل",
-      "شغل",
-    ])
-  ) {
-    return responses.experience;
-  } else if (includesAny(["contact", "email", "phone", "تواصل", "بريد", "هاتف"])) {
-    return responses.contact;
+  if (chatBadge && localStorage.getItem(chatBadgeDismissedKey) === "true") {
+    chatBadge.classList.add("hidden");
   }
-  return responses.default;
-};
 
-const addMessage = (text, isBot = true) => {
-  const messageDiv = document.createElement("div");
-  messageDiv.classList.add("message", isBot ? "bot-message" : "user-message");
+  const getChatResponse = (message) => {
+    const responses = translations[currentLang].chat.responses;
+    const lowerMessage = message.toLowerCase();
+    const includesAny = (keywords) => keywords.some((keyword) => lowerMessage.includes(keyword));
 
-  const contentDiv = document.createElement("div");
-  contentDiv.classList.add("message-content");
-  contentDiv.textContent = text;
-
-  messageDiv.appendChild(contentDiv);
-  chatMessages.appendChild(messageDiv);
-  chatMessages.scrollTop = chatMessages.scrollHeight;
-};
-
-const sendMessage = () => {
-  const message = chatInput.value.trim();
-  if (message === "") return;
-
-  // Add user message
-  addMessage(message, false);
-  chatInput.value = "";
-
-  // Simulate bot response delay
-  setTimeout(() => {
-    const response = getChatResponse(message);
-    addMessage(response, true);
-  }, 500);
-};
-
-const setChatOpen = (isOpen) => {
-  chatModal.classList.toggle("active", isOpen);
-  chatModal.setAttribute("aria-hidden", String(!isOpen));
-  chatModal.setAttribute("aria-modal", String(isOpen));
-  chatButton.setAttribute("aria-expanded", String(isOpen));
-
-  if (isOpen) {
-    if (chatBadge) {
-      chatBadge.classList.add("hidden");
-      localStorage.setItem(chatBadgeDismissedKey, "true");
+    if (includesAny(["skill", "skills", "tech", "مهارة", "مهارات", "تقنية", "تقنيات"])) {
+      return responses.skills;
     }
-    chatInput.focus();
-  }
-};
+    if (includesAny(["project", "projects", "build", "مشروع", "مشاريع"])) {
+      return responses.projects;
+    }
+    if (
+      includesAny(["experience", "work", "career", "job", "خبرة", "خبرتك", "وظيف", "عمل", "شغل"])
+    ) {
+      return responses.experience;
+    }
+    if (includesAny(["contact", "email", "phone", "تواصل", "بريد", "هاتف"])) {
+      return responses.contact;
+    }
+    return responses.default;
+  };
 
-// Toggle chat modal
-chatButton.addEventListener("click", () => {
-  setChatOpen(!chatModal.classList.contains("active"));
-});
+  const addMessage = (text, isBot = true) => {
+    const messageDiv = document.createElement("div");
+    messageDiv.classList.add("message", isBot ? "bot-message" : "user-message");
 
-// Close chat modal
-chatClose.addEventListener("click", () => {
-  setChatOpen(false);
-  chatButton.focus();
-});
+    const contentDiv = document.createElement("div");
+    contentDiv.classList.add("message-content");
+    contentDiv.textContent = text;
 
-// Close chat modal when clicking outside it
-document.addEventListener("click", (e) => {
-  if (!chatWidget.contains(e.target) && chatModal.classList.contains("active")) {
-    setChatOpen(false);
-  }
-});
+    messageDiv.appendChild(contentDiv);
+    chatMessages.appendChild(messageDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  };
 
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && chatModal.classList.contains("active")) {
-    setChatOpen(false);
-    chatButton.focus();
-  }
-});
+  const sendMessage = () => {
+    const message = chatInput.value.trim();
+    if (message === "") return;
 
-// Send message on button click
-chatSend.addEventListener("click", sendMessage);
+    addMessage(message, false);
+    chatInput.value = "";
 
-// Send message on Enter key
-chatInput.addEventListener("keypress", (e) => {
-  if (e.key === "Enter") {
-    sendMessage();
-  }
-});
+    setTimeout(() => addMessage(getChatResponse(message), true), 400);
+  };
 
-// Handle suggestion buttons
-suggestionBtns.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const question = btn.getAttribute("data-question");
-    const currentLang = document.documentElement.lang || "en";
-    const questions = {
-      skills: translations[currentLang].chat.suggestedSkills,
-      projects: translations[currentLang].chat.suggestedProjects,
-      experience: translations[currentLang].chat.suggestedExperience,
-      contact: translations[currentLang].chat.suggestedContact,
-    };
-    chatInput.value = questions[question] || "";
-    chatInput.focus();
+  // --- Focus management: a dialog that traps Tab and restores focus on close ---
+  const FOCUSABLE = 'button, [href], input, textarea, select, [tabindex]:not([tabindex="-1"])';
+  let lastFocused = null;
+
+  const trapFocus = (e) => {
+    if (e.key !== "Tab") return;
+
+    const items = Array.from(chatModal.querySelectorAll(FOCUSABLE)).filter(
+      (el) => !el.disabled && el.offsetParent !== null,
+    );
+    if (!items.length) return;
+
+    const first = items[0];
+    const last = items[items.length - 1];
+
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  };
+
+  const setChatOpen = (isOpen) => {
+    chatModal.classList.toggle("active", isOpen);
+    chatModal.setAttribute("aria-hidden", String(!isOpen));
+    chatModal.setAttribute("aria-modal", String(isOpen));
+    chatButton.setAttribute("aria-expanded", String(isOpen));
+
+    if (isOpen) {
+      lastFocused = document.activeElement;
+      if (chatBadge) {
+        chatBadge.classList.add("hidden");
+        localStorage.setItem(chatBadgeDismissedKey, "true");
+      }
+      chatInput.focus();
+      document.addEventListener("keydown", trapFocus);
+    } else {
+      document.removeEventListener("keydown", trapFocus);
+      (lastFocused || chatButton).focus();
+      lastFocused = null;
+    }
+  };
+
+  chatButton.addEventListener("click", () => {
+    setChatOpen(!chatModal.classList.contains("active"));
+  });
+
+  chatClose.addEventListener("click", () => setChatOpen(false));
+
+  document.addEventListener("click", (e) => {
+    if (!chatWidget.contains(e.target) && chatModal.classList.contains("active")) {
+      setChatOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && chatModal.classList.contains("active")) {
+      setChatOpen(false);
+    }
+  });
+
+  chatSend.addEventListener("click", sendMessage);
+
+  chatInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") sendMessage();
+  });
+
+  suggestionBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const question = btn.getAttribute("data-question");
+      const chat = translations[currentLang].chat;
+      const questions = {
+        skills: chat.suggestedSkills,
+        projects: chat.suggestedProjects,
+        experience: chat.suggestedExperience,
+        contact: chat.suggestedContact,
+      };
+      chatInput.value = questions[question] || "";
+      chatInput.focus();
+    });
   });
 });
 
-// Update chat placeholder on language change
-const updateChatPlaceholder = () => {
-  const currentLang = document.documentElement.lang || "en";
-  const placeholder =
-    currentLang === "ar"
-      ? translations.ar.chat.inputPlaceholder
-      : translations.en.chat.inputPlaceholder;
-  chatInput.placeholder = placeholder;
-};
-});
+// ===== Boot =====
+// Language last: it re-renders text and re-applies the project view, so everything it
+// depends on must already be wired up.
+setLanguage(currentLang);
+typeEffect();

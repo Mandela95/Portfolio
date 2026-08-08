@@ -1,6 +1,11 @@
 const ar = {
   dir: "rtl",
   lang: "ar",
+  a11y: {
+    skipToContent: "تخطَّ إلى المحتوى الرئيسي",
+    langToggleToAr: "التبديل إلى العربية (AR)",
+    langToggleToEn: "التبديل إلى الإنجليزية (EN)",
+  },
   nav: {
     about: "عنّي",
     timeline: "المسار الوظيفي",
@@ -12,7 +17,8 @@ const ar = {
   hero: {
     greeting: "مرحبًا، أنا",
     name: "محمد الصعيدي",
-    description: "أبني تجارب ويب وموبايل سهلة الوصول وعالية الأداء باستخدام React و TypeScript و React Native.",
+    description:
+      "أبني تجارب ويب وموبايل سهلة الوصول وعالية الأداء باستخدام React و TypeScript و React Native.",
     viewCV: "عرض السيرة الذاتية",
     viewWork: "عرض أعمالي",
     roles: [
@@ -25,7 +31,7 @@ const ar = {
   about: {
     title: "عنّي",
     subtitle: "مطوّر برمجيات وتطبيقات موبايل",
-    p1: 'بخبرة تزيد عن <strong>+3 سنوات</strong> في بناء تطبيقات ويب حديثة. أقوم ببناء واجهات مستخدم تفاعلية ومتجاوبة وسهلة الوصول باستخدام <strong>TypeScript</strong> و <strong>React.js</strong>، وتطبيقات موبايل باستخدام <strong>React Native</strong>.',
+    p1: "بخبرة تزيد عن <strong>+5 سنوات</strong> في بناء تطبيقات ويب حديثة. أقوم ببناء واجهات مستخدم تفاعلية ومتجاوبة وسهلة الوصول باستخدام <strong>TypeScript</strong> و <strong>React.js</strong>، وتطبيقات موبايل باستخدام <strong>React Native</strong>.",
     p2: "أحب تحويل المشكلات المعقدة إلى تصاميم بسيطة وجميلة وبديهية. عندما لا أكتب أكواد، تجدني أستكشف تقنيات جديدة وأساهم في مشاريع مفتوحة المصدر.",
     yearsExp: "سنوات خبرة",
     projectsDone: "مشاريع مكتملة",
@@ -36,11 +42,9 @@ const ar = {
     webDev: "تطوير الويب",
     webDevDesc: "بناء تطبيقات ويب قوية وقابلة للتوسع باستخدام React.js.",
     mobileDev: "تطوير تطبيقات الموبايل",
-    mobileDevDesc:
-      "إنشاء تطبيقات موبايل لنظامي iOS و Android باستخدام React Native.",
+    mobileDevDesc: "إنشاء تطبيقات موبايل لنظامي iOS و Android باستخدام React Native.",
     responsive: "تصميم متجاوب",
-    responsiveDesc:
-      "تحويل تصاميم Figma إلى واجهات متجاوبة ودقيقة تعمل بسلاسة على جميع الأجهزة.",
+    responsiveDesc: "تحويل تصاميم Figma إلى واجهات متجاوبة ودقيقة تعمل بسلاسة على جميع الأجهزة.",
     performance: "تحسين الأداء",
     performanceDesc:
       "تحسين أداء التطبيقات من خلال التحميل الكسول وتقسيم الأكواد وأفضل ممارسات Core Web Vitals.",
@@ -66,7 +70,8 @@ const ar = {
     upskilling: {
       date: "فبراير 2023 - يناير 2024",
       title: "مهندس برمجيات",
-      company: '<a href="https://upskilling-egypt.com/" target="_blank" rel="noopener noreferrer">Upskilling</a> (المعادي، مصر)',
+      company:
+        '<a href="https://upskilling-egypt.com/" target="_blank" rel="noopener noreferrer">Upskilling</a> (المعادي، مصر)',
       mode: "هجين، دوام كامل",
       tech: "React | TypeScript | Node.js | MUI | JWT Auth",
       sectionTitle: "المشاريع المنجزة:",
@@ -90,42 +95,49 @@ const ar = {
     },
   },
   blog: {
-    title: "أحدث المقالات",
+    title: "قراءات موصى بها",
+    subtitle: "مقالات ومراجع من كتابة آخرين شكّلت أسلوبي في البناء. اخترتها ولم أكتبها.",
     readArticle: "اقرأ المقال",
     articles: [
       {
         title: "دليل شامل إلى useEffect",
-        description: "اتقن React Hooks من خلال استكشاف متعمق لـ useEffect. تعلم كيفية إدارة الآثار الجانبية والتعامل مع التبعيات وكتابة أكواد React فعالة تتجنب الأخطاء الشائعة.",
+        description:
+          "اتقن React Hooks من خلال استكشاف متعمق لـ useEffect. تعلم كيفية إدارة الآثار الجانبية والتعامل مع التبعيات وكتابة أكواد React فعالة تتجنب الأخطاء الشائعة.",
         category: "React",
         author: "OverReacted",
       },
       {
         title: "Web Vitals: مقاييس أساسية للأداء",
-        description: "دليل Google الرسمي لـ Core Web Vitals والمقاييس الرئيسية للأداء. تعلم كيفية قياس وتحسين ومراقبة أداء موقعك في العالم الحقيقي برؤى عملية.",
+        description:
+          "دليل Google الرسمي لـ Core Web Vitals والمقاييس الرئيسية للأداء. تعلم كيفية قياس وتحسين ومراقبة أداء موقعك في العالم الحقيقي برؤى عملية.",
         category: "الأداء",
         author: "Google Web.dev",
       },
       {
         title: "فهم Promises و async/await و Event Loop",
-        description: "غوص عميق في نموذج JavaScript غير المتزامن. افهم promises وصيغة async/await وحلقة الأحداث وhoisting وكيفية تنفيذ JavaScript للأكواد تحت الغطاء.",
+        description:
+          "غوص عميق في نموذج JavaScript غير المتزامن. افهم promises وصيغة async/await وحلقة الأحداث وhoisting وكيفية تنفيذ JavaScript للأكواد تحت الغطاء.",
         category: "JavaScript",
         author: "JavaScript.info",
       },
       {
         title: "TypeScript متقدم: Generics و Type Utilities",
-        description: "اتقن أنماط TypeScript المتقدمة بما في ذلك generics والأنواع المساعدة والأنواع الشرطية. تعلم أنماط احترافية لبناء تطبيقات قابلة للتوسع وآمنة من حيث الأنواع.",
+        description:
+          "اتقن أنماط TypeScript المتقدمة بما في ذلك generics والأنواع المساعدة والأنواع الشرطية. تعلم أنماط احترافية لبناء تطبيقات قابلة للتوسع وآمنة من حيث الأنواع.",
         category: "TypeScript",
         author: "LogRocket Blog",
       },
       {
         title: "Hoisting في JavaScript: المتغيرات والدوال",
-        description: "افهم كيفية عمل hoisting في JavaScript مع var و let و const وإعلانات الدوال. تعلم Temporal Dead Zone وتجنب الأخطاء الشائعة المتعلقة بنطاق المتغيرات.",
+        description:
+          "افهم كيفية عمل hoisting في JavaScript مع var و let و const وإعلانات الدوال. تعلم Temporal Dead Zone وتجنب الأخطاء الشائعة المتعلقة بنطاق المتغيرات.",
         category: "JavaScript",
         author: "MDN Web Docs",
       },
       {
         title: "أنماط تصميم قاعدة البيانات وتحسين SQL",
-        description: "تعلم أفضل ممارسات تصميم قاعدة البيانات وتقنيات تحسين الاستعلام وكيفية بناء معماريات بيانات قابلة للتوسع. يغطي العلاقات والفهرسة وضبط الأداء.",
+        description:
+          "تعلم أفضل ممارسات تصميم قاعدة البيانات وتقنيات تحسين الاستعلام وكيفية بناء معماريات بيانات قابلة للتوسع. يغطي العلاقات والفهرسة وضبط الأداء.",
         category: "قاعدة البيانات",
         author: "Prisma Blog",
       },
@@ -210,19 +222,6 @@ const ar = {
     searchPlaceholder: "ابحث عن المشاريع بالاسم أو التقنية...",
     noResults: "لم يتم العثور على مشاريع تطابق بحثك.",
   },
-  analytics: {
-    title: "تحليلات المسار الوظيفي",
-    totalProjects: "إجمالي المشاريع",
-    totalProjects_value: "20+",
-    totalContributions: "إجمالي المساهمات",
-    totalContributions_value: "500+",
-    codeReuse: "معدل إعادة استخدام الكود",
-    codeReuse_value: "60%",
-    activeTime: "فترة التطوير النشطة",
-    activeTime_value: "5+ سنوات",
-    linesOfCode: "أسطر الأكواد",
-    linesOfCode_value: "50K+",
-  },
   contact: {
     title: "تواصل معي",
     subtitle: "لديك مشروع أو تريد التعاون؟ لا تتردد في التواصل!",
@@ -248,40 +247,47 @@ const ar = {
     title: "التعاون و العمل الجماعي",
     subtitle: "خبرة العمل مع فرق متنوعة في بيئات رشيقة",
     teamExp: "خبرة العمل بفريق",
-    teamExpDesc: "عملت مع فرق متعددة التخصصات تضم مصممين و مهندسي برمجيات وفريق إدارة المشاريع لتقديم حلول عالية الجودة",
+    teamExpDesc:
+      "عملت مع فرق متعددة التخصصات تضم مصممين و مهندسي برمجيات وفريق إدارة المشاريع لتقديم حلول عالية الجودة",
     agile: "منهجية Agile Scrum",
     standup: "الاجتماعات اليومية ومراجعة الأكواد",
     sprint: "تخطيط Sprint و العودة للتقييم",
     communication: "التواصل",
-    communicationDesc: "توثيق واضح، تواصل فعال، وحل المشاكل بالتعاون عبر المناطق الزمنية و الثقافات المختلفة",
+    communicationDesc:
+      "توثيق واضح، تواصل فعال، وحل المشاكل بالتعاون عبر المناطق الزمنية و الثقافات المختلفة",
     docs: "التوثيق التقني",
     remote: "أدوات التعاون عن بعد",
     mentoring: "التدريب و مشاركة المعرفة",
     versionControl: "أدوات التحكم بالإصدارات",
-    versionControlDesc: "بارع في استخدام Git و سير العمل و الطلبات و صلاحيات المراجعة و ممارسات التطوير التعاوني",
+    versionControlDesc:
+      "بارع في استخدام Git و سير العمل و الطلبات و صلاحيات المراجعة و ممارسات التطوير التعاوني",
     gitFlow: "استراتيجيات Git Flow و الفروع",
     prReview: "مراجعة الطلبات و التعليقات",
     conflict: "حل تضارب الدمج",
     projectMgmt: "إدارة المشاريع",
-    projectMgmtDesc: "خبرة مع Jira و Trello و أدوات أخرى لتتبع المهام و إدارة الجداول الزمنية و تنسيق الفريق",
+    projectMgmtDesc:
+      "خبرة مع Jira و Trello و أدوات أخرى لتتبع المهام و إدارة الجداول الزمنية و تنسيق الفريق",
     jira: "Jira و تتبع المشاكل",
     timeline: "إدارة الجداول الزمنية و المواعيد النهائية",
     milestones: "المراحل و النتائج",
     openSource: "المصادر المفتوحة",
-    openSourceDesc: "مساهم نشط في مشاريع المصادر المفتوحة، مشاركة المعرفة و التعاون مع مجتمعات المطورين العالمية",
+    openSourceDesc:
+      "مساهم نشط في مشاريع المصادر المفتوحة، مشاركة المعرفة و التعاون مع مجتمعات المطورين العالمية",
     contribute: "المساهمة في المصادر المفتوحة",
     community: "الانخراط في المجتمع",
     knowledge: "مشاركة المعرفة و التوثيق",
     clientRelations: "علاقات العملاء",
-    clientRelationsDesc: "مهارات قوية في إدارة علاقات العملاء مع التركيز على فهم المتطلبات و تقديم نتائج استثنائية",
+    clientRelationsDesc:
+      "مهارات قوية في إدارة علاقات العملاء مع التركيز على فهم المتطلبات و تقديم نتائج استثنائية",
     requirements: "جمع و تحليل المتطلبات",
     feedback: "تطبيق التعليقات و التحسين المستمر",
     delivery: "ضمان الجودة و التسليم",
   },
   chat: {
-    title: "مساعد ذكي",
-    subtitle: "اسأل عن أي شيء يتعلق بعملي!",
-    greeting: "مرحبا! 👋 أنا مساعد محمد الذكي. لا تتردد في السؤال عن مشاريعه و مهاراته و خبرته أو أي شيء آخر!",
+    title: "إجابات سريعة",
+    subtitle: "أكثر الأسئلة تكرارًا عن عملي، بإجابات فورية.",
+    greeting:
+      "مرحبًا! 👋 اختر سؤالًا بالأسفل أو اكتب كلمة مفتاحية (مهارات، مشاريع، خبرة، تواصل) وسأعرض لك الإجابة. لأي شيء آخر، نموذج التواصل يصلني مباشرة.",
     inputPlaceholder: "اكتب رسالتك...",
     inputLabel: "اكتب رسالتك",
     suggestedSkills: "ما هي مهاراتك؟",
@@ -289,10 +295,14 @@ const ar = {
     suggestedExperience: "خبرتك الوظيفية؟",
     suggestedContact: "كيفية التواصل؟",
     responses: {
-      skills: "أتمتع بمهارات في React.js و React Native و TypeScript و Next.js و Node.js و JavaScript و SQL و MongoDB و Redux و MUI و Tailwind CSS وغيرها. لدي أيضًا خبرة مع Git و REST APIs و JWT Authentication وإمكانية الوصول والتصميم المتجاوب.",
-      projects: "بنيت نظم إدارة الفنادق و منصات الاختبارات و نظم إدارة المأكولات و العديد من تطبيقات React و React Native. يعكس كل مشروع ممارسات التطوير الحديث و الأكواد الجاهزة للإنتاج.",
-      experience: "لدي خبرة تزيد عن 3 سنوات كمهندس برمجيات في Nursery Story (المملكة المتحدة) و Upskilling (مصر)، بالإضافة إلى التعلم الذاتي منذ 2020. عملت مع فرق عبر مناطق زمنية مختلفة و ساهمت في تطوير الواجهات الأمامية و الخلفية و تطبيقات الموبايل.",
-      contact: "يمكنك التواصل معي عبر البريد الإلكتروني mohamedelseady247@gmail.com أو الهاتف +20 114 681 7834 أو الاتصال بي على LinkedIn و GitHub. أنا مفتوح لمشاريع العمل الحر والفرص الجديدة!",
+      skills:
+        "أتمتع بمهارات في React.js و React Native و TypeScript و Next.js و Node.js و JavaScript و SQL و MongoDB و Redux و MUI و Tailwind CSS وغيرها. لدي أيضًا خبرة مع Git و REST APIs و JWT Authentication وإمكانية الوصول والتصميم المتجاوب.",
+      projects:
+        "بنيت نظم إدارة الفنادق و منصات الاختبارات و نظم إدارة المأكولات و العديد من تطبيقات React و React Native. يعكس كل مشروع ممارسات التطوير الحديث و الأكواد الجاهزة للإنتاج.",
+      experience:
+        "لدي خبرة تزيد عن 5 سنوات كمهندس برمجيات في Nursery Story (المملكة المتحدة) و Upskilling (مصر)، بالإضافة إلى التعلم الذاتي منذ 2020. عملت مع فرق عبر مناطق زمنية مختلفة و ساهمت في تطوير الواجهات الأمامية و الخلفية و تطبيقات الموبايل.",
+      contact:
+        "يمكنك التواصل معي عبر البريد الإلكتروني mohamedelseady247@gmail.com أو الهاتف +20 114 681 7834 أو الاتصال بي على LinkedIn و GitHub. أنا مفتوح لمشاريع العمل الحر والفرص الجديدة!",
       default: "شكرًا لاهتمامك! استكشف المزيد من أقسام محفظتي أو تواصل معي مباشرة للأسئلة المحددة.",
     },
   },
