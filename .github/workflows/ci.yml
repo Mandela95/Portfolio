@@ -24,7 +24,7 @@ jobs:
       - name: Check formatting
         run: npm run format:check
 
-      # Serves the repo as-is — there is no build step.
+      # Serves the repo as-is; there is no build step.
       - name: Lighthouse audit
         uses: treosh/lighthouse-ci-action@v12
         with:

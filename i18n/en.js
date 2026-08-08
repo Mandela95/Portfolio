@@ -186,7 +186,7 @@ const en = {
       privateSource: "Private source",
     },
     classA: {
-      title: "Class A — EdTech SaaS",
+      title: "Class A · EdTech SaaS",
       desc: "Multi-tenant platform for tutoring and educational centres, replacing scattered WhatsApp groups, spreadsheets, and paper records with one structured system for admins, teachers, and parents.",
       role: "Founder, product lead, and full-stack engineer",
       challenge:
@@ -267,7 +267,7 @@ const en = {
   demoVideo: {
     title: "Demo Videos",
     badgeLabel: "Product demo",
-    classATitle: "Class A — product demo",
+    classATitle: "Class A · product demo",
     classADesc:
       "A walkthrough of the platform I founded and built: attendance, billing, and the parent portal.",
     playClassA: "Play video: Class A product demo",
@@ -326,7 +326,7 @@ const en = {
   caseStudy: {
     backToPortfolio: "Back to portfolio",
     eyebrow: "Case study",
-    title: "Class A — an edTech SaaS, from market research to production",
+    title: "Class A · an edTech SaaS, from market research to production",
     lede: "Tutoring centres across Egypt run on WhatsApp groups, paper registers, and spreadsheets that never reconcile. I interviewed the people living with that problem, found what every existing tool was missing, and built the system that fixes it.",
     visitSite: "Visit classaapp.com",
     meta: {
@@ -350,7 +350,7 @@ const en = {
     },
     research: {
       title: "Research before code",
-      p1: "I did not start by writing software. I started by interviewing teachers and centre owners about how their week actually runs — what they track, where the time goes, and which mistakes cost them money. Then I worked through the tools already on the market feature by feature.",
+      p1: "I did not start by writing software. I started by interviewing teachers and centre owners about how their week actually runs: what they track, where the time goes, and which mistakes cost them money. Then I worked through the tools already on the market feature by feature.",
       p2: "Two things came out of that. First, the existing products covered the obvious surface: students, groups, invoices. Second, they consistently stopped short at exactly the points where the real work happens.",
       gapsTitle: "The gaps competitors left open",
       gap1Title: "Attendance that costs time",
@@ -370,7 +370,7 @@ const en = {
       title: "What I built, and why",
       d1Title: "QR attendance, built for the doorway",
       d1Body:
-        "Every student gets a QR code; a POS scanner at the door checks them in. The constraint that shaped this was not technical — it was that a queue of teenagers will not wait for an admin to scroll a list. Sessions generate automatically from each group's schedule, so the register exists before anyone walks in.",
+        "Every student gets a QR code; a POS scanner at the door checks them in. The constraint that shaped this was not technical. It was that a queue of teenagers will not wait for an admin to scroll a list. Sessions generate automatically from each group's schedule, so the register exists before anyone walks in.",
       d2Title: "Billing that chases itself",
       d2Body:
         "Invoices generate in bulk each month, carry discounts and payment status, and feed a debt-aging view. The piece that changes behaviour is the automation on top: parents get WhatsApp reminders for absences and unpaid invoices without an admin deciding to send them. Recording debt is easy; collecting it is the product.",
@@ -398,7 +398,7 @@ const en = {
     },
     outcome: {
       title: "Where it stands",
-      p1: "Class A is live and in use by tutoring centres. It went from an idea to a production platform — product strategy, design, branding, and full-stack engineering — carried by one person.",
+      p1: "Class A is live and in use by tutoring centres. It went from an idea to a production platform, carried by one person: product strategy, design, branding, and full-stack engineering.",
       p2: "The part I would carry into any team is the sequence: talk to the people with the problem, map what existing tools refuse to do, and build for the constraint rather than the feature list. The QR scanner exists because of a queue at a door, not because it looked good on a roadmap.",
       quote:
         "He is the mastermind behind Class A, conceiving the idea and executing it flawlessly from scratch\u2026 He built a system that not only includes all top-tier market features but also addresses existing gaps by introducing missing functionalities that none of the competitors offered.",

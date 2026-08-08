@@ -2,7 +2,7 @@
 // the same script runs on a page that has only a subset of the sections.
 //
 // ===== Page Loader =====
-// Hidden as soon as the document is usable. No artificial delay — the loader exists to cover
+// Hidden as soon as the document is usable. No artificial delay; the loader exists to cover
 // the gap before first paint, not to add one.
 document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("loader")?.classList.add("hidden");
@@ -128,7 +128,7 @@ const GH_USER = "Mandela95";
 // field can never leave returning visitors stuck with a stale, incomplete record.
 const GH_CACHE_KEY = "ghStats:v2";
 const GH_CACHE_FIELDS = ["repos", "followers", "since", "languages"];
-const GH_CACHE_TTL = 60 * 60 * 1000; // 1 hour — well inside the 60 req/hr anonymous limit
+const GH_CACHE_TTL = 60 * 60 * 1000; // 1 hour, well inside the 60 req/hr anonymous limit
 
 // GitHub's own language colours, so the bars read as familiar.
 const LANG_COLORS = {
@@ -154,7 +154,7 @@ async function loadGitHubStats() {
     try {
       // Commit totals come from GitHub's own search API. A third-party badge service would
       // report richer "contributions", but the last one this site depended on went offline
-      // and took the section with it — first-party and verifiable wins.
+      // and took the section with it; first-party and verifiable wins.
       const [userRes, reposRes, commitsRes] = await Promise.all([
         fetch(`https://api.github.com/users/${GH_USER}`),
         fetch(`https://api.github.com/users/${GH_USER}/repos?per_page=100&type=owner`),
@@ -195,7 +195,7 @@ async function loadGitHubStats() {
       try {
         sessionStorage.setItem(GH_CACHE_KEY, JSON.stringify({ at: Date.now(), data }));
       } catch (e) {
-        /* storage full or blocked — the fetch still succeeded, so carry on */
+        /* storage full or blocked; the fetch still succeeded, so carry on */
       }
     } catch (e) {
       // Leave the section hidden. A missing section beats a broken one.
@@ -457,7 +457,7 @@ function typeEffect() {
 
 // ===== Projects: filter + search =====
 // Single source of truth for what's visible. The filter buttons and the search box both write
-// into this state and then re-run one pass over the real cards — no cloning, no second grid,
+// into this state and then re-run one pass over the real cards: no cloning, no second grid,
 // and the two controls compose instead of fighting each other.
 const filterBtns = document.querySelectorAll(".filter-btn");
 const projectCards = Array.from(document.querySelectorAll(".project-card"));
@@ -595,7 +595,7 @@ contactForm?.addEventListener("submit", (e) => {
 });
 
 // ===== Quick Answers Dialog =====
-// Keyword lookup over the localized canned answers — deliberately not billed as an AI model.
+// Keyword lookup over the localized canned answers, deliberately not billed as an AI model.
 document.addEventListener("DOMContentLoaded", () => {
   const chatWidget = document.getElementById("chatWidget");
   const chatButton = document.getElementById("chatButton");

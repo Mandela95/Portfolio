@@ -1,4 +1,4 @@
-/* Fonts are loaded from index.html (non-blocking) — see the <link> tags in <head>. */
+/* Fonts are loaded from index.html (non-blocking); see the <link> tags in <head>. */
 
 /* ===== CSS Variables / Design Tokens ===== */
 :root {
@@ -131,7 +131,7 @@ textarea {
   transition: transform var(--transition);
 }
 
-/* :focus, not :focus-visible — a skip link must appear for any focus that reaches it. */
+/* :focus, not :focus-visible; a skip link must appear for any focus that reaches it. */
 .skip-link:focus {
   transform: translateY(0);
 }
@@ -142,7 +142,7 @@ textarea {
   border-radius: 0 0 0 var(--radius);
 }
 
-/* Honeypot — hidden from humans without display:none, which some bots skip. */
+/* Honeypot: hidden from humans without display:none, which some bots skip. */
 .hp-field {
   position: absolute;
   left: -9999px;
@@ -531,6 +531,7 @@ nav ul li a.active::after {
   100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0;
   }
@@ -653,6 +654,7 @@ nav ul li a.active::after {
   100% {
     transform: translateX(-50%) translateY(0);
   }
+
   50% {
     transform: translateX(-50%) translateY(10px);
   }
@@ -2015,6 +2017,7 @@ footer > .footer-content > p {
   100% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.2);
   }
@@ -2307,7 +2310,7 @@ footer > .footer-content > p {
   box-shadow: 0 8px 25px rgba(108, 99, 255, 0.4);
 }
 
-/* A dot, not a "1" — there is no unread message to count, and stray text inside the
+/* A dot, not a "1"; there is no unread message to count, and stray text inside the
    button would leak into its accessible name. */
 .chat-badge {
   position: absolute;
@@ -2336,6 +2339,7 @@ footer > .footer-content > p {
     transform: scale(1);
     opacity: 1;
   }
+
   50% {
     transform: scale(1.25);
     opacity: 0.75;
@@ -2374,6 +2378,7 @@ footer > .footer-content > p {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -2441,6 +2446,7 @@ footer > .footer-content > p {
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -3000,7 +3006,8 @@ footer > .footer-content > p {
   background: rgba(10, 10, 10, 0.62);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.18);
-  pointer-events: none; /* clicks fall through to the play button */
+  pointer-events: none;
+  /* clicks fall through to the play button */
 }
 
 .yt-brand img {
@@ -3046,7 +3053,7 @@ footer > .footer-content > p {
   }
 }
 
-/* Keep "View full recommendation" on one line — it wrapped to three inside the
+/* Keep "View full recommendation" on one line; it wrapped to three inside the
    narrower grid cards once the section went from one card to three. */
 .testimonial-footer .btn {
   white-space: nowrap;
