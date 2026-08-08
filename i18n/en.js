@@ -250,7 +250,7 @@ const en = {
         quote:
           "Mohamed has a strong technical background and the ability to work across different technologies with confidence and efficiency. What really sets Mohamed apart is his personality and team spirit… I highly recommend Mohamed to any team looking for a skilled, dependable, and genuinely supportive Full Stack Developer.",
         author: "Hamas Ahmed",
-        role: "Software Engineer · React, Next.js, TypeScript, React Native · Instructor @ ITI",
+        role: "Software Engineer · Instructor @ ITI",
         context: "Worked with Mohamed on the same team",
         date: "April 23, 2026",
       },
