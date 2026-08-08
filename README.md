@@ -125,27 +125,42 @@ Pushing to `main` publishes to GitHub Pages. There is nothing to build.
 
 ## Screenshots
 
+All captured from the current build.
+
 ### Desktop
 
 ![Home](Images/readme/home.webp)
 
 ![About](Images/readme/about.webp)
 
+![Tech stack](Images/readme/tech-stack.webp)
+
+![GitHub overview](Images/readme/github-overview.webp)
+
+![Recommendations](Images/readme/recommendations.webp)
+
 ![Quick Answers](Images/readme/quick-answers.webp)
 
-![Projects · Arabic](Images/readme/projects-ar.webp)
-
 ![Contact](Images/readme/contact.webp)
+
+### Arabic (RTL)
+
+![Projects in Arabic](Images/readme/projects-ar.webp)
 
 ### Mobile
 
 ![Mobile, dark theme](Images/readme/mobile-dark.webp)
 
-### Class A · featured project
+### Case study
 
-The flagship project on the site: a multi-tenant edTech SaaS built end-to-end, with its own case
-study page at [`class-a.html`](class-a.html). Source is private; the live product is at
-<https://classaapp.com>.
+The Class A case study page at [`class-a.html`](class-a.html):
+
+![Class A case study](Images/readme/case-study.webp)
+
+### Class A · the product
+
+The flagship project on the site: a multi-tenant edTech SaaS built end to end. Source is private;
+the live product is at <https://classaapp.com>.
 
 ![Class A dashboard](Images/readme/class-a-homescreen.webp)
 

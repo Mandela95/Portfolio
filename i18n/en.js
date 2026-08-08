@@ -20,7 +20,7 @@ const en = {
     greeting: "Hello, I'm",
     name: "Mohamed El-Seady",
     description:
-      "I build production web and mobile products end-to-end \u2014 most recently Class A, an edTech SaaS I founded, designed, and shipped with React, Next.js, TypeScript, and PostgreSQL.",
+      "I build production web and mobile products end-to-end. Most recently Class A, an edTech SaaS I founded, designed, and shipped with React, Next.js, TypeScript, and PostgreSQL.",
     viewCV: "View CV",
     viewWork: "View My Work",
     roles: [
@@ -240,7 +240,7 @@ const en = {
     items: [
       {
         quote:
-          "Mo is a visionary product builder and innovator. He is the mastermind behind Class A, conceiving the idea and executing it flawlessly from scratch\u2026 He built a system that not only includes all top-tier market features but also addresses existing gaps by introducing missing functionalities that none of the competitors offered.",
+          "Mo is a visionary product builder and innovator. He is the mastermind behind Class A, conceiving the idea and executing it flawlessly from scratch… He built a system that not only includes all top-tier market features but also addresses existing gaps by introducing missing functionalities that none of the competitors offered.",
         author: "Yara Khaled",
         role: "Architect",
         context: "Worked with Mohamed on the same team",
@@ -248,9 +248,9 @@ const en = {
       },
       {
         quote:
-          "Mohamed has a strong technical background and the ability to work across different technologies with confidence and efficiency. What really sets Mohamed apart is his personality and team spirit\u2026 I highly recommend Mohamed to any team looking for a skilled, dependable, and genuinely supportive Full Stack Developer.",
+          "Mohamed has a strong technical background and the ability to work across different technologies with confidence and efficiency. What really sets Mohamed apart is his personality and team spirit… I highly recommend Mohamed to any team looking for a skilled, dependable, and genuinely supportive Full Stack Developer.",
         author: "Hamas Ahmed",
-        role: "Software Engineer \u00b7 React, Next.js, TypeScript, React Native \u00b7 Instructor @ ITI",
+        role: "Software Engineer · React, Next.js, TypeScript, React Native · Instructor @ ITI",
         context: "Worked with Mohamed on the same team",
         date: "April 23, 2026",
       },
@@ -311,6 +311,8 @@ const en = {
     suggestedExperience: "Work experience?",
     suggestedContact: "How to contact?",
     responses: {
+      classA:
+        "Class A is the edTech SaaS I founded and built end to end: a multi-tenant platform for tutoring centres covering QR attendance, invoicing, automated WhatsApp reminders to parents, and reporting. Built with Next.js, TypeScript, PostgreSQL, and Supabase. There is a full case study on this site, and the live product is at classaapp.com.",
       skills:
         "I'm skilled in React.js, React Native, TypeScript, Next.js, Node.js, JavaScript, SQL, MongoDB, Redux, MUI, Tailwind CSS, and more. I also have experience with Git, REST APIs, JWT authentication, accessibility, and responsive design.",
       projects:
@@ -401,7 +403,7 @@ const en = {
       p1: "Class A is live and in use by tutoring centres. It went from an idea to a production platform, carried by one person: product strategy, design, branding, and full-stack engineering.",
       p2: "The part I would carry into any team is the sequence: talk to the people with the problem, map what existing tools refuse to do, and build for the constraint rather than the feature list. The QR scanner exists because of a queue at a door, not because it looked good on a roadmap.",
       quote:
-        "He is the mastermind behind Class A, conceiving the idea and executing it flawlessly from scratch\u2026 He built a system that not only includes all top-tier market features but also addresses existing gaps by introducing missing functionalities that none of the competitors offered.",
+        "He is the mastermind behind Class A, conceiving the idea and executing it flawlessly from scratch… He built a system that not only includes all top-tier market features but also addresses existing gaps by introducing missing functionalities that none of the competitors offered.",
       quoteAuthor: "Yara Khaled",
       quoteRole: "Architect · worked with Mohamed on the same team",
     },

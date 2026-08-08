@@ -620,6 +620,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const lowerMessage = message.toLowerCase();
     const includesAny = (keywords) => keywords.some((keyword) => lowerMessage.includes(keyword));
 
+    // Class A first: it is the flagship, and its name would otherwise be swallowed by the
+    // generic "projects" branch or fall through to the default.
+    if (includesAny(["class a", "classa", "class-a", "كلاس ايه", "كلاس إيه"])) {
+      return responses.classA;
+    }
     if (includesAny(["skill", "skills", "tech", "مهارة", "مهارات", "تقنية", "تقنيات"])) {
       return responses.skills;
     }
