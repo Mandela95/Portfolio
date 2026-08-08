@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="How Class A was built: market research with teachers and tutoring centres, competitor gap analysis, and the multi-tenant SaaS architecture behind attendance, billing, and parent communication."
+    />
+    <meta name="author" content="Mohamed El-Seady" />
+    <meta name="robots" content="index, follow" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <link rel="canonical" href="https://mandela95.github.io/Portfolio/class-a.html" />
+    <title>Class A case study — Mohamed El-Seady</title>
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://mandela95.github.io/Portfolio/class-a.html" />
+    <meta
+      property="og:title"
+      content="Class A — building an edTech SaaS from research to production"
+    />
+    <meta
+      property="og:description"
+      content="The research, the gaps competitors left open, and the architecture behind Class A's attendance, billing, and parent communication."
+    />
+    <meta
+      property="og:image"
+      content="https://mandela95.github.io/Portfolio/Images/readme/class-a-homescreen.webp"
+    />
+    <meta property="og:image:alt" content="The Class A dashboard" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:creator" content="@MohElseady" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="icon" type="image/png" href="Images/icon-192.png" />
+    <link rel="apple-touch-icon" href="Images/icon-192.png" />
+    <link rel="manifest" href="manifest.webmanifest" />
+
+    <link rel="stylesheet" href="normalize.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&display=swap"
+      media="print"
+      onload="this.media = 'all'"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      media="print"
+      onload="this.media = 'all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&display=swap"
+      />
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      />
+    </noscript>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Class A — building an edTech SaaS from research to production",
+        "author": {
+          "@type": "Person",
+          "name": "Mohamed El-Seady",
+          "url": "https://mandela95.github.io/Portfolio/"
+        },
+        "about": {
+          "@type": "SoftwareApplication",
+          "name": "Class A",
+          "applicationCategory": "BusinessApplication",
+          "url": "https://classaapp.com"
+        },
+        "mainEntityOfPage": "https://mandela95.github.io/Portfolio/class-a.html"
+      }
+    </script>
+  </head>
+
+  <body>
+    <a href="#main" class="skip-link" data-i18n="a11y.skipToContent">Skip to main content</a>
+
+    <header id="header">
+      <a href="index.html" class="logo">
+        <img src="Images/logo.webp" alt="Mohamed El-Seady logo" width="40" height="40" />
+      </a>
+      <nav id="nav" aria-label="Primary navigation">
+        <ul>
+          <li>
+            <a href="index.html" class="nav-link" data-i18n="caseStudy.backToPortfolio">
+              Back to portfolio
+            </a>
+          </li>
+          <li>
+            <a href="index.html#projects" class="nav-link" data-i18n="nav.projects">Projects</a>
+          </li>
+          <li><a href="index.html#contact" class="nav-link" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button class="lang-toggle" id="langToggle" aria-label="Switch language to Arabic (AR)">
+          AR
+        </button>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+          <i class="fas fa-moon" aria-hidden="true"></i>
+        </button>
+        <button
+          class="hamburger"
+          id="hamburger"
+          aria-label="Toggle navigation"
+          aria-controls="nav"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <main id="main" class="case-study">
+      <!-- Hero -->
+      <header class="cs-hero">
+        <p class="cs-eyebrow reveal" data-i18n="caseStudy.eyebrow">Case study</p>
+        <h1 class="cs-title reveal" data-i18n="caseStudy.title">
+          Class A — an edTech SaaS, from market research to production
+        </h1>
+        <p class="cs-lede reveal" data-i18n="caseStudy.lede">
+          Tutoring centres across Egypt run on WhatsApp groups, paper registers, and spreadsheets
+          that never reconcile. I interviewed the people living with that problem, found what every
+          existing tool was missing, and built the system that fixes it.
+        </p>
+
+        <dl class="cs-meta reveal">
+          <div>
+            <dt data-i18n="caseStudy.meta.role">Role</dt>
+            <dd data-i18n="caseStudy.meta.roleValue">Founder, product lead, sole engineer</dd>
+          </div>
+          <div>
+            <dt data-i18n="caseStudy.meta.timeline">Timeline</dt>
+            <dd data-i18n="caseStudy.meta.timelineValue">Dec 2025 – present</dd>
+          </div>
+          <div>
+            <dt data-i18n="caseStudy.meta.stack">Stack</dt>
+            <dd data-i18n="caseStudy.meta.stackValue">Next.js, TypeScript, PostgreSQL, Supabase</dd>
+          </div>
+          <div>
+            <dt data-i18n="caseStudy.meta.status">Status</dt>
+            <dd data-i18n="caseStudy.meta.statusValue">Live, with paying customers</dd>
+          </div>
+        </dl>
+
+        <div class="cs-actions reveal">
+          <a
+            href="https://classaapp.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-primary"
+          >
+            <span data-i18n="caseStudy.visitSite">Visit classaapp.com</span>
+            <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+          </a>
+          <span class="project-private">
+            <i class="fas fa-lock" aria-hidden="true"></i>
+            <span data-i18n="projects.labels.privateSource">Private source</span>
+          </span>
+        </div>
+
+        <figure class="cs-figure reveal">
+          <img
+            src="Images/readme/class-a-homescreen.webp"
+            alt="The Class A dashboard, showing student counts, today's sessions, outstanding dues, and collections"
+            width="1600"
+            height="1100"
+            fetchpriority="high"
+            decoding="async"
+          />
+          <figcaption data-i18n="caseStudy.shots.dashboard">
+            The dashboard answers the three questions an owner asks every morning: who is coming
+            today, who owes money, and what came in this month.
+          </figcaption>
+        </figure>
+      </header>
+
+      <!-- Problem -->
+      <section class="cs-section reveal">
+        <h2 data-i18n="caseStudy.problem.title">The problem</h2>
+        <p data-i18n="caseStudy.problem.p1">
+          A mid-sized tutoring centre juggles a few hundred students across dozens of groups. Almost
+          none of that runs on software. Attendance is a paper register. Fees are a notebook or a
+          spreadsheet. Parent communication is a WhatsApp group where announcements scroll away
+          within hours.
+        </p>
+        <p data-i18n="caseStudy.problem.p2">
+          The failure mode is always the same: money leaks. Nobody can say with confidence which
+          students owe what, how long they have owed it, or which groups are actually profitable. By
+          the time an owner notices, the debt is months old and awkward to chase.
+        </p>
+      </section>
+
+      <!-- Research -->
+      <section class="cs-section reveal">
+        <h2 data-i18n="caseStudy.research.title">Research before code</h2>
+        <p data-i18n="caseStudy.research.p1">
+          I did not start by writing software. I started by interviewing teachers and centre owners
+          about how their week actually runs — what they track, where the time goes, and which
+          mistakes cost them money. Then I worked through the tools already on the market feature by
+          feature.
+        </p>
+        <p data-i18n="caseStudy.research.p2">
+          Two things came out of that. First, the existing products covered the obvious surface:
+          students, groups, invoices. Second, they consistently stopped short at exactly the points
+          where the real work happens.
+        </p>
+
+        <h3 data-i18n="caseStudy.research.gapsTitle">The gaps competitors left open</h3>
+        <ul class="cs-gaps">
+          <li>
+            <strong data-i18n="caseStudy.research.gap1Title">Attendance that costs time</strong>
+            <span data-i18n="caseStudy.research.gap1Body">
+              Marking a register student by student does not scale to a room filling up in three
+              minutes. Nobody was solving the door, only the database.
+            </span>
+          </li>
+          <li>
+            <strong data-i18n="caseStudy.research.gap2Title">Chasing money by hand</strong>
+            <span data-i18n="caseStudy.research.gap2Body">
+              Tools recorded debt but left the follow-up entirely manual, which meant it did not
+              happen.
+            </span>
+          </li>
+          <li>
+            <strong data-i18n="caseStudy.research.gap3Title">
+              Parents left outside the system
+            </strong>
+            <span data-i18n="caseStudy.research.gap3Body">
+              Parents are the paying customer, yet had no way to see attendance or progress without
+              asking a teacher directly.
+            </span>
+          </li>
+          <li>
+            <strong data-i18n="caseStudy.research.gap4Title">English-first interfaces</strong>
+            <span data-i18n="caseStudy.research.gap4Body">
+              Products aimed at an Arabic-speaking market with RTL treated as an afterthought,
+              rather than as the primary experience.
+            </span>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Decisions -->
+      <section class="cs-section reveal">
+        <h2 data-i18n="caseStudy.decisions.title">What I built, and why</h2>
+
+        <article class="cs-decision">
+          <h3 data-i18n="caseStudy.decisions.d1Title">QR attendance, built for the doorway</h3>
+          <p data-i18n="caseStudy.decisions.d1Body">
+            Every student gets a QR code; a POS scanner at the door checks them in. The constraint
+            that shaped this was not technical — it was that a queue of teenagers will not wait for
+            an admin to scroll a list. Sessions generate automatically from each group's schedule,
+            so the register exists before anyone walks in.
+          </p>
+          <figure class="cs-figure">
+            <img
+              src="Images/readme/class-a-attendance.webp"
+              alt="The Class A attendance screen"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption data-i18n="caseStudy.shots.attendance">
+              Attendance resolves to a percentage per student, which is what parents actually ask
+              about.
+            </figcaption>
+          </figure>
+        </article>
+
+        <article class="cs-decision">
+          <h3 data-i18n="caseStudy.decisions.d2Title">Billing that chases itself</h3>
+          <p data-i18n="caseStudy.decisions.d2Body">
+            Invoices generate in bulk each month, carry discounts and payment status, and feed a
+            debt-aging view. The piece that changes behaviour is the automation on top: parents get
+            WhatsApp reminders for absences and unpaid invoices without an admin deciding to send
+            them. Recording debt is easy; collecting it is the product.
+          </p>
+          <figure class="cs-figure">
+            <img
+              src="Images/readme/class-a-payments.webp"
+              alt="The Class A payments and invoicing screen"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption data-i18n="caseStudy.shots.payments">
+              Payment status, discounts, and outstanding balances in one view.
+            </figcaption>
+          </figure>
+        </article>
+
+        <article class="cs-decision">
+          <h3 data-i18n="caseStudy.decisions.d3Title">A parent portal, not a parent broadcast</h3>
+          <p data-i18n="caseStudy.decisions.d3Body">
+            Parents get their own view: attendance history, progress over time, and assessments.
+            This was the clearest gap in the market and the one owners reacted to most strongly,
+            because it removes a whole category of interruption from their day.
+          </p>
+        </article>
+
+        <article class="cs-decision">
+          <h3 data-i18n="caseStudy.decisions.d4Title">Arabic first, not Arabic added</h3>
+          <p data-i18n="caseStudy.decisions.d4Body">
+            Full Arabic and English localisation with real RTL, plus multi-currency and
+            multi-timezone support. The product also installs as a PWA on iOS and Android, because
+            most of these centres are phone-first and were never going to sit at a desktop.
+          </p>
+          <figure class="cs-figure">
+            <img
+              src="Images/readme/class-a-reports.webp"
+              alt="The Class A reporting screen"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption data-i18n="caseStudy.shots.reports">
+              Reports export to PDF and Excel: collections, outstanding dues, per-group revenue,
+              absence trends, and debt aging.
+            </figcaption>
+          </figure>
+        </article>
+      </section>
+
+      <!-- Architecture -->
+      <section class="cs-section reveal">
+        <h2 data-i18n="caseStudy.architecture.title">Architecture and engineering</h2>
+        <p data-i18n="caseStudy.architecture.p1">
+          Class A is multi-tenant from the database up, with role-based permissions separating
+          admins, teachers, and parents, and audit logging over the actions that touch money. Every
+          tenant shares one deployment, so isolation had to be enforced at the data layer rather
+          than hoped for at the UI.
+        </p>
+        <ul class="cs-stack">
+          <li>
+            <strong data-i18n="caseStudy.architecture.s1Title">Application</strong>
+            <span data-i18n="caseStudy.architecture.s1Body">
+              Next.js and React with TypeScript end-to-end, React Query for server state,
+              react-hook-form and Zod for validated forms, Tailwind for styling.
+            </span>
+          </li>
+          <li>
+            <strong data-i18n="caseStudy.architecture.s2Title">Data</strong>
+            <span data-i18n="caseStudy.architecture.s2Body">
+              PostgreSQL via Supabase, with Knex.js for queries and migrations.
+            </span>
+          </li>
+          <li>
+            <strong data-i18n="caseStudy.architecture.s3Title">Localisation</strong>
+            <span data-i18n="caseStudy.architecture.s3Body">
+              next-intl driving Arabic and English, including RTL layout, currencies, and timezones.
+            </span>
+          </li>
+          <li>
+            <strong data-i18n="caseStudy.architecture.s4Title">Confidence</strong>
+            <span data-i18n="caseStudy.architecture.s4Body">
+              Playwright smoke tests over the critical paths, Sentry for error monitoring in
+              production.
+            </span>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Outcome -->
+      <section class="cs-section reveal">
+        <h2 data-i18n="caseStudy.outcome.title">Where it stands</h2>
+        <p data-i18n="caseStudy.outcome.p1">
+          Class A is live and serving paying centres. It went from an idea to a production platform
+          — product strategy, design, branding, and full-stack engineering — carried by one person.
+        </p>
+        <p data-i18n="caseStudy.outcome.p2">
+          The part I would carry into any team is the sequence: talk to the people with the problem,
+          map what existing tools refuse to do, and build for the constraint rather than the feature
+          list. The QR scanner exists because of a queue at a door, not because it looked good on a
+          roadmap.
+        </p>
+
+        <blockquote class="cs-quote">
+          <p data-i18n="caseStudy.outcome.quote">
+            He is the mastermind behind Class A, conceiving the idea and executing it flawlessly
+            from scratch… He built a system that not only includes all top-tier market features but
+            also addresses existing gaps by introducing missing functionalities that none of the
+            competitors offered.
+          </p>
+          <footer>
+            <strong data-i18n="caseStudy.outcome.quoteAuthor">Yara Khaled</strong>
+            <span data-i18n="caseStudy.outcome.quoteRole">
+              Architect · worked with Mohamed on the same team
+            </span>
+          </footer>
+        </blockquote>
+      </section>
+
+      <!-- Gallery -->
+      <section class="cs-section reveal">
+        <h2 data-i18n="caseStudy.gallery.title">More of the product</h2>
+        <div class="cs-gallery">
+          <figure>
+            <img
+              src="Images/readme/class-a-students.webp"
+              alt="Class A student management screen"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption data-i18n="caseStudy.gallery.students">Students</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="Images/readme/class-a-groups.webp"
+              alt="Class A groups screen"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption data-i18n="caseStudy.gallery.groups">Groups</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="Images/readme/class-a-calendar.webp"
+              alt="Class A session calendar"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption data-i18n="caseStudy.gallery.calendar">Session calendar</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="Images/readme/class-a-analytics.webp"
+              alt="Class A analytics dashboard"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption data-i18n="caseStudy.gallery.analytics">Analytics</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="cs-section cs-cta reveal">
+        <h2 data-i18n="caseStudy.cta.title">Want to talk about building something like this?</h2>
+        <div class="cs-actions">
+          <a href="index.html#contact" class="btn btn-primary">
+            <span data-i18n="caseStudy.cta.contact">Get in touch</span>
+            <i class="fas fa-paper-plane" aria-hidden="true"></i>
+          </a>
+          <a href="index.html#projects" class="btn btn-outline">
+            <span data-i18n="caseStudy.cta.moreWork">See more work</span>
+            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">
+      <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </button>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-logo">El-Seady</div>
+        <p data-i18n="footer.tagline">Building the web, one pixel at a time.</p>
+        <div class="footer-links">
+          <a href="index.html" data-i18n="caseStudy.backToPortfolio">Back to portfolio</a>
+          <a href="index.html#projects" data-i18n="nav.projects">Projects</a>
+          <a href="index.html#contact" data-i18n="nav.contact">Contact</a>
+        </div>
+        <div class="footer-bottom">
+          <p data-i18n="footer.copy">
+            Made with
+            <span class="heart">&hearts;</span>
+            by Mandela &copy;
+            <span id="currentYear"></span>
+            All Rights Reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script defer src="i18n/en.js"></script>
+    <script defer src="i18n/ar.js"></script>
+    <script defer src="main.js"></script>
+  </body>
+</html>

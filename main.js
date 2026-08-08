@@ -1,12 +1,16 @@
+// Shared by index.html and class-a.html. Every DOM lookup is optional-chained or guarded so
+// the same script runs on a page that has only a subset of the sections.
+//
 // ===== Page Loader =====
 // Hidden as soon as the document is usable. No artificial delay — the loader exists to cover
 // the gap before first paint, not to add one.
 document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("loader").classList.add("hidden");
+  document.getElementById("loader")?.classList.add("hidden");
 });
 
 // ===== Dynamic Year =====
-document.getElementById("currentYear").textContent = new Date().getFullYear();
+const currentYearEl = document.getElementById("currentYear");
+if (currentYearEl) currentYearEl.textContent = new Date().getFullYear();
 
 // ===== i18n System =====
 const translations = { en, ar };
@@ -51,11 +55,13 @@ function setLanguage(lang) {
   // Update lang toggle. The accessible name has to contain the visible label ("AR"/"EN"),
   // otherwise voice-control users can't activate it by saying what they see.
   const langToggle = document.getElementById("langToggle");
-  langToggle.textContent = lang === "en" ? "AR" : "EN";
-  langToggle.setAttribute(
-    "aria-label",
-    lang === "en" ? t.a11y.langToggleToAr : t.a11y.langToggleToEn,
-  );
+  if (langToggle) {
+    langToggle.textContent = lang === "en" ? "AR" : "EN";
+    langToggle.setAttribute(
+      "aria-label",
+      lang === "en" ? t.a11y.langToggleToAr : t.a11y.langToggleToEn,
+    );
+  }
 
   // Re-set dynamic year (footer.copy innerHTML replaces the span)
   const yearEl = document.getElementById("currentYear");
@@ -87,7 +93,7 @@ function applyTheme(theme) {
   updateThemeIcon(theme);
 }
 
-themeToggle.addEventListener("click", () => {
+themeToggle?.addEventListener("click", () => {
   const current = document.documentElement.getAttribute("data-theme");
   const next = current === "dark" ? "light" : "dark";
   localStorage.setItem("theme", next);
@@ -97,6 +103,7 @@ themeToggle.addEventListener("click", () => {
 function updateThemeIcon(theme) {
   // aria-hidden matters here too: the button's name comes from its aria-label, and a bare
   // icon glyph would otherwise leak into the accessible name.
+  if (!themeToggle) return;
   themeToggle.innerHTML =
     theme === "dark"
       ? '<i class="fas fa-sun" aria-hidden="true"></i>'
@@ -244,7 +251,7 @@ let charIndex = 0;
 let isDeleting = false;
 
 // ===== Language Toggle =====
-document.getElementById("langToggle").addEventListener("click", () => {
+document.getElementById("langToggle")?.addEventListener("click", () => {
   const next = currentLang === "en" ? "ar" : "en";
   setLanguage(next);
 });
@@ -254,20 +261,22 @@ const hamburger = document.getElementById("hamburger");
 const nav = document.getElementById("nav");
 
 function setNavOpen(isOpen) {
+  if (!hamburger || !nav) return;
   hamburger.classList.toggle("active", isOpen);
   nav.classList.toggle("open", isOpen);
   hamburger.setAttribute("aria-expanded", String(isOpen));
 }
 
-hamburger.addEventListener("click", () => {
+hamburger?.addEventListener("click", () => {
   setNavOpen(!nav.classList.contains("open"));
 });
 
-nav.querySelectorAll(".nav-link").forEach((link) => {
+nav?.querySelectorAll(".nav-link").forEach((link) => {
   link.addEventListener("click", () => setNavOpen(false));
 });
 
 document.addEventListener("click", (e) => {
+  if (!nav || !hamburger) return;
   if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
     setNavOpen(false);
   }
@@ -282,8 +291,8 @@ let scrollTicking = false;
 
 function onScrollFrame() {
   const y = window.scrollY;
-  header.classList.toggle("scrolled", y > 50);
-  scrollTop.classList.toggle("show", y >= 400);
+  header?.classList.toggle("scrolled", y > 50);
+  scrollTop?.classList.toggle("show", y >= 400);
   scrollTicking = false;
 }
 
@@ -299,7 +308,7 @@ window.addEventListener(
 
 onScrollFrame();
 
-scrollTop.addEventListener("click", () => {
+scrollTop?.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
@@ -385,7 +394,7 @@ function animateCounter(el, target) {
 
 // ===== Typing Effect =====
 function typeEffect() {
-  if (prefersReducedMotion) return;
+  if (prefersReducedMotion || !typedTextEl || !roles?.length) return;
 
   const currentRole = roles[roleIndex];
 
@@ -494,7 +503,7 @@ const contactForm = document.getElementById("contactForm");
 const formStatus = document.getElementById("formStatus");
 const submitBtn = document.getElementById("submitBtn");
 
-contactForm.addEventListener("submit", (e) => {
+contactForm?.addEventListener("submit", (e) => {
   e.preventDefault();
   const t = translations[currentLang].contact;
 

@@ -12,10 +12,10 @@ vanilla JavaScript.
 
 | Device      | Performance | Accessibility | Best Practices | SEO |
 | ----------- | ----------- | ------------- | -------------- | --- |
-| **Desktop** | 100         | 100           | 100            | 100 |
-| **Mobile**  | 97          | 100           | 100            | 100 |
+| **Desktop** | 98          | 100           | 100            | 100 |
+| **Mobile**  | 96          | 100           | 100            | 100 |
 
-Total page weight: **646 KB**. These scores are enforced on every push — CI fails the build if the
+Total page weight: **662 KB**. These scores are enforced on every push — CI fails the build if the
 site regresses below them (see [`.github/lighthouserc.json`](.github/lighthouserc.json)).
 
 ---
@@ -31,8 +31,9 @@ site regresses below them (see [`.github/lighthouserc.json`](.github/lighthouser
 | ⚡ **Fast**                | WebP imagery, non-blocking fonts and icons, `IntersectionObserver` instead of scroll handlers      |
 | 🔍 **SEO-ready**           | Canonical URL, Open Graph, Twitter cards, JSON-LD `Person` schema, sitemap, robots.txt             |
 | 🧭 **Career timeline**     | Roles, stack, and quantified accomplishments                                                       |
-| 🎯 **6 featured projects** | Filter by technology plus free-text search, each with Role / Challenge / Outcome                   |
-| 💬 **Testimonial**         | Verified LinkedIn recommendation from a former teammate                                            |
+| 🎯 **7 featured projects** | Filter by technology plus free-text search, each with Role / Challenge / Outcome                   |
+| 📝 **Case study**          | A dedicated page on Class A: research, competitor gaps, architecture, and outcome                  |
+| 💬 **Recommendations**     | Three verified LinkedIn recommendations from former teammates                                      |
 | 📊 **GitHub overview**     | Repo/follower counts and language breakdown, fetched live from the GitHub REST API                 |
 | ✉️ **Contact form**        | EmailJS-backed, with honeypot spam protection and a `mailto:` fallback                             |
 
@@ -81,7 +82,8 @@ npm run lighthouse    # run a Lighthouse audit against the local server
 
 ```text
 .
-├── index.html              # All markup — single page, static (kept static for SEO)
+├── index.html              # Portfolio page — static markup (kept static for SEO)
+├── class-a.html            # Class A case study — shares style.css and main.js
 ├── style.css               # All styles, CSS custom properties for theming
 ├── normalize.css           # Cross-browser baseline
 ├── main.js                 # Theme, i18n, nav, reveals, filtering, form, dialog
@@ -103,6 +105,9 @@ the matching key in **both** language files.
 
 Adding a project means three edits: a `.project-card` block in `index.html`, plus a `projects.<key>`
 entry in each language file.
+
+`main.js` is shared by both pages, so every DOM lookup in it is guarded — a page that omits a
+section simply skips that behaviour.
 
 ---
 
@@ -129,6 +134,28 @@ Pushing to `main` publishes to GitHub Pages. There is nothing to build.
 ### Mobile
 
 ![Mobile, dark theme](Images/readme/mobile-dark.webp)
+
+### Class A — featured project
+
+The flagship project on the site: a multi-tenant edTech SaaS built end-to-end, with its own case
+study page at [`class-a.html`](class-a.html). Source is private; the live product is at
+<https://classaapp.com>.
+
+![Class A dashboard](Images/readme/class-a-homescreen.webp)
+
+![Class A students](Images/readme/class-a-students.webp)
+
+![Class A groups](Images/readme/class-a-groups.webp)
+
+![Class A attendance](Images/readme/class-a-attendance.webp)
+
+![Class A calendar](Images/readme/class-a-calendar.webp)
+
+![Class A payments](Images/readme/class-a-payments.webp)
+
+![Class A reports](Images/readme/class-a-reports.webp)
+
+![Class A analytics](Images/readme/class-a-analytics.webp)
 
 ---
 
