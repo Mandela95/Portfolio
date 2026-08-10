@@ -8,23 +8,6 @@ hands-on experience across web and mobile.
 Built with zero runtime dependencies: no framework, no bundler, no build step. Just HTML, CSS, and
 vanilla JavaScript.
 
-## Lighthouse
-
-Measured locally, desktop preset:
-
-| Page                   | Performance | Accessibility | Best Practices | SEO |
-| ---------------------- | ----------- | ------------- | -------------- | --- |
-| **Portfolio**          | 100         | 100           | 100            | 100 |
-| **Class A case study** | 98          | 100           | 100            | 100 |
-
-On the throttled mobile preset performance sits at 90–95 (LCP is hero text over simulated slow 4G),
-which is why CI asserts a floor of 85 rather than the desktop figure; the accessibility, best
-practices, and SEO categories are asserted at a perfect 100. Total page weight is **646 KB**, and
-the YouTube embeds add nothing until someone presses play. See
-[`.github/lighthouserc.json`](.github/lighthouserc.json).
-
----
-
 ## Features
 
 | Feature                    | Detail                                                                                             |
