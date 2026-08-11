@@ -5,9 +5,6 @@
 A fully responsive, bilingual portfolio for a Front-End and React Native engineer with 5+ years of
 hands-on experience across web and mobile.
 
-Built with zero runtime dependencies: no framework, no bundler, no build step. Just HTML, CSS, and
-vanilla JavaScript.
-
 ## Features
 
 | Feature                    | Detail                                                                                             |
