@@ -54,16 +54,6 @@ python3 -m http.server 3000
 
 Then open <http://localhost:3000>.
 
-### Other scripts
-
-```bash
-npm run format        # format HTML / CSS / JS with Prettier
-npm run format:check  # verify formatting without writing (used in CI)
-npm run lighthouse    # run a Lighthouse audit against the local server
-```
-
----
-
 ## Project layout
 
 ```text
